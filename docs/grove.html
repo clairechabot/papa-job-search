@@ -1,138 +1,213 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>The Grove</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
-:root{--paper:#F4EEE2;--paper-deep:#E9E1D1;--surface:#FBF7EE;--ink:#20271F;
---ink-soft:#4A4A3E;--ink-mute:#7C7565;--forest:#2C3A2B;--moss:#6E7B4B;
---moss-deep:#55603A;--clay:#A85A36;--clay-deep:#8E4A2C;--line:#D9CFBC;
---line-soft:#E5DCCB;--serif:'Newsreader',Georgia,'Times New Roman',serif;
---sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper-deep);color:var(--ink);
-font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:780px;margin:0 auto;padding:0 0 70px}
-.frame{background:var(--paper);border-left:1px solid var(--line-soft);
-border-right:1px solid var(--line-soft);padding:0 30px 40px;min-height:100vh}
-.masthead{text-align:center;padding:46px 0 26px}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;
-text-transform:uppercase;color:var(--moss-deep);font-family:var(--sans)}
-h1{font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.05;
-letter-spacing:-.01em;color:var(--forest);margin:14px 0 0}
-.tagline{font-family:var(--serif);font-style:italic;font-size:16px;
-color:var(--ink-soft);margin-top:10px}
-.date{margin-top:20px;font-size:11.5px;letter-spacing:.16em;
-text-transform:uppercase;color:var(--ink-mute)}
-nav{margin:16px 0 0;font-size:12px;letter-spacing:.1em;
-text-transform:uppercase;text-align:center}
-nav a{color:var(--clay-deep);text-decoration:none;margin:0 10px;
-font-weight:600}
-nav a:hover{color:var(--clay)}
-.note{background:var(--surface);border-top:1px solid var(--line-soft);
-border-bottom:1px solid var(--line-soft);padding:26px 24px;margin-top:22px;
-display:flex;gap:18px;align-items:flex-start;border-radius:2px}
-.monogram{flex-shrink:0;width:46px;height:46px;border-radius:50%;
-border:1px solid var(--moss);color:var(--moss-deep);
-font-family:var(--serif);font-size:22px;display:flex;align-items:center;
-justify-content:center;margin-top:2px}
-.note .body{font-family:var(--serif);font-size:17px;line-height:1.65;
-color:var(--ink)}
-.note .sig{color:var(--ink-mute);font-size:13px;margin-top:8px;
-font-family:var(--serif);font-style:italic}
-section{background:var(--surface);border:1px solid var(--line-soft);
-border-radius:12px;margin-top:26px;padding:6px 0 2px;overflow:hidden;
-box-shadow:0 1px 2px rgba(32,39,31,.04),0 12px 32px -16px rgba(32,39,31,.18)}
-section>h2{font-size:11px;font-weight:600;letter-spacing:.2em;
-color:var(--moss-deep);text-transform:uppercase;margin:14px 20px 10px}
-.job,.item{padding:16px 20px;border-top:1px solid var(--line-soft)}
-.stars{color:var(--clay);font-size:14px;letter-spacing:2px}
-.chip{background:#EDE7D8;color:var(--moss-deep);font-size:11px;
-padding:2px 10px;border-radius:100px;vertical-align:2px;margin-left:6px;
-letter-spacing:.04em}
-.job a.title{font-family:var(--serif);color:var(--forest);font-size:19px;
-font-weight:600;text-decoration:none;display:inline-block;margin-top:3px}
-.job a.title:hover{color:var(--clay-deep)}
-.meta{color:var(--ink-mute);font-size:13px;margin-top:3px}
-.summary{margin-top:8px;font-family:var(--serif);font-size:15.5px;
-color:var(--ink-soft);line-height:1.6}
-.why{margin-top:5px;font-size:14px;color:var(--ink-soft)}
-.watch{margin-top:5px;color:var(--ink-mute);font-style:italic;font-size:13px;
-font-family:var(--serif)}
-details{margin-top:10px;border:1px solid var(--line);border-radius:8px;
-background:var(--paper)}
-details summary{cursor:pointer;padding:8px 14px;font-size:12px;
-letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);
-font-weight:600}
-details summary:hover{color:var(--clay)}
-details[open] summary{border-bottom:1px solid var(--line-soft)}
-details .inner{padding:12px 14px}
-pre.prompt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
-white-space:pre-wrap;margin:0;line-height:1.55;color:var(--ink-soft)}
-.copyhint{color:var(--ink-mute);font-size:11px;margin-top:8px}
-.contact{font-size:14px;color:var(--ink-soft)}
-.contact a{color:var(--clay-deep)}
-footer{margin-top:34px;color:var(--ink-mute);font-size:12px;
-text-align:center;border-top:1px solid var(--line-soft);padding-top:18px}
-footer a{color:var(--clay-deep)}
-input.search{width:100%;padding:12px 16px;font-size:17px;border:1px solid
-var(--line);border-radius:10px;font-family:var(--serif);margin:18px 0 4px;
-background:var(--surface);color:var(--ink)}
-input.search:focus{outline:2px solid var(--moss);border-color:var(--moss)}
-.count{color:var(--ink-mute);font-size:13px;margin:6px 0 10px}
-@media(max-width:520px){h1{font-size:30px}.frame{padding:0 14px 30px}
-.note{padding:18px 14px;gap:12px}}
-</style></head>
-<body><div class="wrap"><div class="frame">
+<title>The Grove — The Next Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFE7D6;--surface:#FCF7EB;--ink:#1B2716;--ink-soft:#3C4433;--ink-mute:#79735C;
+  --forest:#1E2E1A;--forest-deep:#162313;--brass:#C09433;--brass-deep:#A87E28;--brass-soft:#D9B968;
+  --clay:#B6541F;--clay-deep:#984417;--line:#DCD0B4;--line-on-dark:rgba(216,185,104,.32);
+  --cream:#F2EAD6;--cream-mute:#C6C3A6;
+  --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;overflow-wrap:break-word}
+main{flex:1 0 auto;max-width:1000px;margin:0 auto;padding:8px 40px 40px;width:100%}
+a{color:var(--clay-deep);text-decoration:none}
+a:hover{color:var(--clay)}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-deep)}
+.eyebrow::before,.eyebrow::after{content:"";width:6px;height:6px;background:var(--brass);transform:rotate(45deg);flex:none}
 
-<div class="masthead">
-<div class="eyebrow">The Next Chapter</div>
-<h1>The Grove</h1>
-<div class="tagline">everything that has ever appeared in an edition -
-every job, prompt, and article</div>
+.cover{position:relative;background:var(--forest);color:var(--cream);text-align:center;padding:56px 40px 48px}
+.cover::before{content:"";position:absolute;inset:14px;border:1px solid var(--line-on-dark)}
+.cover-in{position:relative}
+.cover .eyebrow{color:var(--brass-soft)}
+.cover .eyebrow::before,.cover .eyebrow::after{background:var(--brass-soft)}
+.cover h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7vw,84px);line-height:.96;margin-top:16px}
+.cover .tagline{font-family:var(--display);font-style:italic;font-size:clamp(18px,2.4vw,24px);color:var(--cream-mute);margin-top:10px}
+
+.searchbar{position:sticky;top:0;z-index:40;background:rgba(239,231,214,.94);backdrop-filter:blur(10px) saturate(120%);border-bottom:1px solid var(--brass)}
+.searchbar .in{max-width:1000px;margin:0 auto;padding:18px 40px 16px}
+input.q{width:100%;padding:16px 20px;font-family:var(--serif);font-size:19px;color:var(--ink);background:var(--surface);border:1px solid var(--line);outline:none}
+input.q:focus{border-color:var(--brass)}
+input.q::placeholder{color:#9A937C}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;align-items:center}
+.chip{cursor:pointer;font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:8px 16px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft)}
+.chip:hover{border-color:var(--brass);color:var(--forest)}
+.chip.active{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.count{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+
+section.grove{padding:44px 0 10px}
+section.grove h3{font-family:var(--display);font-weight:600;font-size:clamp(30px,3.6vw,42px);line-height:1.04;color:var(--forest);margin:12px 0 26px}
+.list{border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:0 30px;padding:26px 0;border-top:1px solid var(--line);align-items:start}
+.rail{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.date{font-family:var(--display);font-style:italic;font-weight:600;font-size:15px;color:var(--brass-deep)}
+.stars{color:var(--clay);font-size:14px;letter-spacing:3px}
+.badge{align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--brass);color:var(--brass-deep)}
+.body{min-width:0;max-width:72ch}
+.body h4 a{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.14;color:var(--forest);display:block}
+.body h4 a:hover{color:var(--clay-deep)}
+.body h4.sm a{font-size:24px;line-height:1.18}
+.meta{margin-top:8px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.summary{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink-soft);margin-top:13px}
+.block{margin-top:13px}
+.block .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-deep)}
+.block p{font-family:var(--serif);font-size:16.5px;line-height:1.56;color:var(--ink-soft);margin-top:3px}
+details.prompt{margin-top:16px;border-top:1px solid var(--line)}
+details.prompt summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep)}
+details.prompt summary::-webkit-details-marker{display:none}
+details.prompt summary::before{content:"+";color:var(--brass-deep)}
+details.prompt[open] summary::before{content:"–"}
+details.prompt .inner{margin-top:12px;background:var(--surface);border:1px solid var(--line);padding:16px 18px}
+details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;white-space:pre-wrap;color:var(--ink-soft)}
+.copy{cursor:pointer;margin-top:14px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
+.copy:hover{background:var(--brass);color:var(--forest-deep)}
+.empty{padding:70px 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-mute)}
+
+footer{position:relative;background:var(--forest);color:var(--cream);padding:48px 40px 54px;text-align:center}
+footer::before{content:"";position:absolute;inset:12px;border:1px solid var(--line-on-dark)}
+footer .in{position:relative}
+footer .mark{font-family:var(--display);font-weight:600;font-size:30px}
+footer .tag{font-family:var(--display);font-style:italic;font-size:17px;color:var(--cream-mute);margin-top:6px}
+footer .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+footer .links a{color:var(--brass-soft)}
+
+@media (max-width:620px){
+  main,.searchbar .in{padding-left:22px;padding-right:22px}
+  .cover{padding:44px 22px 36px}
+  .row{grid-template-columns:1fr;gap:12px}
+  .rail{flex-direction:row;align-items:center;gap:12px;padding-top:0}
+}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-in">
+    <div class="eyebrow">The Next Chapter · Archive</div>
+    <h1>The Grove</h1>
+    <div class="tagline">Everything that has ever appeared in an edition — every job, prompt and article</div>
+  </div>
+</header>
+
+<div class="searchbar">
+  <div class="in">
+    <input class="q" id="q" type="search" placeholder="Search jobs, companies, articles — e.g. Halifax, PE, Irving">
+    <div class="chips" id="chips">
+      <button class="chip active" data-filter="all">Everything</button>
+      <button class="chip" data-filter="jobs">Jobs only</button>
+      <button class="chip" data-filter="articles">Articles only</button>
+      <button class="chip" data-filter="ns">Nova Scotia</button>
+      <button class="chip" data-filter="top">4&#9733; and up</button>
+      <div class="count" id="count"></div>
+    </div>
+  </div>
 </div>
-<input class="search" id="q" type="search"
-       placeholder="Search jobs, companies, articles... (e.g. Halifax, PE, Irving)">
-<div class="count" id="count"></div>
-<div id="results"></div>
+
+<main id="results"></main>
+
+<footer>
+  <div class="in">
+    <div class="mark">The Next Chapter</div>
+    <div class="tag">Grown nightly by Vern, your scout in the canopy</div>
+    <div class="links">
+      <a href="./index.html">Today</a>
+      <a href="./archive.html">The Archive</a>
+      <a href="./grove.html">The Grove</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-const fmt = s => (s||'');
-fetch('./grove.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{
-  const jobs=d.jobs||[], arts=d.articles||[];
-  const box=document.getElementById('results');
-  const count=document.getElementById('count');
-  const input=document.getElementById('q');
-  function starTxt(n){return n?'★'.repeat(n)+'☆'.repeat(5-n):'';}
-  function render(q){
-    q=(q||'').toLowerCase();
-    const match=o=>!q||Object.values(o).join(' ').toLowerCase().includes(q);
-    const J=jobs.filter(match).reverse(), A=arts.filter(match).reverse();
-    count.textContent=J.length+' job(s), '+A.length+' article(s)'+(q?' matching "'+q+'"':' in The Grove');
-    let h='';
-    if(J.length){h+='<section><h2>Jobs</h2>'+J.map(j=>
-      '<div class="job"><div><span class="stars">'+starTxt(j.score)+'</span>'
-      +(j.tier?'<span class="chip">'+fmt(j.tier)+'</span>':'')
-      +(j.wildcard?'<span class="chip">left field</span>':'')
-      +'<span class="chip">'+fmt(j.date)+'</span></div>'
-      +'<a class="title" target="_blank" rel="noopener" href="'+fmt(j.url)+'">'+fmt(j.title)+'</a>'
-      +'<div class="meta">'+[j.company,j.location,j.salary,j.source].filter(Boolean).join(' · ')+'</div>'
-      +(j.summary?'<div class="summary">'+fmt(j.summary)+'</div>':'')
-      +(j.why?'<div class="why"><b>Why:</b> '+fmt(j.why)+'</div>':'')
-      +(j.kickoff_prompt?'<details><summary>Start here — Claude Project prompt</summary><div class="inner"><pre class="prompt">'+fmt(j.kickoff_prompt)+'</pre></div></details>':'')
-      +'</div>').join('')+'</section>';}
-    if(A.length){h+='<section><h2>Articles</h2>'+A.map(a=>
-      '<div class="item"><span class="chip">'+fmt(a.date)+'</span> '
-      +'<a class="title" style="font-size:15px" target="_blank" rel="noopener" href="'+fmt(a.url)+'">'+fmt(a.title)+'</a>'
-      +'<div class="meta">'+fmt(a.feed)+'</div>'
-      +(a.note?'<div class="summary" style="font-size:14px">'+fmt(a.note)+'</div>':'')
-      +'</div>').join('')+'</section>';}
-    box.innerHTML=h||'<section><div class="item">Nothing matches.</div></section>';
-  }
-  render('');
-  input.addEventListener('input',e=>render(e.target.value));
+// Reads ./grove.json — same shape as before: { jobs: [...], articles: [...] }
+// job:     {date, score, tier, wildcard, title, company, location, salary, source, url, summary, why, kickoff_prompt}
+// article: {date, title, feed, url, note}
+var esc = function (s) {
+  return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c];
+  });
+};
+var stars = function (n) { return n ? '\u2605'.repeat(n) + '\u2606'.repeat(5 - n) : ''; };
+
+var state = { q: '', filter: 'all', jobs: [], articles: [] };
+
+function jobRow(j) {
+  var meta = [j.company, j.location, j.salary, j.source].filter(Boolean).map(esc).join(' &middot; ');
+  return '<article class="row">'
+    + '<div class="rail">'
+      + (j.date ? '<div class="date">' + esc(j.date) + '</div>' : '')
+      + (j.score ? '<div class="stars">' + stars(j.score) + '</div>' : '')
+      + (j.tier ? '<div class="badge">' + esc(j.tier) + '</div>' : '')
+      + (j.wildcard ? '<div class="badge">Left field</div>' : '')
+    + '</div>'
+    + '<div class="body">'
+      + '<h4><a href="' + esc(j.url) + '" target="_blank" rel="noopener">' + esc(j.title) + '</a></h4>'
+      + '<div class="meta">' + meta + '</div>'
+      + (j.summary ? '<p class="summary">' + esc(j.summary) + '</p>' : '')
+      + (j.why ? '<div class="block"><div class="k">Why</div><p>' + esc(j.why) + '</p></div>' : '')
+      + (j.kickoff_prompt ? '<details class="prompt"><summary>Claude Project prompt</summary>'
+          + '<div class="inner"><pre>' + esc(j.kickoff_prompt) + '</pre>'
+          + '<button class="copy" type="button">Copy prompt</button></div></details>' : '')
+    + '</div></article>';
+}
+
+function articleRow(a) {
+  return '<article class="row">'
+    + '<div class="rail">' + (a.date ? '<div class="date">' + esc(a.date) + '</div>' : '') + '</div>'
+    + '<div class="body">'
+      + '<h4 class="sm"><a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a></h4>'
+      + '<div class="meta">' + esc(a.feed) + '</div>'
+      + (a.note ? '<p class="summary">' + esc(a.note) + '</p>' : '')
+    + '</div></article>';
+}
+
+function render() {
+  var q = state.q.trim().toLowerCase();
+  var f = state.filter;
+  var match = function (o) { return !q || Object.values(o).join(' ').toLowerCase().indexOf(q) > -1; };
+  var jobs = state.jobs.filter(match).slice().reverse();
+  var arts = state.articles.filter(match).slice().reverse();
+
+  if (f === 'jobs') arts = [];
+  if (f === 'articles') jobs = [];
+  if (f === 'ns') { jobs = jobs.filter(function (j) { return /nova scotia|halifax|atlantic/i.test([j.tier, j.location].join(' ')); }); arts = []; }
+  if (f === 'top') { jobs = jobs.filter(function (j) { return (j.score || 0) >= 4; }); arts = []; }
+
+  document.getElementById('count').textContent =
+    jobs.length + ' job' + (jobs.length === 1 ? '' : 's') + ' \u00b7 ' + arts.length + ' article' + (arts.length === 1 ? '' : 's');
+
+  var h = '';
+  if (jobs.length) h += '<section class="grove"><div class="eyebrow">Postings</div><h3>Jobs in the Grove</h3><div class="list">' + jobs.map(jobRow).join('') + '</div></section>';
+  if (arts.length) h += '<section class="grove"><div class="eyebrow">Reading</div><h3>Articles in the Grove</h3><div class="list">' + arts.map(articleRow).join('') + '</div></section>';
+  if (!h) h = '<div class="empty">' + (q ? 'Nothing in the Grove matches \u201c' + esc(state.q) + '\u201d.' : 'Nothing here yet.') + '</div>';
+  document.getElementById('results').innerHTML = h;
+}
+
+fetch('./grove.json', { cache: 'no-cache' })
+  .then(function (r) { return r.json(); })
+  .then(function (d) { state.jobs = d.jobs || []; state.articles = d.articles || []; render(); })
+  .catch(function () { render(); });
+
+document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
+document.getElementById('chips').addEventListener('click', function (e) {
+  var c = e.target.closest('.chip'); if (!c) return;
+  state.filter = c.dataset.filter;
+  document.querySelectorAll('.chip').forEach(function (x) { x.classList.toggle('active', x === c); });
+  render();
+});
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.copy'); if (!b) return;
+  var pre = b.closest('.inner').querySelector('pre');
+  var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy prompt'; }, 1600); };
+  if (navigator.clipboard) navigator.clipboard.writeText(pre.textContent).then(done, done); else done();
 });
 </script>
-<footer>Grown nightly by Vern, your scout in the canopy.<br>
-<a href="./index.html">Today</a> · <a href="./archive.html">The Archive</a>
-· <a href="./grove.html">The Grove</a></footer>
-</div></div></body></html>
+</body>
+</html>
