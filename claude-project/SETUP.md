@@ -7,20 +7,21 @@ the age question.
 ## Steps
 
 1. On his claude.ai account (a paid plan makes Projects available), go to
-   **Projects → Create project**. Name it something he'll like -
-   "Next Chapter HQ" or "Chef des finances".
+   **Projects → Create project**. Name it "Next Chapter HQ" - the coach
+   inside is Vern, the same voice as his nightly newsletter.
 2. Open `instructions.md` (this folder), copy the whole file, and paste it
    into **Project instructions** (the "Set instructions" box).
-3. Fill in the four files in `knowledge/` with him - this is the important
-   30 minutes, ideally done together over a coffee:
-   - `master-cv.md` - full career fact base (the coach's single source of truth)
-   - `achievements.md` - quantified wins / STAR story bank
-   - `target.md` - what he wants, dealbreakers, salary floor
-   - `ns-market.md` - pre-filled Nova Scotia landscape; adjust as he learns
-4. Upload all four to the project's **Knowledge** section.
-5. First chat, have him try: *"Here's a posting I found - tailor my CV"*
-   (paste any posting from the newsletter), or just *"bonjour"* to see the
-   check-in ritual work.
+3. Upload the FIVE knowledge files to the project's **Knowledge** section.
+   Use the PRIVATE filled versions Claire received (they include contact
+   details and salary floors that are deliberately not in this public
+   repo): `master-cv.md`, `achievements.md`, `target.md`,
+   `voice-sample.md`, `ns-market.md`. Spend 30 minutes together filling
+   the remaining [NEEDS INPUT] gaps - numbers make interviews.
+4. Also upload his actual resume .docx - Vern works from the real document
+   when tailoring.
+5. First chat, have him try a "Start here" prompt straight from the
+   newsletter, or ask for a blunt fit check on any posting, or just say
+   *"bonjour"* to meet Vern.
 
 ## Keeping it useful
 

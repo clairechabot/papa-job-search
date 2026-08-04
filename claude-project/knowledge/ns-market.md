@@ -1,10 +1,16 @@
 # Nova Scotia market map — pre-filled, verify and extend as he learns
 
-## Executive recruiters (senior finance seats in NS go through these)
+## Executive recruiters (introduce yourself to ALL of these this month —
+## the newsletter watches their boards, but the warm intro is on you)
 
 - **KBRS / Meridia Recruitment** (Halifax) — THE Atlantic executive search
   firm; introduce early, in person if possible. kbrs.ca / meridiarecruitment.ca
 - **Venor** (Halifax) — professional + executive search. venor.ca
+- **Summit Search Group** — national with Atlantic desk. summitsearchgroup.com
+- **Macdonald Search Group** — Halifax office. macdonaldsearchgroup.com
+- **Lock Search Group** — Atlantic practice. locksearchgroup.com
+- **Accountant Staffing** (Halifax) — finance/accounting specialists;
+  strongest for controller-level and interim. accountantstaffing.com
 - **Royer Thompson** (Halifax) — executive search, strong public-sector reach.
 - National firms with Halifax reach: Boyden, Odgers Berndtson, MNP recruiting.
 

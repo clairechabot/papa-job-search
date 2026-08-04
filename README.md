@@ -1,17 +1,20 @@
-# The Next Chapter — job-search automation for Papa
+# The Next Chapter — Vern, the job-search scout
 
-A twice-daily email newsletter that scans the Atlantic Canada market for
-senior finance roles (CFO / VP Finance / Director of Finance), scores each
-posting against his profile with Claude, and delivers it with an
-"AI for the workplace" reading section, follow-up nudges, and a Sunday
-networking radar. Plus an on-demand interview-prep brief, and a Claude
-Project package (`claude-project/`) that gives him a personal career coach
-on claude.ai.
+A once-daily evening email from **Vern** that scans the market twice a day
+for senior finance roles across four location tiers (Nova Scotia first,
+then eastern Canada, remote Canada/US, northeast US), scores every posting
+against Marcel's profile with Claude, and links to a full web edition on
+GitHub Pages — every job with an AI alignment summary, a collapsible
+"Start here" Claude-Project prompt, hiring-team contacts to reach out to,
+the recruiter watch, the AI-for-the-workplace reading list, and a
+searchable everything-archive (The Grove). `claude-project/` carries the
+matching career-coach package (also Vern) for claude.ai.
 
 ```
-fetch.py  ──►  curate.py  ──►  render.py ──► email (SMTP, Gmail)
-   │            (Claude)           └─► editions/YYYY-MM-DD-*.html (archive)
-   └─ scrapes job boards + RSS, dedups vs history.json
+morning:  fetch --scan-only ──► pending_jobs.json          (silent, committed)
+~5pm VM:  linkedin_authenticated.py ──► + hiring contacts   (self-hosted runner)
+evening:  fetch ──► curate (Vern/Claude) ──► webpage.py ──► docs/ (Pages)
+                                       └──► render.py  ──► ONE email (SMTP)
 ```
 
 - **fetch.py** — pulls every source (Job Bank, Meridia/KBRS, CareerBeacon,

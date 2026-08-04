@@ -1,36 +1,87 @@
 """Orchestrator: run every job source + news feeds, dedup against history,
-write fetched_data.json for curate.py.
+tag location tiers, and manage the pending pool for the once-daily edition.
 
-Per-source failures degrade gracefully (the edition notes the outage) —
-pattern from the Curated Canopy fetcher + Athena's scraper tiers.
+Two modes (once-daily email, two scans):
+  python fetch.py --scan-only   # morning: fetch + merge into pending_jobs.json,
+                                # no email, no Claude spend (committed by CI)
+  python fetch.py               # evening: fetch + merge pending pool, write
+                                # fetched_data.json for curate.py
 
-Usage:  python fetch.py [--include-seen]
+Per-source failures degrade gracefully (the edition footer reports them).
+
+Usage:  python fetch.py [--scan-only] [--include-seen]
 """
 from __future__ import annotations
 
 import argparse
 import datetime
 import json
+import re
 import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from history import is_seen, job_fingerprint, load_history
-from sources import adzuna, ai_news, careerbeacon, job_bank, meridia
+from sources import adzuna, ai_news, careerbeacon, job_bank, linkedin, meridia, recruiters
 
-OUT_FILE = Path(__file__).parent / "fetched_data.json"
+HERE = Path(__file__).parent
+OUT_FILE = HERE / "fetched_data.json"
+PENDING_FILE = HERE / "pending_jobs.json"
 HALIFAX = ZoneInfo("America/Halifax")
 
 JOB_SOURCES = [
     ("Job Bank (Canada)", job_bank.fetch_jobs),
+    ("LinkedIn", linkedin.fetch_jobs),
     ("Meridia Recruitment (KBRS)", meridia.fetch_jobs),
+    ("NS recruiters", recruiters.fetch_jobs),
     ("CareerBeacon", careerbeacon.fetch_jobs),
     ("Adzuna", adzuna.fetch_jobs),
 ]
 
+# ---------------------------------------------------------------------------
+# Location tiers (see profile/candidate.md)
+# ---------------------------------------------------------------------------
+NS = re.compile(r"\b(NS|Nova Scotia|Halifax|Dartmouth|Bedford|Sydney|Truro"
+                r"|Kentville|Wolfville|New Glasgow|Bridgewater|Antigonish"
+                r"|Yarmouth|Amherst|Atlantic)\b", re.I)
+EASTERN_CA = re.compile(r"\b(NB|New Brunswick|Moncton|Saint John|Fredericton"
+                        r"|PE|PEI|Prince Edward|Charlottetown|NL|Newfoundland"
+                        r"|St\.? John's|QC|Quebec|Québec|Montr[eé]al|Sherbrooke"
+                        r"|Gatineau|Trois-Rivi[eè]res)\b", re.I)
+REMOTE = re.compile(r"\b(remote|telework|work from home|anywhere)\b", re.I)
+NE_US = re.compile(r"\b(MA|Massachusetts|Boston|ME|Maine|Portland|NH|New"
+                   r" Hampshire|VT|Vermont|CT|Connecticut|RI|Rhode Island"
+                   r"|NY|New York|Albany|Buffalo|New England)\b", re.I)
+
+
+def tag_tier(job: dict) -> None:
+    """Annotate job['tier'] 1-4, or 0 (out of area - the gate rejects)."""
+    text = f"{job.get('location', '')} {job.get('title', '')}"
+    if job.get("source", "").endswith("(recruiter)") or \
+       job.get("source") in ("Meridia Recruitment (KBRS)", "CareerBeacon"):
+        job["tier"] = 1  # Atlantic-scoped sources
+    elif NS.search(text):
+        job["tier"] = 1
+    elif EASTERN_CA.search(text):
+        job["tier"] = 2
+    elif REMOTE.search(text):
+        job["tier"] = 3
+    elif NE_US.search(text):
+        job["tier"] = 4
+    else:
+        job["tier"] = 0
+
+
+def _load_pending() -> list[dict]:
+    if PENDING_FILE.exists():
+        return json.loads(PENDING_FILE.read_text(encoding="utf-8")).get("jobs", [])
+    return []
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--scan-only", action="store_true",
+                        help="merge results into pending_jobs.json and stop")
     parser.add_argument("--include-seen", action="store_true",
                         help="skip history dedup (testing)")
     args = parser.parse_args()
@@ -38,40 +89,50 @@ def main() -> None:
     history = load_history()
     now = datetime.datetime.now(HALIFAX)
 
-    jobs, source_status = [], {}
-    seen_this_run: set[str] = set()
+    pending = _load_pending()
+    pool: dict[str, dict] = {job_fingerprint(j): j for j in pending}
+    source_status: dict[str, str] = {}
+    if pending:
+        source_status["Morning scan"] = f"carried {len(pending)} job(s) forward"
+
     for name, fetch_fn in JOB_SOURCES:
         try:
             raw = fetch_fn()
-            fresh = []
+            fresh = 0
             for job in raw:
                 fp = job_fingerprint(job)
-                if fp in seen_this_run:
-                    continue  # same job from a search overlap or another board
+                if fp in pool:
+                    continue
                 if not args.include_seen and is_seen(job, history):
                     continue
-                seen_this_run.add(fp)
-                fresh.append(job)
-            jobs.extend(fresh)
-            source_status[name] = f"ok ({len(raw)} found, {len(fresh)} new)"
+                tag_tier(job)
+                pool[fp] = job
+                fresh += 1
+            source_status[name] = f"ok ({len(raw)} found, {fresh} new)"
         except adzuna.MissingKeys as e:
             source_status[name] = f"skipped: {e}"
-        except Exception as e:  # noqa: BLE001 — boundary: external job boards
+        except Exception as e:  # noqa: BLE001 - boundary: external job boards
             source_status[name] = f"unavailable: {type(e).__name__}: {e}"
         print(f"[fetch] {name}: {source_status[name]}", flush=True)
+
+    jobs = list(pool.values())
+
+    if args.scan_only:
+        PENDING_FILE.write_text(json.dumps({
+            "scanned_at": now.isoformat(),
+            "jobs": jobs,
+            "source_status": source_status,
+        }, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"[fetch] scan-only: {len(jobs)} job(s) pending for the evening edition")
+        return
 
     ai_articles, ai_status = ai_news.fetch_articles(ai_news.AI_FEEDS)
     ai_articles = [a for a in ai_articles
                    if args.include_seen or a["url"] not in history["ai_article_urls"]]
-    for name, st in ai_status.items():
-        print(f"[fetch] AI feed {name}: {st}", flush=True)
-
-    # NS business news only matters for the Sunday networking radar; cheap to
-    # always fetch, curate.py decides whether to use it.
     ns_articles, ns_status = ai_news.fetch_articles(
         ai_news.NS_BUSINESS_FEEDS, limit_per_feed=15)
-    for name, st in ns_status.items():
-        print(f"[fetch] NS feed {name}: {st}", flush=True)
+    for name, st in {**ai_status, **ns_status}.items():
+        print(f"[fetch] feed {name}: {st}", flush=True)
 
     OUT_FILE.write_text(json.dumps({
         "fetched_at": now.isoformat(),
@@ -80,7 +141,11 @@ def main() -> None:
         "ns_articles": ns_articles,
         "source_status": {**source_status, **ai_status, **ns_status},
     }, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"[fetch] wrote {OUT_FILE.name}: {len(jobs)} new jobs, "
+    # Pool consumed: clear pending so tomorrow starts fresh.
+    PENDING_FILE.write_text(json.dumps({
+        "scanned_at": now.isoformat(), "jobs": [], "source_status": {}},
+        indent=2), encoding="utf-8")
+    print(f"[fetch] wrote {OUT_FILE.name}: {len(jobs)} jobs (incl. pending pool), "
           f"{len(ai_articles)} AI articles, {len(ns_articles)} NS articles")
 
     if not jobs and all("unavailable" in s for s in source_status.values()):

@@ -18,15 +18,21 @@ from http_fetch import fetch  # noqa: E402
 
 BASE = "https://www.jobbank.gc.ca"
 
-# One search per (term, location). Nova Scotia primary; national remote-friendly
-# senior-finance sweep second.
+# One search per (term, location), from the title universe in
+# profile/candidate.md. NS primary; eastern Canada; national sweep (remote +
+# eastern in-person roles get sorted by the tier gate).
 SEARCHES = [
     ("cfo", "Nova Scotia"),
     ("chief financial officer", "Nova Scotia"),
     ("director of finance", "Nova Scotia"),
     ("vice president finance", "Nova Scotia"),
+    ("head of finance", "Nova Scotia"),
     ("controller", "Nova Scotia"),
-    ("chief financial officer", ""),  # national — remote roles get gated later
+    ("chief administrative officer", "Nova Scotia"),
+    ("chief financial officer", "New Brunswick"),
+    ("directeur financier", "Quebec"),
+    ("chief financial officer", ""),   # national
+    ("vice president finance", ""),    # national
 ]
 
 

@@ -1,0 +1,44 @@
+name: LinkedIn Scan (VM)
+
+# Runs on the self-hosted VM runner (label: linkedin) - see VM-SETUP.md.
+# Uses the authenticated LinkedIn session stored on the VM to get richer job
+# results + "Meet the hiring team" contacts, banked into pending_jobs.json
+# an hour before the Evening Edition. If no VM runner is online, this
+# workflow simply queues and times out - the guest LinkedIn source in the
+# main pipeline still covers LinkedIn, so nothing breaks.
+
+on:
+  schedule:
+    - cron: "25 20 * * *"   # ~17:25 Atlantic, an hour before the edition
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  linkedin:
+    runs-on: [self-hosted, linkedin]
+    timeout-minutes: 30
+    env:
+      TZ: America/Halifax
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install --quiet -r requirements.txt playwright
+
+      - name: Authenticated LinkedIn scan + hiring-team extraction
+        run: python linkedin_authenticated.py --max-detail 12
+
+      - name: Commit pending pool
+        run: |
+          git config user.name "vern-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add pending_jobs.json
+          git diff --cached --quiet || git commit -m "LinkedIn scan $(date +%F)"
+          git pull --rebase origin ${GITHUB_REF_NAME}
+          git push
