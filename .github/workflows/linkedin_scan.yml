@@ -25,15 +25,19 @@ jobs:
     runs-on: [self-hosted, linkedin]
     timeout-minutes: 30
     env:
-      TZ: America/Halifax
+      TZ: America/Toronto
+      # Ubuntu 24.04 marks the system Python "externally managed" and
+      # rejects plain pip installs; this opt-out is the sanctioned escape
+      # hatch for a single-purpose VM like this one.
+      PIP_BREAK_SYSTEM_PACKAGES: "1"
     steps:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: pip install --quiet -r requirements.txt playwright
+        run: pip3 install --quiet -r requirements.txt playwright
 
       - name: Authenticated LinkedIn scan + hiring-team extraction
-        run: python linkedin_authenticated.py --max-detail 12
+        run: python3 linkedin_authenticated.py --max-detail 12
 
       - name: Commit pending pool
         run: |
