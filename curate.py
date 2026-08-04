@@ -110,8 +110,9 @@ PICKS_SCHEMA = {
             },
         },
         "encouragement": {"type": "string"},
+        "one_action": {"type": "string"},
     },
-    "required": ["ai_picks", "encouragement"],
+    "required": ["ai_picks", "encouragement", "one_action"],
     "additionalProperties": False,
 }
 
@@ -190,7 +191,12 @@ respected officer, never a cheerleader. The register - not cosplay:
   a long search, a networking move, tonight's strongest lead, the AI
   reading as an edge, family as the reason the mission matters. Do NOT
   reuse the themes or sentence structures of the recent notes provided.
-No em-dashes anywhere."""
+No em-dashes anywhere.
+
+Separately, write "one_action": a single sentence for the "Tonight in one
+minute" digest - the one concrete thing he should do this week, in Vern's
+voice, standalone (it also appears outside the note). May differ from the
+note's action or restate it more briefly. No em-dashes."""
 
 
 def _client():
@@ -271,7 +277,35 @@ def pick_ai_articles(client, articles: list[dict],
             article = dict(articles[row["index"]])
             article["note"] = row["note"]
             picks.append(article)
-    return picks, result.get("encouragement", "")
+    return picks, result.get("encouragement", ""), result.get("one_action", "")
+
+
+def build_digest(gated: list[dict], total_read: int, one_action: str) -> list[dict]:
+    """The 'Tonight in one minute' rows, shared by the email and the full
+    edition so the two always agree."""
+    scored = [j for j in gated if j.get("score")]
+    top = max(scored, key=lambda j: j["score"], default=None)
+    apply_n = sum(1 for j in gated if (j.get("score") or 0) >= 4)
+    ns = [j for j in gated if j.get("tier") == 1]
+    rows = []
+    if top and top["score"] >= 3:
+        rows.append({"label": "Top pick",
+                     "value": f"{top['title']} at {top.get('company', '?')}"
+                              f" ({TIER_LABELS.get(top.get('tier'), '?')})."})
+    rows.append({"label": "New tonight",
+                 "value": f"{total_read} postings read; "
+                          f"{apply_n or 'none'} apply-worthy, "
+                          f"{len(gated)} cleared the gate."})
+    if ns:
+        best_ns = max(ns, key=lambda j: j.get("score") or 0)
+        rows.append({"label": "Home turf",
+                     "value": f"{len(ns)} Nova Scotia posting"
+                              f"{'s' if len(ns) != 1 else ''} tonight, led by "
+                              f"{best_ns['title']}."})
+    rows.append({"label": "One action",
+                 "value": one_action or "Open the full edition and give the "
+                          "top pick ten unhurried minutes."})
+    return rows[:4]
 
 
 def main() -> None:
@@ -288,6 +322,7 @@ def main() -> None:
     print(f"[curate] gate: {len(gated)} passed, {len(data['jobs']) - len(gated)} rejected")
 
     encouragement = ""
+    one_action = ""
     ai_picks: list[dict] = []
     if os.environ.get("CLAUDE_API_KEY"):
         client = _client()
@@ -304,7 +339,7 @@ def main() -> None:
                 if history_file.exists() else {})
         top_jobs = [f"{j['title']} at {j.get('company', '?')}"
                     for j in gated if (j.get("score") or 0) >= 4]
-        ai_picks, encouragement = pick_ai_articles(
+        ai_picks, encouragement, one_action = pick_ai_articles(
             client, data["ai_articles"], hist.get("recent_notes", []), top_jobs)
         if encouragement:
             hist["recent_notes"] = (hist.get("recent_notes", [])
@@ -324,6 +359,12 @@ def main() -> None:
         "ai_articles": data.get("ai_articles", []),
         "ns_articles": data.get("ns_articles", []),
         "encouragement": encouragement,
+        "digest": build_digest(gated, len(data["jobs"]), one_action),
+        "stats": {
+            "postings_read": len(data["jobs"]),
+            "apply": sum(1 for j in gated if (j.get("score") or 0) >= 4),
+            "home": sum(1 for j in gated if j.get("tier") == 1),
+        },
         "source_status": data.get("source_status", {}),
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[curate] wrote {OUT_FILE.name} ({edition} edition)")
