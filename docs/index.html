@@ -1,64 +1,102 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
 <title>The Next Chapter - Tuesday, August 4, 2026</title><style>
-:root{--ink:#1f2937;--muted:#6b7280;--accent:#155e75;--star:#b45309;
---bg:#f4f4f2;--card:#ffffff;--rule:#e5e7eb;--chip:#e6eef0;}
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+:root{--paper:#F4EEE2;--paper-deep:#E9E1D1;--surface:#FBF7EE;--ink:#20271F;
+--ink-soft:#4A4A3E;--ink-mute:#7C7565;--forest:#2C3A2B;--moss:#6E7B4B;
+--moss-deep:#55603A;--clay:#A85A36;--clay-deep:#8E4A2C;--line:#D9CFBC;
+--line-soft:#E5DCCB;--serif:'Newsreader',Georgia,'Times New Roman',serif;
+--sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:Georgia,'Times New Roman',serif;line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px}
-.eyebrow{font-size:12px;letter-spacing:3px;color:var(--muted);
-text-transform:uppercase;font-family:Helvetica,Arial,sans-serif}
-h1{font-size:30px;margin:4px 0 2px}
-.date{color:var(--muted);font-size:14px}
-nav{margin:14px 0 6px;font-size:14px;font-family:Helvetica,Arial,sans-serif}
-nav a{color:var(--accent);text-decoration:none;margin-right:14px}
-.note{background:var(--card);border-left:4px solid var(--accent);
-border-radius:8px;padding:14px 18px;margin-top:16px;font-size:16px}
-.note .sig{color:var(--muted);font-size:13px;margin-top:6px}
-section{background:var(--card);border-radius:8px;margin-top:20px;
-padding:6px 0 2px;overflow:hidden}
-section>h2{font-size:13px;letter-spacing:2px;color:var(--muted);
-text-transform:uppercase;margin:10px 18px;font-family:Helvetica,Arial,sans-serif}
-.job,.item{padding:14px 18px;border-top:1px solid var(--rule)}
-.stars{color:var(--star);font-size:14px;letter-spacing:1px}
-.chip{background:var(--chip);color:var(--accent);font-size:11px;
-padding:1px 8px;border-radius:8px;font-family:Helvetica,Arial,sans-serif;
-vertical-align:2px;margin-left:6px}
-.job a.title{color:var(--accent);font-size:17px;font-weight:bold;
-text-decoration:none}
-.meta{color:var(--muted);font-size:13px;margin-top:2px}
-.summary{margin-top:6px;font-size:15px}
-.why{margin-top:4px;font-size:14px}
-.watch{margin-top:4px;color:var(--muted);font-style:italic;font-size:13px}
-details{margin-top:8px;border:1px solid var(--rule);border-radius:6px;
-background:#fafaf8}
-details summary{cursor:pointer;padding:7px 12px;font-size:13px;
-color:var(--accent);font-family:Helvetica,Arial,sans-serif;font-weight:bold}
-details[open] summary{border-bottom:1px solid var(--rule)}
-details .inner{padding:10px 12px}
-pre.prompt{font-family:Menlo,Consolas,monospace;font-size:12.5px;
-white-space:pre-wrap;margin:0;line-height:1.5}
-.copyhint{color:var(--muted);font-size:11px;margin-top:6px;
-font-family:Helvetica,Arial,sans-serif}
-.contact{font-size:14px}
-.contact a{color:var(--accent)}
-footer{margin-top:26px;color:var(--muted);font-size:12px}
-input.search{width:100%;padding:10px 14px;font-size:16px;border:1px solid
-var(--rule);border-radius:8px;font-family:Georgia,serif;margin:14px 0 4px}
-.count{color:var(--muted);font-size:13px;margin:4px 0 10px;
-font-family:Helvetica,Arial,sans-serif}
-@media(max-width:480px){h1{font-size:24px}.wrap{padding:18px 10px 40px}}
+body{margin:0;background:var(--paper-deep);color:var(--ink);
+font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 0 70px}
+.frame{background:var(--paper);border-left:1px solid var(--line-soft);
+border-right:1px solid var(--line-soft);padding:0 30px 40px;min-height:100vh}
+.masthead{text-align:center;padding:46px 0 26px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;
+text-transform:uppercase;color:var(--moss-deep);font-family:var(--sans)}
+h1{font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.05;
+letter-spacing:-.01em;color:var(--forest);margin:14px 0 0}
+.tagline{font-family:var(--serif);font-style:italic;font-size:16px;
+color:var(--ink-soft);margin-top:10px}
+.date{margin-top:20px;font-size:11.5px;letter-spacing:.16em;
+text-transform:uppercase;color:var(--ink-mute)}
+nav{margin:16px 0 0;font-size:12px;letter-spacing:.1em;
+text-transform:uppercase;text-align:center}
+nav a{color:var(--clay-deep);text-decoration:none;margin:0 10px;
+font-weight:600}
+nav a:hover{color:var(--clay)}
+.note{background:var(--surface);border-top:1px solid var(--line-soft);
+border-bottom:1px solid var(--line-soft);padding:26px 24px;margin-top:22px;
+display:flex;gap:18px;align-items:flex-start;border-radius:2px}
+.monogram{flex-shrink:0;width:46px;height:46px;border-radius:50%;
+border:1px solid var(--moss);color:var(--moss-deep);
+font-family:var(--serif);font-size:22px;display:flex;align-items:center;
+justify-content:center;margin-top:2px}
+.note .body{font-family:var(--serif);font-size:17px;line-height:1.65;
+color:var(--ink)}
+.note .sig{color:var(--ink-mute);font-size:13px;margin-top:8px;
+font-family:var(--serif);font-style:italic}
+section{background:var(--surface);border:1px solid var(--line-soft);
+border-radius:12px;margin-top:26px;padding:6px 0 2px;overflow:hidden;
+box-shadow:0 1px 2px rgba(32,39,31,.04),0 12px 32px -16px rgba(32,39,31,.18)}
+section>h2{font-size:11px;font-weight:600;letter-spacing:.2em;
+color:var(--moss-deep);text-transform:uppercase;margin:14px 20px 10px}
+.job,.item{padding:16px 20px;border-top:1px solid var(--line-soft)}
+.stars{color:var(--clay);font-size:14px;letter-spacing:2px}
+.chip{background:#EDE7D8;color:var(--moss-deep);font-size:11px;
+padding:2px 10px;border-radius:100px;vertical-align:2px;margin-left:6px;
+letter-spacing:.04em}
+.job a.title{font-family:var(--serif);color:var(--forest);font-size:19px;
+font-weight:600;text-decoration:none;display:inline-block;margin-top:3px}
+.job a.title:hover{color:var(--clay-deep)}
+.meta{color:var(--ink-mute);font-size:13px;margin-top:3px}
+.summary{margin-top:8px;font-family:var(--serif);font-size:15.5px;
+color:var(--ink-soft);line-height:1.6}
+.why{margin-top:5px;font-size:14px;color:var(--ink-soft)}
+.watch{margin-top:5px;color:var(--ink-mute);font-style:italic;font-size:13px;
+font-family:var(--serif)}
+details{margin-top:10px;border:1px solid var(--line);border-radius:8px;
+background:var(--paper)}
+details summary{cursor:pointer;padding:8px 14px;font-size:12px;
+letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);
+font-weight:600}
+details summary:hover{color:var(--clay)}
+details[open] summary{border-bottom:1px solid var(--line-soft)}
+details .inner{padding:12px 14px}
+pre.prompt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+white-space:pre-wrap;margin:0;line-height:1.55;color:var(--ink-soft)}
+.copyhint{color:var(--ink-mute);font-size:11px;margin-top:8px}
+.contact{font-size:14px;color:var(--ink-soft)}
+.contact a{color:var(--clay-deep)}
+footer{margin-top:34px;color:var(--ink-mute);font-size:12px;
+text-align:center;border-top:1px solid var(--line-soft);padding-top:18px}
+footer a{color:var(--clay-deep)}
+input.search{width:100%;padding:12px 16px;font-size:17px;border:1px solid
+var(--line);border-radius:10px;font-family:var(--serif);margin:18px 0 4px;
+background:var(--surface);color:var(--ink)}
+input.search:focus{outline:2px solid var(--moss);border-color:var(--moss)}
+.count{color:var(--ink-mute);font-size:13px;margin:6px 0 10px}
+@media(max-width:520px){h1{font-size:30px}.frame{padding:0 14px 30px}
+.note{padding:18px 14px;gap:12px}}
 </style></head>
-<body><div class="wrap">
-<div class="eyebrow">Vern · The Next Chapter</div>
+<body><div class="wrap"><div class="frame">
 
+<div class="masthead">
+<div class="eyebrow">The Next Chapter</div>
 <h1>Evening Edition</h1>
-<div class="date">Tuesday, August 4, 2026</div>
+<div class="tagline">a nightly field report from Vern, your scout</div>
+<div class="date">Tuesday, August 4, 2026 · Atlantic Time</div>
 <nav><a href="./archive.html">The Archive</a>
 <a href="./grove.html">The Grove</a></nav>
-<div class="note">You have spent thirty years deciding which shop floor investments actually earned their keep, and that instinct is the scarcest thing in the AI conversation right now. Most candidates can recite vendor names; you can tell a board what the payback looks like and where it will not. One small action this week: pick one former plant or ops colleague, ask what AI tool their team is actually using, and turn their answer into your own example in the next interview.<div class="sig">- Vern</div></div>
+</div>
+<div class="note"><div class="monogram">V</div>
+<div><div class="eyebrow" style="margin-bottom:6px">A note from Vern</div>
+<div class="body">You have spent thirty years deciding which shop floor investments actually earned their keep, and that instinct is the scarcest thing in the AI conversation right now. Most candidates can recite vendor names; you can tell a board what the payback looks like and where it will not. One small action this week: pick one former plant or ops colleague, ask what AI tool their team is actually using, and turn their answer into your own example in the next interview.</div>
+<div class="sig">- Vern</div></div></div>
 <section><h2>Apply-worthy</h2><div class="job">
 <div><span class="stars">★★★★☆</span><span class="chip">Nova Scotia</span></div>
 <a class="title" href="https://ca.linkedin.com/jobs/view/director-of-finance-4443403077" target="_blank" rel="noopener">Director of Finance</a>
@@ -314,8 +352,7 @@ Claude Project, then paste the posting text underneath.</div></div></details>
 <div class="summary">Stores Controller at IMP Aerospace in Halifax. Inventory and stockroom supervision, not a finance seat.</div>
 <div class="why"><b>Why:</b> Great Nova Scotia employer, wrong function and far below your level.</div>
 </div></div></details></section><section><h2>Recruiter watch - Atlantic Canada</h2><div class="item"><a class="title" style="font-size:15px" href="https://meridiarecruitment.ca/career-opportunities/careers" target="_blank" rel="noopener">Meridia Recruitment (KBRS)</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://venor.ca/opportunities" target="_blank" rel="noopener">Venor</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.summitsearchgroup.com/opportunities/" target="_blank" rel="noopener">Summit Search Group</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://macdonaldsearchgroup.com/job-listings" target="_blank" rel="noopener">Macdonald Search Group</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://locksearchgroup.com/opportunities/" target="_blank" rel="noopener">Lock Search Group</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.accountantstaffing.com/job-opportunities" target="_blank" rel="noopener">Accountant Staffing</a><div class="meta">Finance postings from this firm appear in the job sections automatically when they match.</div></div></section><section><h2>AI for the workplace - full reading list</h2><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/ai-is-reshaping-first-100-days-playbook-cfos-fti/826910/" target="_blank" rel="noopener">AI is reshaping first-100-days playbook for CFOs: FTI</a><span class=chip>Vern&#39;s pick</span><div class="meta">CFO Dive</div><div class="summary" style="font-size:14px">A ready-made talking point for interviews: PE sponsors now expect a new CFO to show up with an AI-informed diagnostic and reporting plan in the first 100 days, not a promise to study it later.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://sloanreview.mit.edu/article/robots-are-coming-but-not-everywhere/" target="_blank" rel="noopener">Robots Are Coming — but Not Everywhere</a><span class=chip>Vern&#39;s pick</span><div class="meta">MIT Sloan Management Review</div><div class="summary" style="font-size:14px">A grounded look at where automation actually pays off on the plant floor versus where the hype outruns reality, which is exactly the judgment a board wants from someone who has walked real factories.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://sloanreview.mit.edu/article/what-ceos-need-to-know-about-sovereign-ai/" target="_blank" rel="noopener">What CEOs Need to Know About Sovereign AI</a><span class=chip>Vern&#39;s pick</span><div class="meta">MIT Sloan Management Review</div><div class="summary" style="font-size:14px">If a target company has plants, suppliers, or customers abroad, data residency and AI jurisdiction questions land in the CFO&#x27;s lap alongside risk and audit, so having a one-paragraph view here sets you apart.</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/water-cybersecurity-def-con-franklin-outcomes/826941/" target="_blank" rel="noopener">How volunteer cyber experts are helping protect rural water systems</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/resilience-study-ties-human-error-85percent-cyber-losses/826909/" target="_blank" rel="noopener">Resilience ties 85% of cyber insurance losses to human error</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/chicagos-acting-cfo-departs-budget-battle-looms/826875/" target="_blank" rel="noopener">Chicago’s acting CFO exits as budget battle looms</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/warner-music-cfo-coo-departs-earnings-leadership-streaming/826862/" target="_blank" rel="noopener">Warner Music CFO, COO departs after a year</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/is-accounting-shortage-over-its-complicated-CPA/826771/" target="_blank" rel="noopener">Is the accounting shortage over? It’s complicated</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/lawmaker-calls-hearings-anthropic-openai-cyber-incidents/826768/" target="_blank" rel="noopener">US lawmaker calls for AI hearings after Anthropic, OpenAI incidents</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/nbcuniversal-names-new-cfo-ahead-spinoff-leadership/826754/" target="_blank" rel="noopener">NBCUniversal names new CFO ahead of spinoff</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/microsoft-holds-line-ai-spending-plans/826648/" target="_blank" rel="noopener">Microsoft holds the line on AI spending plans</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cfodive.com/news/finance-treasury-leaders-keep-eye-payment-visibility-tch-exec/826636/" target="_blank" rel="noopener">Finance, treasury leaders keep eye on payment visibility, TCH exec says</a><div class="meta">CFO Dive</div></div><div class="item"><a class="title" style="font-size:15px" href="https://sloanreview.mit.edu/article/the-elusiveness-of-merit-based-hiring/" target="_blank" rel="noopener">The Elusiveness of Merit-Based Hiring</a><div class="meta">MIT Sloan Management Review</div></div><div class="item"><a class="title" style="font-size:15px" href="https://sloanreview.mit.edu/article/the-marketing-capability-paradox-seven-forces-eroding-your-marketing-teams-effectiveness/" target="_blank" rel="noopener">The Marketing Capability Paradox: Seven Forces Eroding Your Marketing Team’s Effectiveness</a><div class="meta">MIT Sloan Management Review</div></div><div class="item"><a class="title" style="font-size:15px" href="https://sloanreview.mit.edu/article/how-a-healthy-work-culture-helps-trauma-survivors/" target="_blank" rel="noopener">How ﻿a Healthy ﻿Work Culture﻿ Help﻿s﻿ ﻿Trauma Survivors</a><div class="meta">MIT Sloan Management Review</div></div></section><section><h2>Nova Scotia radar - who is growing, who hires next</h2><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/harper-tanton-taking-part-in-ctnnb1-syndrome-trial-9.7292541?cmp=rss" target="_blank" rel="noopener">She has an ultra-rare disease. Now this N.S. girl will be one of the first to test a possible cure</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/search-underway-man-missing-new-glasgow-hospital-9.7295816?cmp=rss" target="_blank" rel="noopener">Search underway for man who went missing from New Glasgow hospital</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/dfo-management-measures-lobster-9.7286153?cmp=rss" target="_blank" rel="noopener">DFO study updates science behind lobster management measures in N.S., N.B.</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/stewiacke-town-council-9.7292533?cmp=rss" target="_blank" rel="noopener">New rental fees force Stewiacke playgroup to cut back</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/prince-edward-island/pei-new-area-code-pei-ns-reactions-9.7294870?cmp=rss" target="_blank" rel="noopener">A new area code is coming to P.E.I. and Nova Scotia, but not everyone is excited</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/one-in-50-million-oscar-the-two-coloured-lobster-lands-in-n-s-aquarium-9.7294997?cmp=rss" target="_blank" rel="noopener">One in 50 million: Oscar the two-coloured lobster lands in N.S. aquarium</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/lithium-battery-safety-9.7295149?cmp=rss" target="_blank" rel="noopener">Fire official warns of lithium battery risks after Dartmouth e-scooter incident</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/some-haligonians-brace-for-2-years-of-traffic-disruptions-on-bayers-road-9.7293976?cmp=rss" target="_blank" rel="noopener">Some Haligonians brace for 2 years of traffic disruptions on Bayers Road</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/surgery-joint-replacement-wait-times-decline-9.7282643?cmp=rss" target="_blank" rel="noopener">Wait times for hip and knee replacements in Nova Scotia now shortest on record</a><div class="meta">CBC Nova Scotia</div></div><div class="item"><a class="title" style="font-size:15px" href="https://www.cbc.ca/news/canada/nova-scotia/leonard-paul-retires-9.7292021?cmp=rss" target="_blank" rel="noopener">&#x27;I feel like I am returning home&#x27;: Leonard Paul steps back from 50-year painting career</a><div class="meta">CBC Nova Scotia</div></div></section>
-<footer>Built nightly by Vern, your automated job scout.
-<a href="./index.html" style="color:var(--accent)">Today</a> ·
-<a href="./archive.html" style="color:var(--accent)">Archive</a> ·
-<a href="./grove.html" style="color:var(--accent)">The Grove</a></footer>
-</div></body></html>
+<footer>Grown nightly by Vern, your scout in the canopy.<br>
+<a href="./index.html">Today</a> · <a href="./archive.html">The Archive</a>
+· <a href="./grove.html">The Grove</a></footer>
+</div></div></body></html>

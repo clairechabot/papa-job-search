@@ -40,13 +40,23 @@ HALIFAX = ZoneInfo("America/Halifax")
 
 DEFAULT_EDITION_URL = "https://clairechabot.github.io/papa-job-search/"
 
-INK = "#1f2937"
-MUTED = "#6b7280"
-ACCENT = "#155e75"
-STAR = "#b45309"
-BG = "#f4f4f2"
-CARD = "#ffffff"
-RULE = "#e5e7eb"
+# Botanical Editorial palette, shared with the Curated Canopy newsletter
+# (Newsletter/design/tokens.css): warm stone paper, forest ink, moss accents,
+# terracotta links.
+INK = "#20271F"        # deep forest near-black
+SOFT = "#4A4A3E"       # warm taupe text
+MUTED = "#7C7565"      # muted metadata
+FOREST = "#2C3A2B"     # headings
+MOSS = "#6E7B4B"       # accents
+MOSS_DEEP = "#55603A"  # eyebrows / labels
+ACCENT = "#A85A36"     # terracotta (links, CTA)
+STAR = "#A85A36"
+BG = "#E9E1D1"         # page background (deeper stone)
+CARD = "#F4EEE2"       # paper
+SURFACE = "#FBF7EE"    # note / inset panels
+RULE = "#D9CFBC"       # hairline
+SERIF = "Georgia,'Times New Roman',serif"
+SANS = "'Helvetica Neue',Helvetica,Arial,sans-serif"
 
 TIER_LABELS = {1: "Nova Scotia", 2: "Eastern Canada", 3: "Remote",
                4: "Northeast US"}
@@ -72,9 +82,9 @@ def _tier_chip(job: dict) -> str:
         bits.append("left field")
     if not bits:
         return ""
-    return (f'<span style="background:#e6eef0;color:{ACCENT};font-size:11px;'
-            f'padding:1px 8px;border-radius:8px;font-family:Helvetica,Arial,'
-            f'sans-serif;">{esc(" · ".join(bits))}</span>')
+    return (f'<span style="background:#EDE7D8;color:{MOSS_DEEP};font-size:11px;'
+            f'padding:2px 10px;border-radius:100px;font-family:{SANS};'
+            f'letter-spacing:0.04em;">{esc(" · ".join(bits))}</span>')
 
 
 def _contact_line(job: dict) -> str:
@@ -98,14 +108,14 @@ def _kickoff_box(job: dict) -> str:
     if not prompt:
         return ""
     return f"""
-      <div style="margin:8px 0 0;border:1px dashed {ACCENT};border-radius:6px;
-                  background:#f7fafb;padding:8px 10px;">
-        <div style="font-size:11px;letter-spacing:1px;color:{ACCENT};
-                    text-transform:uppercase;font-family:Helvetica,Arial,
-                    sans-serif;">Start here — copy into your Claude Project</div>
-        <div style="font-family:Menlo,Consolas,monospace;font-size:12px;
-                    color:{INK};line-height:1.5;margin-top:4px;
-                    white-space:pre-wrap;">{esc(prompt)}</div>
+      <div style="margin:10px 0 0;border:1px dashed {ACCENT};border-radius:8px;
+                  background:{CARD};padding:9px 12px;">
+        <div style="font-size:10.5px;letter-spacing:2px;color:{ACCENT};
+                    text-transform:uppercase;font-family:{SANS};
+                    font-weight:600;">Start here — copy into your Claude Project</div>
+        <div style="font-family:ui-monospace,Menlo,Consolas,monospace;
+                    font-size:12px;color:{SOFT};line-height:1.55;
+                    margin-top:5px;white-space:pre-wrap;">{esc(prompt)}</div>
       </div>"""
 
 
@@ -137,10 +147,12 @@ def job_row(job: dict, with_kickoff: bool = True) -> str:
 def section(title: str, body: str) -> str:
     return f"""
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-         style="background:{CARD};border-radius:8px;margin-top:18px;">
-    <tr><td style="padding:14px 18px 4px;">
-      <h2 style="margin:0;font-size:13px;letter-spacing:2px;color:{MUTED};
-                 text-transform:uppercase;">{esc(title)}</h2>
+         style="background:{SURFACE};border:1px solid {RULE};
+                border-radius:12px;margin-top:20px;">
+    <tr><td style="padding:16px 18px 6px;">
+      <h2 style="margin:0;font-size:11px;letter-spacing:3px;color:{MOSS_DEEP};
+                 text-transform:uppercase;font-family:{SANS};
+                 font-weight:600;">{esc(title)}</h2>
     </td></tr>
     {body}
   </table>"""
@@ -240,32 +252,55 @@ def build_email(data: dict, now: datetime.datetime) -> tuple[str, str]:
 <html><body style="margin:0;padding:0;background:{BG};">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
        style="background:{BG};">
-<tr><td align="center" style="padding:24px 12px;">
+<tr><td align="center" style="padding:26px 12px;">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0"
-       style="max-width:600px;width:100%;
-              font-family:Georgia,'Times New Roman',serif;">
-  <tr><td style="padding:0 6px 14px;">
-    <div style="font-size:12px;letter-spacing:3px;color:{MUTED};
-                text-transform:uppercase;">Vern &middot; The Next Chapter</div>
-    <div style="font-size:24px;color:{INK};font-weight:bold;margin-top:2px;">
-      Evening Edition</div>
-    <div style="font-size:13px;color:{MUTED};margin-top:2px;">{date_line}</div>
+       style="max-width:600px;width:100%;background:{CARD};
+              border:1px solid {RULE};border-radius:12px;
+              font-family:{SERIF};">
+  <tr><td align="center" style="padding:38px 28px 24px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:4px;
+                color:{MOSS_DEEP};text-transform:uppercase;
+                font-family:{SANS};">The Next Chapter</div>
+    <div style="font-family:{SERIF};font-size:38px;line-height:1.05;
+                color:{FOREST};margin-top:14px;">Evening Edition</div>
+    <div style="font-family:{SERIF};font-style:italic;font-size:15px;
+                color:{SOFT};margin-top:8px;">a nightly field report from
+                Vern, your scout</div>
+    <div style="font-size:11px;letter-spacing:2.5px;color:{MUTED};
+                text-transform:uppercase;font-family:{SANS};
+                margin-top:18px;">{date_line}
+                &nbsp;&middot;&nbsp; Atlantic Time</div>
   </td></tr>
-  <tr><td style="padding:0 6px;">
+  <tr><td style="padding:0 20px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-           style="background:{CARD};border-radius:8px;border-left:4px solid {ACCENT};">
-      <tr><td style="padding:14px 18px;color:{INK};font-size:15px;
-                     line-height:1.6;">{esc(greeting)}
-        <div style="margin-top:6px;color:{MUTED};font-size:13px;">- Vern</div>
-      </td></tr>
+           style="background:{SURFACE};border-top:1px solid {RULE};
+                  border-bottom:1px solid {RULE};">
+      <tr>
+        <td width="58" valign="top" style="padding:22px 0 22px 18px;">
+          <div style="width:44px;height:44px;border-radius:50%;
+                      border:1px solid {MOSS};color:{MOSS_DEEP};
+                      font-family:{SERIF};font-size:21px;line-height:44px;
+                      text-align:center;">V</div>
+        </td>
+        <td style="padding:20px 18px 22px 14px;">
+          <div style="font-size:10.5px;font-weight:600;letter-spacing:3px;
+                      color:{MOSS_DEEP};text-transform:uppercase;
+                      font-family:{SANS};">A note from Vern</div>
+          <div style="font-family:{SERIF};color:{INK};font-size:16px;
+                      line-height:1.65;margin-top:7px;">{esc(greeting)}</div>
+        </td>
+      </tr>
     </table>
     {"".join(sections)}
-    <div style="padding:16px 6px 4px;font-size:15px;">{footer_links}</div>
-    <div style="padding:8px 6px 18px;color:{MUTED};font-size:12px;line-height:1.6;">
+    <div style="padding:20px 6px 4px;font-size:15px;text-align:center;
+                font-family:{SANS};">{footer_links}</div>
+    <div style="padding:10px 14px 26px;color:{MUTED};font-size:12px;
+                line-height:1.6;text-align:center;font-family:{SANS};">
       The full edition has every job (including the maybes), all hiring
-      contacts, the recruiter watch, and the complete reading list.<br>
-      Sources this run: {esc("; ".join(f"{k}: {v}" for k, v in
-                                       data.get("source_status", {}).items()))}
+      contacts, the recruiter watch, and the complete reading list.<br><br>
+      <span style="font-size:11px;">Sources this run:
+      {esc("; ".join(f"{k}: {v}" for k, v in
+                     data.get("source_status", {}).items()))}</span>
     </div>
   </td></tr>
 </table>
