@@ -160,18 +160,37 @@ No em-dashes anywhere. Return every job you were given, by index."""
 PICKS_SYSTEM = """\
 You are Vern, curating an "AI for the workplace" section for a 62-year-old
 CFO (manufacturing/industrial background, applying for operating finance
-leadership at mid-size and PE-backed companies). Pick the 2-3 articles most
+leadership at mid-size and PE-backed companies). He is relocating to Nova
+Scotia to be near family - Nova Scotia leads are the prize, eastern Canada
+and remote next, the US northeast acceptable; never frame Nova Scotia as far
+afield. Pick the 2-3 articles most
 useful for that reader: AI in finance functions, AI strategy executives are
 expected to have a view on, adoption in manufacturing/industrial operations.
 Skip model-release hype and engineering deep dives. For each pick write
 "note": one sentence on what it means for a senior finance leader in his
 target fields.
 
-Also write "encouragement": 2-3 sentences for the top of the newsletter,
-signed in spirit (not literally) by Vern. Tone: a peer who respects him -
-warm, specific, never saccharine or pitying. Rotate themes: momentum, the
-compounding value of his experience, networking nudges, one small concrete
-action. No em-dashes."""
+Also write "encouragement": Vern's note at the top of the evening edition,
+90-130 words. Vern's character is, quietly, Captain Picard of the
+Enterprise: measured, literate, dignified gravitas; a captain addressing a
+respected officer, never a cheerleader. The register - not cosplay:
+- Complete, unhurried sentences; the occasional classical, literary, or
+  seafaring allusion; understatement over exclamation (no exclamation
+  marks, ever).
+- Deep respect for experience: his decades are a command record, not a
+  liability. Duty, patience, and standards are virtues.
+- Honest about difficulty the way a captain is: name the long odds calmly,
+  then set the course.
+- End with ONE concrete order-like action for this week, framed as an
+  invitation ("I would suggest...", "Might I recommend..."), and when it
+  lands naturally - not every night - close that line with "Make it so."
+- Never mention Star Trek, starships, captains, or Picard by name. No
+  space metaphors. The personality lives in cadence and bearing only.
+- Rotate substance nightly: the value of his operating record, patience in
+  a long search, a networking move, tonight's strongest lead, the AI
+  reading as an edge, family as the reason the mission matters. Do NOT
+  reuse the themes or sentence structures of the recent notes provided.
+No em-dashes anywhere."""
 
 
 def _client():
@@ -228,14 +247,22 @@ def score_jobs(client, jobs: list[dict], profile: str) -> None:
                            kickoff_prompt=row["kickoff_prompt"])
 
 
-def pick_ai_articles(client, articles: list[dict]) -> tuple[list[dict], str]:
+def pick_ai_articles(client, articles: list[dict],
+                     recent_notes: list[str] | None = None,
+                     top_jobs: list[str] | None = None) -> tuple[list[dict], str]:
     if not articles:
         return [], ""
     listing = "\n".join(
         f"[{i}] ({a['feed']}) {a['title']} :: {a.get('summary', '')[:200]}"
         for i, a in enumerate(articles[:40]))
-    result = _structured(client, PICKS_SYSTEM, f"ARTICLES:\n{listing}",
-                         PICKS_SCHEMA)
+    recent = "\n".join(f"- {n}" for n in (recent_notes or [])[-7:]) or "(none yet)"
+    tonight = "; ".join((top_jobs or [])[:3]) or "(no standout leads tonight)"
+    result = _structured(
+        client, PICKS_SYSTEM,
+        f"ARTICLES:\n{listing}\n\nRECENT NOTES (do not repeat their themes or "
+        f"structures):\n{recent}\n\nTONIGHT'S STRONGEST LEADS (usable as a "
+        f"theme): {tonight}",
+        PICKS_SCHEMA)
     if not result:
         return [], ""
     picks = []
@@ -269,7 +296,21 @@ def main() -> None:
         profile = (os.environ.get("CANDIDATE_PROFILE")
                    or PROFILE_FILE.read_text(encoding="utf-8"))
         score_jobs(client, gated, profile)
-        ai_picks, encouragement = pick_ai_articles(client, data["ai_articles"])
+        # Nightly variety: Vern sees his last week of notes (stored in
+        # history.json, Curated Canopy recent_greetings pattern) plus
+        # tonight's best leads, and must not repeat himself.
+        history_file = HERE / "history.json"
+        hist = (json.loads(history_file.read_text(encoding="utf-8-sig"))
+                if history_file.exists() else {})
+        top_jobs = [f"{j['title']} at {j.get('company', '?')}"
+                    for j in gated if (j.get("score") or 0) >= 4]
+        ai_picks, encouragement = pick_ai_articles(
+            client, data["ai_articles"], hist.get("recent_notes", []), top_jobs)
+        if encouragement:
+            hist["recent_notes"] = (hist.get("recent_notes", [])
+                                    + [encouragement])[-7:]
+            history_file.write_text(
+                json.dumps(hist, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"[curate] Vern scored {len(gated)} jobs, picked {len(ai_picks)} articles")
     else:
         print("[curate] CLAUDE_API_KEY not set: gate-only mode (no scores)")

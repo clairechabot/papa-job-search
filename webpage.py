@@ -276,7 +276,7 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
 <div class="note"><div class="monogram">V</div>
 <div><div class="eyebrow" style="margin-bottom:6px">A note from Vern</div>
 <div class="body">{esc(note)}</div>
-<div class="sig">- Vern</div></div></div>
+<div class="sig">Yours, Vern</div></div></div>
 {"".join(sections)}"""
     return _page(f"The Next Chapter - {date_line}", body)
 

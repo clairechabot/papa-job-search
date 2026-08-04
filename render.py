@@ -288,6 +288,8 @@ def build_email(data: dict, now: datetime.datetime) -> tuple[str, str]:
                       font-family:{SANS};">A note from Vern</div>
           <div style="font-family:{SERIF};color:{INK};font-size:16px;
                       line-height:1.65;margin-top:7px;">{esc(greeting)}</div>
+          <div style="font-family:{SERIF};font-style:italic;color:{MUTED};
+                      font-size:13px;margin-top:8px;">Yours, Vern</div>
         </td>
       </tr>
     </table>
