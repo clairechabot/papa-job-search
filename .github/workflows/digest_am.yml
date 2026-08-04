@@ -2,8 +2,9 @@ name: Morning Scan (silent)
 
 # Scans all job sources and banks new finds into pending_jobs.json - NO email,
 # no Claude spend. The Evening Edition merges this pool into the single daily
-# send. Fires ~07:00 Atlantic (GitHub delays crons, so fire early): 07:00 ADT
-# = 10:00 UTC -> 09:25 UTC; winter lands ~06:25 local.
+# send. Silent, so exact timing barely matters: 09:25 UTC lands ~05:25
+# Montreal in summer, ~04:25 in winter - well before anyone is awake and
+# hours before the evening pipeline consumes the pool.
 
 on:
   schedule:

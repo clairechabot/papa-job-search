@@ -60,11 +60,13 @@ prep brief lands in the inbox in ~2 minutes.
 
 ## Daily rhythm (what Marcel experiences)
 
-- ~7:00 AM Atlantic: silent scan banks the morning's postings
-- ~5:30 PM: VM LinkedIn scan adds contacts (if the VM is set up)
-- ~7:00 PM: ONE email from Vern — top jobs scored and explained, "Start
-  here" prompts, reach-out contacts, AI reading — linking to the full
-  edition, Archive, and Grove on the web.
+- ~6:00 AM Montreal: silent scan banks the morning's postings
+- ~4:55 PM: VM LinkedIn scan adds contacts (if the VM is set up)
+- **6:30 PM Montreal**: ONE email from Vern — top jobs scored and
+  explained, "Start here" prompts, reach-out contacts, AI reading —
+  linking to the full edition, Archive, and Grove on the web. (The
+  workflow fires at 5:55 PM local, year-round via a DST guard; GitHub's
+  cron jitter + the pipeline itself land it around 6:15-6:30.)
 
 ## Troubleshooting
 

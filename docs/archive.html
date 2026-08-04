@@ -2,96 +2,174 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>The Archive</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
-:root{--paper:#F4EEE2;--paper-deep:#E9E1D1;--surface:#FBF7EE;--ink:#20271F;
---ink-soft:#4A4A3E;--ink-mute:#7C7565;--forest:#2C3A2B;--moss:#6E7B4B;
---moss-deep:#55603A;--clay:#A85A36;--clay-deep:#8E4A2C;--line:#D9CFBC;
---line-soft:#E5DCCB;--serif:'Newsreader',Georgia,'Times New Roman',serif;
---sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper-deep);color:var(--ink);
-font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:780px;margin:0 auto;padding:0 0 70px}
-.frame{background:var(--paper);border-left:1px solid var(--line-soft);
-border-right:1px solid var(--line-soft);padding:0 30px 40px;min-height:100vh}
-.masthead{text-align:center;padding:46px 0 26px}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;
-text-transform:uppercase;color:var(--moss-deep);font-family:var(--sans)}
-h1{font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.05;
-letter-spacing:-.01em;color:var(--forest);margin:14px 0 0}
-.tagline{font-family:var(--serif);font-style:italic;font-size:16px;
-color:var(--ink-soft);margin-top:10px}
-.date{margin-top:20px;font-size:11.5px;letter-spacing:.16em;
-text-transform:uppercase;color:var(--ink-mute)}
-nav{margin:16px 0 0;font-size:12px;letter-spacing:.1em;
-text-transform:uppercase;text-align:center}
-nav a{color:var(--clay-deep);text-decoration:none;margin:0 10px;
-font-weight:600}
-nav a:hover{color:var(--clay)}
-.note{background:var(--surface);border-top:1px solid var(--line-soft);
-border-bottom:1px solid var(--line-soft);padding:26px 24px;margin-top:22px;
-display:flex;gap:18px;align-items:flex-start;border-radius:2px}
-.monogram{flex-shrink:0;width:46px;height:46px;border-radius:50%;
-border:1px solid var(--moss);color:var(--moss-deep);
-font-family:var(--serif);font-size:22px;display:flex;align-items:center;
-justify-content:center;margin-top:2px}
-.note .body{font-family:var(--serif);font-size:17px;line-height:1.65;
-color:var(--ink)}
-.note .sig{color:var(--ink-mute);font-size:13px;margin-top:8px;
-font-family:var(--serif);font-style:italic}
-section{background:var(--surface);border:1px solid var(--line-soft);
-border-radius:12px;margin-top:26px;padding:6px 0 2px;overflow:hidden;
-box-shadow:0 1px 2px rgba(32,39,31,.04),0 12px 32px -16px rgba(32,39,31,.18)}
-section>h2{font-size:11px;font-weight:600;letter-spacing:.2em;
-color:var(--moss-deep);text-transform:uppercase;margin:14px 20px 10px}
-.job,.item{padding:16px 20px;border-top:1px solid var(--line-soft)}
-.stars{color:var(--clay);font-size:14px;letter-spacing:2px}
-.chip{background:#EDE7D8;color:var(--moss-deep);font-size:11px;
-padding:2px 10px;border-radius:100px;vertical-align:2px;margin-left:6px;
-letter-spacing:.04em}
-.job a.title{font-family:var(--serif);color:var(--forest);font-size:19px;
-font-weight:600;text-decoration:none;display:inline-block;margin-top:3px}
-.job a.title:hover{color:var(--clay-deep)}
-.meta{color:var(--ink-mute);font-size:13px;margin-top:3px}
-.summary{margin-top:8px;font-family:var(--serif);font-size:15.5px;
-color:var(--ink-soft);line-height:1.6}
-.why{margin-top:5px;font-size:14px;color:var(--ink-soft)}
-.watch{margin-top:5px;color:var(--ink-mute);font-style:italic;font-size:13px;
-font-family:var(--serif)}
-details{margin-top:10px;border:1px solid var(--line);border-radius:8px;
-background:var(--paper)}
-details summary{cursor:pointer;padding:8px 14px;font-size:12px;
-letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);
-font-weight:600}
-details summary:hover{color:var(--clay)}
-details[open] summary{border-bottom:1px solid var(--line-soft)}
-details .inner{padding:12px 14px}
-pre.prompt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
-white-space:pre-wrap;margin:0;line-height:1.55;color:var(--ink-soft)}
-.copyhint{color:var(--ink-mute);font-size:11px;margin-top:8px}
-.contact{font-size:14px;color:var(--ink-soft)}
-.contact a{color:var(--clay-deep)}
-footer{margin-top:34px;color:var(--ink-mute);font-size:12px;
-text-align:center;border-top:1px solid var(--line-soft);padding-top:18px}
-footer a{color:var(--clay-deep)}
-input.search{width:100%;padding:12px 16px;font-size:17px;border:1px solid
-var(--line);border-radius:10px;font-family:var(--serif);margin:18px 0 4px;
-background:var(--surface);color:var(--ink)}
-input.search:focus{outline:2px solid var(--moss);border-color:var(--moss)}
-.count{color:var(--ink-mute);font-size:13px;margin:6px 0 10px}
-@media(max-width:520px){h1{font-size:30px}.frame{padding:0 14px 30px}
-.note{padding:18px 14px;gap:12px}}
-</style></head>
-<body><div class="wrap"><div class="frame">
+<title>The Archive — The Next Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFE7D6;--paper-deep:#E5DCC4;--surface:#FCF7EB;
+  --ink:#1B2716;--ink-soft:#3C4433;--ink-mute:#79735C;
+  --forest:#1E2E1A;--forest-deep:#162313;
+  --brass:#C09433;--brass-deep:#A87E28;--brass-soft:#D9B968;
+  --clay:#B6541F;--clay-deep:#984417;
+  --line:#DCD0B4;--line-on-dark:rgba(216,185,104,.32);
+  --cream:#F2EAD6;--cream-mute:#C6C3A6;
+  --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;overflow-wrap:break-word}
+main{flex:1 0 auto}
+a{color:var(--clay-deep);text-decoration:none}
+a:hover{color:var(--clay)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-deep)}
+.eyebrow::before,.eyebrow::after{content:"";width:6px;height:6px;background:var(--brass);transform:rotate(45deg);flex:none}
+.eyebrow.plain::before,.eyebrow.plain::after{display:none}
 
-<div class="masthead">
-<div class="eyebrow">The Next Chapter</div>
-<h1>The Archive</h1>
-<div class="tagline">every edition, newest first</div>
-</div>
-<section><h2>Editions</h2><div class="item"><a class="title" style="font-size:15px" href="./editions/2026-08-04.html">Tuesday, August 4, 2026</a></div></section>
-<footer>Grown nightly by Vern, your scout in the canopy.<br>
-<a href="./index.html">Today</a> · <a href="./archive.html">The Archive</a>
-· <a href="./grove.html">The Grove</a></footer>
-</div></div></body></html>
+/* masthead */
+.cover{position:relative;background:var(--forest);color:var(--cream);text-align:center;padding:64px 40px 54px;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:14px;border:1px solid var(--line-on-dark)}
+.cover::after{content:"";position:absolute;inset:19px;border:1px solid rgba(216,185,104,.14)}
+.cover-in{position:relative}
+.cover .eyebrow{color:var(--brass-soft)}
+.cover .eyebrow::before,.cover .eyebrow::after{background:var(--brass-soft)}
+.cover h1{font-family:var(--display);font-weight:600;font-size:clamp(52px,8vw,96px);line-height:.95;margin-top:18px}
+.cover .tagline{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,26px);color:var(--cream-mute);margin-top:12px}
+.cover .stats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;margin-top:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mute)}
+.cover .stats .dot{width:4px;height:4px;border-radius:50%;background:var(--brass-soft)}
+
+/* intro: digest only (Vern's note removed from the full edition) */
+.intro{max-width:720px;margin:0 auto;padding:44px 40px 0}
+.digest{min-width:0}
+.digest .row{display:flex;gap:16px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.digest .row:first-of-type{border-top:0}
+.digest .k{flex:none;width:96px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+.digest .v{font-family:var(--serif);font-size:16.5px;line-height:1.5;color:var(--ink-soft)}
+
+/* ornament rule */
+.rule{display:flex;justify-content:center;align-items:center;gap:10px;padding:34px 0 6px}
+.rule i{width:120px;height:1px;background:var(--brass);opacity:.55}
+.rule b{width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+
+/* top pick */
+.pick{display:grid;grid-template-columns:1.55fr 1fr;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+.pick .main{padding:44px 48px 44px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.pick h2{margin-top:16px}
+.pick h2 a{font-family:var(--display);font-weight:600;font-size:clamp(32px,3.6vw,46px);line-height:1.05;color:var(--forest)}
+.pick h2 a:hover{color:var(--clay-deep)}
+.pick .meta{margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.pick p{font-family:var(--serif);font-size:18px;line-height:1.6;color:var(--ink-soft);margin-top:18px;max-width:46ch}
+.pick .go{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.pick .go span{color:var(--brass-deep)}
+.pick .side{padding:44px 0 44px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.pick .side .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.pick .side .stars{color:var(--clay);font-size:22px;letter-spacing:5px;margin-top:6px}
+.pick .side .region{font-family:var(--display);font-size:26px;color:var(--forest);margin-top:2px}
+.pick .side p{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.5;color:var(--ink-mute);margin-top:4px;max-width:none}
+
+/* sticky tabs */
+.tabbar{position:sticky;top:0;z-index:50;background:rgba(239,231,214,.92);backdrop-filter:blur(10px) saturate(120%);border-bottom:1px solid var(--brass);margin-top:10px}
+.tabbar-in{max-width:1120px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:4px;height:62px;overflow-x:auto;scrollbar-width:none}
+.tabbar-in::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;cursor:pointer;padding:20px 15px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-mute)}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--forest);border-bottom-color:var(--brass)}
+.tab .ix{font-family:var(--display);font-style:italic;font-weight:600;font-size:14px;text-transform:none;letter-spacing:0;margin-right:7px;color:var(--brass-deep)}
+.tab .n{margin-left:8px;font-size:10px;letter-spacing:.08em;color:#B3AA92}
+.tab.active .n{color:var(--brass-deep)}
+
+/* sections */
+.panel{display:none;padding:52px 0 24px}
+.panel.active{display:block}
+.sec-head{margin-bottom:34px}
+.sec-head h3{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.2vw,48px);line-height:1.02;color:var(--forest);margin-top:12px}
+.sec-head .lede{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-mute);margin-top:9px;max-width:56ch}
+.list{border-bottom:1px solid var(--line)}
+
+/* job row */
+.job{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 32px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+.job .rail{display:flex;flex-direction:column;gap:9px;padding-top:7px}
+.job .no{font-family:var(--display);font-style:italic;font-weight:600;font-size:16px;color:var(--brass-deep)}
+.job .stars{color:var(--clay);font-size:15px;letter-spacing:3px}
+.badge{align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--brass);color:var(--brass-deep)}
+.job .body{min-width:0;max-width:72ch}
+.job h4 a{font-family:var(--display);font-weight:600;font-size:31px;line-height:1.12;color:var(--forest);display:block}
+.job h4 a:hover{color:var(--clay-deep)}
+.job .meta{margin-top:9px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.job .summary{font-family:var(--serif);font-size:17.5px;line-height:1.62;color:var(--ink-soft);margin-top:15px}
+.block{margin-top:16px}
+.block .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-deep)}
+.block p{font-family:var(--serif);font-size:17px;line-height:1.58;color:var(--ink-soft);margin-top:3px}
+.watch{margin-top:16px;border-left:2px solid var(--clay);padding-left:16px}
+.watch .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep)}
+.watch p{font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.55;color:var(--ink-mute);margin-top:3px}
+
+/* prompt disclosure */
+details.prompt{margin-top:20px;border-top:1px solid var(--line)}
+details.prompt summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep)}
+details.prompt summary::-webkit-details-marker{display:none}
+details.prompt summary::before{content:"+";color:var(--brass-deep)}
+details.prompt[open] summary::before{content:"–"}
+details.prompt .inner{margin-top:14px;background:var(--surface);border:1px solid var(--line);padding:18px 20px}
+details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;color:var(--ink-soft)}
+.copyrow{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.copy{cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
+.copy:hover{background:var(--brass);color:var(--forest-deep)}
+.copyhint{font-size:12px;color:var(--ink-mute)}
+
+/* footer */
+footer{position:relative;margin-top:40px;background:var(--forest);color:var(--cream);padding:52px 40px 58px;text-align:center}
+footer::before{content:"";position:absolute;inset:12px;border:1px solid var(--line-on-dark)}
+footer .in{position:relative}
+footer .mark{font-family:var(--display);font-weight:600;font-size:32px}
+footer .tag{font-family:var(--display);font-style:italic;font-size:18px;color:var(--cream-mute);margin-top:6px}
+footer .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:22px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+footer .links a{color:var(--brass-soft)}
+footer .rule i{background:var(--brass-soft);width:90px;opacity:.6}
+footer .rule b{background:var(--brass-soft)}
+
+@media (max-width:900px){
+  .pick{grid-template-columns:1fr}
+  .pick .main{padding:34px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .pick .side{padding:28px 0}
+}
+@media (max-width:620px){
+  .wrap,.intro,.tabbar-in{padding-left:22px;padding-right:22px}
+  .cover{padding:48px 22px 40px}
+  .job{grid-template-columns:1fr;gap:14px}
+  .job .rail{flex-direction:row;align-items:center;gap:14px;padding-top:0}
+  .job h4 a{font-size:26px}
+}
+
+main.wrap{padding-top:36px}
+.job{grid-template-columns:112px minmax(0,1fr)}
+.job .no{font-size:14px}
+.job h4 a{font-size:26px}</style></head>
+<body>
+<header class="cover">
+  <div class="cover-in">
+    <div class="eyebrow">The Next Chapter</div>
+    <h1>The Archive</h1>
+    <div class="tagline">Every edition, newest first</div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="list" style="margin-top:30px"><article class="job"><div class="rail"><div class="no">Aug 4</div></div><div class="body"><h4><a href="./editions/2026-08-04.html">Tuesday, August 4, 2026</a></h4></div></article></div>
+</main>
+
+<footer>
+  <div class="in">
+    <div class="rule"><i></i><b></b><i></i></div>
+    <div class="mark">The Next Chapter</div>
+    <div class="tag">Grown nightly by Vern, your scout in the canopy</div>
+    <div class="links">
+      <a href="./index.html">Today</a>
+      <a href="./archive.html">The Archive</a>
+      <a href="./grove.html">The Grove</a>
+    </div>
+  </div>
+</footer>
+
+</body></html>

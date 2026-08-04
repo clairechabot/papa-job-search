@@ -3,11 +3,19 @@ name: Evening Edition
 # The single daily email + full web edition. Merges the morning scan's
 # pending pool with a fresh evening scan, has Vern score everything, sends
 # the short email cover, and rebuilds the GitHub Pages site (full edition,
-# Archive, Grove). Fires ~19:00 Atlantic: 19:00 ADT = 22:00 UTC -> 21:25 UTC.
+# Archive, Grove).
+#
+# Delivery target: ~18:30 in Montreal (America/Toronto), where Marcel reads
+# it. GitHub cron is fixed UTC and Montreal shifts with DST, so we fire two
+# crons - 21:55 UTC (= 17:55 EDT, summer) and 22:55 UTC (= 17:55 EST,
+# winter) - and a guard step lets only the one where the local hour is 17
+# proceed. Firing at 17:55 local leaves ~10-30 min of Actions queue delay +
+# pipeline time, landing the email around 18:15-18:30.
 
 on:
   schedule:
-    - cron: "25 21 * * *"
+    - cron: "55 21 * * *"   # 17:55 America/Toronto during EDT (summer)
+    - cron: "55 22 * * *"   # 17:55 America/Toronto during EST (winter)
   workflow_dispatch:
 
 permissions:
@@ -23,16 +31,30 @@ jobs:
     env:
       TZ: America/Halifax
     steps:
+      - name: DST guard - only run the cron matching Montreal local 17:55
+        if: github.event_name == 'schedule'
+        run: |
+          HOUR=$(TZ=America/Toronto date +%H)
+          echo "Local hour in Montreal: $HOUR"
+          if [ "$HOUR" != "17" ]; then
+            echo "Wrong-season cron firing; the other one covers today. Skipping."
+            echo "SKIP_EDITION=1" >> "$GITHUB_ENV"
+          fi
+
       - uses: actions/checkout@v4
+        if: env.SKIP_EDITION != '1'
 
       - uses: actions/setup-python@v5
+        if: env.SKIP_EDITION != '1'
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        if: env.SKIP_EDITION != '1'
         run: pip install --quiet -r requirements.txt
 
       - name: Fetch (merge pending pool), curate, render, publish, send
+        if: env.SKIP_EDITION != '1'
         env:
           CLAUDE_API_KEY:    ${{ secrets.CLAUDE_API_KEY }}
           CLAUDE_MODEL:      ${{ vars.CLAUDE_MODEL }}
@@ -51,6 +73,7 @@ jobs:
           python render.py
 
       - name: Commit state (history, cleared pending, editions, docs/Pages)
+        if: env.SKIP_EDITION != '1'
         run: |
           git config user.name "vern-bot"
           git config user.email "actions@users.noreply.github.com"
