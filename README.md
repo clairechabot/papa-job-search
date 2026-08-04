@@ -33,10 +33,10 @@ evening:  fetch ──► curate (Vern/Claude) ──► webpage.py ──► do
 
 ## Editions
 
-| When (Atlantic) | Content |
+| When (Montreal time) | Content |
 |---|---|
-| Morning ~07:00 | New jobs, scored + explained; AI-for-work pick; encouragement; follow-up nudges |
-| Evening ~19:00 | Same scan (anything new since morning) |
+| Morning ~06:00 | Silent scan — banks new postings, no email |
+| Evening ~18:30 | THE daily email: everything since yesterday, scored and explained |
 | Sunday evening | + "Nova Scotia radar": business headlines worth a networking note |
 
 ## Running locally

@@ -9,7 +9,8 @@ name: LinkedIn Scan (VM)
 
 on:
   schedule:
-    - cron: "25 20 * * *"   # ~17:25 Atlantic, an hour before the edition
+    - cron: "55 20 * * *"   # 16:55 Montreal in summer, 15:55 in winter -
+                            # always at least an hour before the edition
   workflow_dispatch:
 
 permissions:
