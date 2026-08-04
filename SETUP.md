@@ -1,67 +1,78 @@
 # Setup — one evening, start to finish
 
-## 1. Create the GitHub repo
+## 1. Secrets — the exact list
 
-Private repo (any name). Push this code to its default branch. Scheduled
-workflows run from the default branch.
+Repo → **Settings → Secrets and variables → Actions**.
 
-## 2. Gmail app password (for sending)
+### Secrets tab
 
-1. Google Account → Security → 2-Step Verification (must be on)
-2. Security → App passwords → create one named "job newsletter"
-3. Copy the 16-character password
+| Secret | Value | Required? |
+|---|---|---|
+| `SMTP_USER` | the Gmail address the newsletter sends FROM (yours) | yes |
+| `SMTP_PASS` | 16-char Gmail app password for that account (Google Account → Security → 2-Step Verification → App passwords → create "Vern newsletter") | yes |
+| `EMAIL_TO` | `marcel.e.chabot@gmail.com` — comma-add yourself to shadow what he gets | yes |
+| `RECIPIENT_NAME` | `Marcel` | no (default Marcel) |
+| `CLAUDE_API_KEY` | Anthropic API key (console.anthropic.com). **Rotate the one you pasted in chat after setup.** | yes (else gate-only, no scores) |
+| `CANDIDATE_PROFILE` | the FULL private profile markdown (Claire has the file: `PRIVATE-candidate-profile.md`) — overrides the committed, salary-scrubbed `profile/candidate.md` | strongly recommended (public repo) |
+| `ADZUNA_APP_ID` | free at developer.adzuna.com | optional |
+| `ADZUNA_APP_KEY` | 〃 | optional |
 
-## 3. Repository secrets
+### Variables tab (not secret)
 
-GitHub repo → Settings → Secrets and variables → Actions → New repository secret:
-
-| Secret | Value |
+| Variable | Value |
 |---|---|
-| `SMTP_USER` | your Gmail address (the sender) |
-| `SMTP_PASS` | the app password from step 2 |
-| `EMAIL_TO` | recipients, comma-separated. Start with just yourself for a trial week, then add your dad |
-| `RECIPIENT_NAME` | greeting name (e.g. `Papa`) |
-| `CLAUDE_API_KEY` | Anthropic API key (console.anthropic.com) — powers scoring, article picks, encouragement, interview briefs |
-| `ADZUNA_APP_ID` / `ADZUNA_APP_KEY` | optional; free at developer.adzuna.com — adds an aggregator that catches Indeed-only postings |
+| `CLAUDE_MODEL` | optional; defaults to `claude-opus-5` (cents/day at this volume) |
+| `EDITION_URL` | `https://clairechabot.github.io/papa-job-search` (after step 2) |
 
-Optional repo **variable** (Settings → Variables): `CLAUDE_MODEL` — defaults
-to `claude-opus-5` (best judgment). Set `claude-sonnet-5` or
-`claude-haiku-4-5` to cut cost; scoring runs twice daily on a handful of
-jobs, so even Opus is only cents per day.
+## 2. GitHub Pages (the full edition / Archive / Grove)
 
-## 4. Fill in the profile
+Settings → **Pages** → Source: "Deploy from a branch" → Branch `main`,
+folder `/docs` → Save. The site appears at
+`https://clairechabot.github.io/papa-job-search/` after the first evening
+run commits `docs/`.
 
-Edit `profile/candidate.md` with your dad (30 minutes together, worth it —
-scoring quality tracks profile quality). Then commit.
+## 3. Fill in the private pieces
 
-## 5. Test run
+- Upload the four knowledge files + `voice-sample.md` to the Claude Project
+  (see `claude-project/SETUP.md`) — use the PRIVATE filled versions Claire
+  received, not the committed templates.
+- Add the `CANDIDATE_PROFILE` secret (paste the private profile file).
+- Because this repo is **public**: never commit his phone/email, exact
+  salary floors, or the private knowledge copies. `applications.json` is
+  also public — keep entries to company/role/date, nothing sensitive.
 
-Actions tab → "Morning Edition" → Run workflow. Check the email arrives and
-the jobs make sense. The run also commits `history.json` back, so the next
-edition only carries new postings.
+## 4. Test run
+
+Actions → **Morning Scan (silent)** → Run workflow (banks jobs, no email).
+Then Actions → **Evening Edition** → Run workflow. Check the email arrives
+and the Pages site renders.
+
+## 5. The VM layer (LinkedIn + hiring contacts)
+
+See **VM-SETUP.md** — ~$5/month, unlocks authenticated LinkedIn results and
+the "Reach out" contact lines, plus a menu of other upgrades the same VM
+can host.
 
 ## 6. Interview briefs
 
-Actions tab → "Interview Brief" → Run workflow → enter the company name.
-A one-page prep brief lands in the inbox in ~2 minutes.
+Actions → **Interview Brief** → Run workflow → company name. A one-page
+prep brief lands in the inbox in ~2 minutes.
 
-## 7. The application tracker
+## Daily rhythm (what Marcel experiences)
 
-`applications.json` — add a record when he applies somewhere (or paste the
-posting into his Claude Project and ask it to draft the entry). Any
-application still `applied`/`waiting` after 7 days gets a follow-up nudge in
-the newsletter footer.
+- ~7:00 AM Atlantic: silent scan banks the morning's postings
+- ~5:30 PM: VM LinkedIn scan adds contacts (if the VM is set up)
+- ~7:00 PM: ONE email from Vern — top jobs scored and explained, "Start
+  here" prompts, reach-out contacts, AI reading — linking to the full
+  edition, Archive, and Grove on the web.
 
 ## Troubleshooting
 
-- **No email arrived** — Actions tab → open the failed run. `SMTP_PASS`
-  errors mean the app password is wrong/revoked. Gmail caps ~500 sends/day
-  (we use 2).
-- **A source shows "unavailable" in the footer** — job boards bot-wall
-  datacenter IPs sometimes; the proxy fallback usually recovers within a
-  run or two. Persistent failures: open an issue to tweak that scraper.
-- **Same job appeared twice** — cross-board dedup is by normalized
-  company+title; boards that hide the employer (CareerBeacon) defeat it
-  occasionally. Harmless.
-- **Scores feel off** — sharpen `profile/candidate.md` (dealbreakers and
-  strong-fits sections steer the model most).
+- **No email** — Actions tab → open the failed Evening Edition run.
+  `SMTP_PASS` errors = app password wrong/revoked.
+- **A source shows "unavailable" in the footer** — bot-walls come and go;
+  the proxy fallback usually recovers. Persistent = tweak that scraper.
+- **LinkedIn scan says session EXPIRED** — re-run `linkedin_auth.py`
+  locally, `scp` the file to the VM (VM-SETUP.md §3).
+- **Scores feel off** — sharpen the `CANDIDATE_PROFILE` secret; the
+  dealbreakers and strong-fits sections steer Vern the most.

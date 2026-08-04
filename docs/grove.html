@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Grove</title><style>
+:root{--ink:#1f2937;--muted:#6b7280;--accent:#155e75;--star:#b45309;
+--bg:#f4f4f2;--card:#ffffff;--rule:#e5e7eb;--chip:#e6eef0;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:Georgia,'Times New Roman',serif;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px}
+.eyebrow{font-size:12px;letter-spacing:3px;color:var(--muted);
+text-transform:uppercase;font-family:Helvetica,Arial,sans-serif}
+h1{font-size:30px;margin:4px 0 2px}
+.date{color:var(--muted);font-size:14px}
+nav{margin:14px 0 6px;font-size:14px;font-family:Helvetica,Arial,sans-serif}
+nav a{color:var(--accent);text-decoration:none;margin-right:14px}
+.note{background:var(--card);border-left:4px solid var(--accent);
+border-radius:8px;padding:14px 18px;margin-top:16px;font-size:16px}
+.note .sig{color:var(--muted);font-size:13px;margin-top:6px}
+section{background:var(--card);border-radius:8px;margin-top:20px;
+padding:6px 0 2px;overflow:hidden}
+section>h2{font-size:13px;letter-spacing:2px;color:var(--muted);
+text-transform:uppercase;margin:10px 18px;font-family:Helvetica,Arial,sans-serif}
+.job,.item{padding:14px 18px;border-top:1px solid var(--rule)}
+.stars{color:var(--star);font-size:14px;letter-spacing:1px}
+.chip{background:var(--chip);color:var(--accent);font-size:11px;
+padding:1px 8px;border-radius:8px;font-family:Helvetica,Arial,sans-serif;
+vertical-align:2px;margin-left:6px}
+.job a.title{color:var(--accent);font-size:17px;font-weight:bold;
+text-decoration:none}
+.meta{color:var(--muted);font-size:13px;margin-top:2px}
+.summary{margin-top:6px;font-size:15px}
+.why{margin-top:4px;font-size:14px}
+.watch{margin-top:4px;color:var(--muted);font-style:italic;font-size:13px}
+details{margin-top:8px;border:1px solid var(--rule);border-radius:6px;
+background:#fafaf8}
+details summary{cursor:pointer;padding:7px 12px;font-size:13px;
+color:var(--accent);font-family:Helvetica,Arial,sans-serif;font-weight:bold}
+details[open] summary{border-bottom:1px solid var(--rule)}
+details .inner{padding:10px 12px}
+pre.prompt{font-family:Menlo,Consolas,monospace;font-size:12.5px;
+white-space:pre-wrap;margin:0;line-height:1.5}
+.copyhint{color:var(--muted);font-size:11px;margin-top:6px;
+font-family:Helvetica,Arial,sans-serif}
+.contact{font-size:14px}
+.contact a{color:var(--accent)}
+footer{margin-top:26px;color:var(--muted);font-size:12px}
+input.search{width:100%;padding:10px 14px;font-size:16px;border:1px solid
+var(--rule);border-radius:8px;font-family:Georgia,serif;margin:14px 0 4px}
+.count{color:var(--muted);font-size:13px;margin:4px 0 10px;
+font-family:Helvetica,Arial,sans-serif}
+@media(max-width:480px){h1{font-size:24px}.wrap{padding:18px 10px 40px}}
+</style></head>
+<body><div class="wrap">
+<div class="eyebrow">Vern · The Next Chapter</div>
+
+<h1>The Grove</h1>
+<div class="date">Everything that has ever appeared in an edition - every
+job, prompt, and article. Search as you type.</div>
+<input class="search" id="q" type="search"
+       placeholder="Search jobs, companies, articles... (e.g. Halifax, PE, Irving)">
+<div class="count" id="count"></div>
+<div id="results"></div>
+<script>
+const fmt = s => (s||'');
+fetch('./grove.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{
+  const jobs=d.jobs||[], arts=d.articles||[];
+  const box=document.getElementById('results');
+  const count=document.getElementById('count');
+  const input=document.getElementById('q');
+  function starTxt(n){return n?'★'.repeat(n)+'☆'.repeat(5-n):'';}
+  function render(q){
+    q=(q||'').toLowerCase();
+    const match=o=>!q||Object.values(o).join(' ').toLowerCase().includes(q);
+    const J=jobs.filter(match).reverse(), A=arts.filter(match).reverse();
+    count.textContent=J.length+' job(s), '+A.length+' article(s)'+(q?' matching "'+q+'"':' in The Grove');
+    let h='';
+    if(J.length){h+='<section><h2>Jobs</h2>'+J.map(j=>
+      '<div class="job"><div><span class="stars">'+starTxt(j.score)+'</span>'
+      +(j.tier?'<span class="chip">'+fmt(j.tier)+'</span>':'')
+      +(j.wildcard?'<span class="chip">left field</span>':'')
+      +'<span class="chip">'+fmt(j.date)+'</span></div>'
+      +'<a class="title" target="_blank" rel="noopener" href="'+fmt(j.url)+'">'+fmt(j.title)+'</a>'
+      +'<div class="meta">'+[j.company,j.location,j.salary,j.source].filter(Boolean).join(' · ')+'</div>'
+      +(j.summary?'<div class="summary">'+fmt(j.summary)+'</div>':'')
+      +(j.why?'<div class="why"><b>Why:</b> '+fmt(j.why)+'</div>':'')
+      +(j.kickoff_prompt?'<details><summary>Start here — Claude Project prompt</summary><div class="inner"><pre class="prompt">'+fmt(j.kickoff_prompt)+'</pre></div></details>':'')
+      +'</div>').join('')+'</section>';}
+    if(A.length){h+='<section><h2>Articles</h2>'+A.map(a=>
+      '<div class="item"><span class="chip">'+fmt(a.date)+'</span> '
+      +'<a class="title" style="font-size:15px" target="_blank" rel="noopener" href="'+fmt(a.url)+'">'+fmt(a.title)+'</a>'
+      +'<div class="meta">'+fmt(a.feed)+'</div>'
+      +(a.note?'<div class="summary" style="font-size:14px">'+fmt(a.note)+'</div>':'')
+      +'</div>').join('')+'</section>';}
+    box.innerHTML=h||'<section><div class="item">Nothing matches.</div></section>';
+  }
+  render('');
+  input.addEventListener('input',e=>render(e.target.value));
+});
+</script>
+<footer>Built nightly by Vern, your automated job scout.
+<a href="./index.html" style="color:var(--accent)">Today</a> ·
+<a href="./archive.html" style="color:var(--accent)">Archive</a> ·
+<a href="./grove.html" style="color:var(--accent)">The Grove</a></footer>
+</div></body></html>

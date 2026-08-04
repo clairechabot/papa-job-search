@@ -1,8 +1,9 @@
 name: Evening Edition
 
-# Fires around 19:00 Atlantic: 19:00 ADT = 22:00 UTC -> fire 21:25 UTC.
-# Winter lands ~18:25 local. Sunday evening carries the "Nova Scotia radar"
-# networking section automatically (render.py keys on the weekday).
+# The single daily email + full web edition. Merges the morning scan's
+# pending pool with a fresh evening scan, has Vern score everything, sends
+# the short email cover, and rebuilds the GitHub Pages site (full edition,
+# Archive, Grove). Fires ~19:00 Atlantic: 19:00 ADT = 22:00 UTC -> 21:25 UTC.
 
 on:
   schedule:
@@ -17,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  evening:
+  edition:
     runs-on: ubuntu-latest
     env:
       TZ: America/Halifax
@@ -31,26 +32,29 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet -r requirements.txt
 
-      - name: Fetch, curate, render, send
+      - name: Fetch (merge pending pool), curate, render, publish, send
         env:
-          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
-          CLAUDE_MODEL:   ${{ vars.CLAUDE_MODEL }}
-          ADZUNA_APP_ID:  ${{ secrets.ADZUNA_APP_ID }}
-          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
-          SMTP_USER:      ${{ secrets.SMTP_USER }}
-          SMTP_PASS:      ${{ secrets.SMTP_PASS }}
-          EMAIL_TO:       ${{ secrets.EMAIL_TO }}
-          RECIPIENT_NAME: ${{ secrets.RECIPIENT_NAME }}
+          CLAUDE_API_KEY:    ${{ secrets.CLAUDE_API_KEY }}
+          CLAUDE_MODEL:      ${{ vars.CLAUDE_MODEL }}
+          CANDIDATE_PROFILE: ${{ secrets.CANDIDATE_PROFILE }}
+          ADZUNA_APP_ID:     ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY:    ${{ secrets.ADZUNA_APP_KEY }}
+          SMTP_USER:         ${{ secrets.SMTP_USER }}
+          SMTP_PASS:         ${{ secrets.SMTP_PASS }}
+          EMAIL_TO:          ${{ secrets.EMAIL_TO }}
+          RECIPIENT_NAME:    ${{ secrets.RECIPIENT_NAME }}
+          EDITION_URL:       ${{ vars.EDITION_URL }}
         run: |
           python fetch.py
           python curate.py --edition evening
+          python webpage.py
           python render.py
 
-      - name: Commit state (history + edition archive)
+      - name: Commit state (history, cleared pending, editions, docs/Pages)
         run: |
-          git config user.name "job-scout-bot"
+          git config user.name "vern-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add history.json editions/
+          git add history.json pending_jobs.json editions/ docs/
           git diff --cached --quiet || git commit -m "Evening edition $(date +%F)"
           git pull --rebase origin ${GITHUB_REF_NAME}
           git push
