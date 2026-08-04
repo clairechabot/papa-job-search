@@ -1,62 +1,96 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
 <title>The Grove</title><style>
-:root{--ink:#1f2937;--muted:#6b7280;--accent:#155e75;--star:#b45309;
---bg:#f4f4f2;--card:#ffffff;--rule:#e5e7eb;--chip:#e6eef0;}
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+:root{--paper:#F4EEE2;--paper-deep:#E9E1D1;--surface:#FBF7EE;--ink:#20271F;
+--ink-soft:#4A4A3E;--ink-mute:#7C7565;--forest:#2C3A2B;--moss:#6E7B4B;
+--moss-deep:#55603A;--clay:#A85A36;--clay-deep:#8E4A2C;--line:#D9CFBC;
+--line-soft:#E5DCCB;--serif:'Newsreader',Georgia,'Times New Roman',serif;
+--sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:Georgia,'Times New Roman',serif;line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px}
-.eyebrow{font-size:12px;letter-spacing:3px;color:var(--muted);
-text-transform:uppercase;font-family:Helvetica,Arial,sans-serif}
-h1{font-size:30px;margin:4px 0 2px}
-.date{color:var(--muted);font-size:14px}
-nav{margin:14px 0 6px;font-size:14px;font-family:Helvetica,Arial,sans-serif}
-nav a{color:var(--accent);text-decoration:none;margin-right:14px}
-.note{background:var(--card);border-left:4px solid var(--accent);
-border-radius:8px;padding:14px 18px;margin-top:16px;font-size:16px}
-.note .sig{color:var(--muted);font-size:13px;margin-top:6px}
-section{background:var(--card);border-radius:8px;margin-top:20px;
-padding:6px 0 2px;overflow:hidden}
-section>h2{font-size:13px;letter-spacing:2px;color:var(--muted);
-text-transform:uppercase;margin:10px 18px;font-family:Helvetica,Arial,sans-serif}
-.job,.item{padding:14px 18px;border-top:1px solid var(--rule)}
-.stars{color:var(--star);font-size:14px;letter-spacing:1px}
-.chip{background:var(--chip);color:var(--accent);font-size:11px;
-padding:1px 8px;border-radius:8px;font-family:Helvetica,Arial,sans-serif;
-vertical-align:2px;margin-left:6px}
-.job a.title{color:var(--accent);font-size:17px;font-weight:bold;
-text-decoration:none}
-.meta{color:var(--muted);font-size:13px;margin-top:2px}
-.summary{margin-top:6px;font-size:15px}
-.why{margin-top:4px;font-size:14px}
-.watch{margin-top:4px;color:var(--muted);font-style:italic;font-size:13px}
-details{margin-top:8px;border:1px solid var(--rule);border-radius:6px;
-background:#fafaf8}
-details summary{cursor:pointer;padding:7px 12px;font-size:13px;
-color:var(--accent);font-family:Helvetica,Arial,sans-serif;font-weight:bold}
-details[open] summary{border-bottom:1px solid var(--rule)}
-details .inner{padding:10px 12px}
-pre.prompt{font-family:Menlo,Consolas,monospace;font-size:12.5px;
-white-space:pre-wrap;margin:0;line-height:1.5}
-.copyhint{color:var(--muted);font-size:11px;margin-top:6px;
-font-family:Helvetica,Arial,sans-serif}
-.contact{font-size:14px}
-.contact a{color:var(--accent)}
-footer{margin-top:26px;color:var(--muted);font-size:12px}
-input.search{width:100%;padding:10px 14px;font-size:16px;border:1px solid
-var(--rule);border-radius:8px;font-family:Georgia,serif;margin:14px 0 4px}
-.count{color:var(--muted);font-size:13px;margin:4px 0 10px;
-font-family:Helvetica,Arial,sans-serif}
-@media(max-width:480px){h1{font-size:24px}.wrap{padding:18px 10px 40px}}
+body{margin:0;background:var(--paper-deep);color:var(--ink);
+font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 0 70px}
+.frame{background:var(--paper);border-left:1px solid var(--line-soft);
+border-right:1px solid var(--line-soft);padding:0 30px 40px;min-height:100vh}
+.masthead{text-align:center;padding:46px 0 26px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;
+text-transform:uppercase;color:var(--moss-deep);font-family:var(--sans)}
+h1{font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.05;
+letter-spacing:-.01em;color:var(--forest);margin:14px 0 0}
+.tagline{font-family:var(--serif);font-style:italic;font-size:16px;
+color:var(--ink-soft);margin-top:10px}
+.date{margin-top:20px;font-size:11.5px;letter-spacing:.16em;
+text-transform:uppercase;color:var(--ink-mute)}
+nav{margin:16px 0 0;font-size:12px;letter-spacing:.1em;
+text-transform:uppercase;text-align:center}
+nav a{color:var(--clay-deep);text-decoration:none;margin:0 10px;
+font-weight:600}
+nav a:hover{color:var(--clay)}
+.note{background:var(--surface);border-top:1px solid var(--line-soft);
+border-bottom:1px solid var(--line-soft);padding:26px 24px;margin-top:22px;
+display:flex;gap:18px;align-items:flex-start;border-radius:2px}
+.monogram{flex-shrink:0;width:46px;height:46px;border-radius:50%;
+border:1px solid var(--moss);color:var(--moss-deep);
+font-family:var(--serif);font-size:22px;display:flex;align-items:center;
+justify-content:center;margin-top:2px}
+.note .body{font-family:var(--serif);font-size:17px;line-height:1.65;
+color:var(--ink)}
+.note .sig{color:var(--ink-mute);font-size:13px;margin-top:8px;
+font-family:var(--serif);font-style:italic}
+section{background:var(--surface);border:1px solid var(--line-soft);
+border-radius:12px;margin-top:26px;padding:6px 0 2px;overflow:hidden;
+box-shadow:0 1px 2px rgba(32,39,31,.04),0 12px 32px -16px rgba(32,39,31,.18)}
+section>h2{font-size:11px;font-weight:600;letter-spacing:.2em;
+color:var(--moss-deep);text-transform:uppercase;margin:14px 20px 10px}
+.job,.item{padding:16px 20px;border-top:1px solid var(--line-soft)}
+.stars{color:var(--clay);font-size:14px;letter-spacing:2px}
+.chip{background:#EDE7D8;color:var(--moss-deep);font-size:11px;
+padding:2px 10px;border-radius:100px;vertical-align:2px;margin-left:6px;
+letter-spacing:.04em}
+.job a.title{font-family:var(--serif);color:var(--forest);font-size:19px;
+font-weight:600;text-decoration:none;display:inline-block;margin-top:3px}
+.job a.title:hover{color:var(--clay-deep)}
+.meta{color:var(--ink-mute);font-size:13px;margin-top:3px}
+.summary{margin-top:8px;font-family:var(--serif);font-size:15.5px;
+color:var(--ink-soft);line-height:1.6}
+.why{margin-top:5px;font-size:14px;color:var(--ink-soft)}
+.watch{margin-top:5px;color:var(--ink-mute);font-style:italic;font-size:13px;
+font-family:var(--serif)}
+details{margin-top:10px;border:1px solid var(--line);border-radius:8px;
+background:var(--paper)}
+details summary{cursor:pointer;padding:8px 14px;font-size:12px;
+letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);
+font-weight:600}
+details summary:hover{color:var(--clay)}
+details[open] summary{border-bottom:1px solid var(--line-soft)}
+details .inner{padding:12px 14px}
+pre.prompt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+white-space:pre-wrap;margin:0;line-height:1.55;color:var(--ink-soft)}
+.copyhint{color:var(--ink-mute);font-size:11px;margin-top:8px}
+.contact{font-size:14px;color:var(--ink-soft)}
+.contact a{color:var(--clay-deep)}
+footer{margin-top:34px;color:var(--ink-mute);font-size:12px;
+text-align:center;border-top:1px solid var(--line-soft);padding-top:18px}
+footer a{color:var(--clay-deep)}
+input.search{width:100%;padding:12px 16px;font-size:17px;border:1px solid
+var(--line);border-radius:10px;font-family:var(--serif);margin:18px 0 4px;
+background:var(--surface);color:var(--ink)}
+input.search:focus{outline:2px solid var(--moss);border-color:var(--moss)}
+.count{color:var(--ink-mute);font-size:13px;margin:6px 0 10px}
+@media(max-width:520px){h1{font-size:30px}.frame{padding:0 14px 30px}
+.note{padding:18px 14px;gap:12px}}
 </style></head>
-<body><div class="wrap">
-<div class="eyebrow">Vern · The Next Chapter</div>
+<body><div class="wrap"><div class="frame">
 
+<div class="masthead">
+<div class="eyebrow">The Next Chapter</div>
 <h1>The Grove</h1>
-<div class="date">Everything that has ever appeared in an edition - every
-job, prompt, and article. Search as you type.</div>
+<div class="tagline">everything that has ever appeared in an edition -
+every job, prompt, and article</div>
+</div>
 <input class="search" id="q" type="search"
        placeholder="Search jobs, companies, articles... (e.g. Halifax, PE, Irving)">
 <div class="count" id="count"></div>
@@ -98,8 +132,7 @@ fetch('./grove.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{
   input.addEventListener('input',e=>render(e.target.value));
 });
 </script>
-<footer>Built nightly by Vern, your automated job scout.
-<a href="./index.html" style="color:var(--accent)">Today</a> ·
-<a href="./archive.html" style="color:var(--accent)">Archive</a> ·
-<a href="./grove.html" style="color:var(--accent)">The Grove</a></footer>
-</div></body></html>
+<footer>Grown nightly by Vern, your scout in the canopy.<br>
+<a href="./index.html">Today</a> · <a href="./archive.html">The Archive</a>
+· <a href="./grove.html">The Grove</a></footer>
+</div></div></body></html>

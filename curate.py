@@ -126,8 +126,14 @@ Scoring scale:
 4 = strong fit, minor mismatch (tier 3-4 location, sector stretch, or a
     slightly-lower title with real P&L scope)
 3 = worth a look: plausibly right, needs his judgment
-2 = weak fit (too junior, wrong region, stated salary below floor - quote it)
+2 = weak fit (too junior, wrong region)
 1 = dealbreaker per profile
+
+HARD RULE - salary floors: he will not leave his current job for less than
+the profile's floors. If a posting STATES compensation below the floor for
+its region, score it 1 regardless of everything else, and quote the number
+in watch_out. Never rank a below-floor posting as worth his evening. If no
+compensation is stated, score normally and say nothing about salary.
 
 Per job, write:
 - "summary": 1-2 sentences - what this job actually is (from title, company,
