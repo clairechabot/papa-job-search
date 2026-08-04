@@ -1,0 +1,12 @@
+{
+  "_help": "Track applications here (edit by hand or ask Claude to). status: applied | waiting | interview | offer | closed. Every newsletter footer nudges follow-ups on entries 7+ days old with status applied/waiting.",
+  "applications": [
+    {
+      "company": "Example Co (delete me)",
+      "role": "CFO",
+      "applied_on": "2026-07-20",
+      "status": "applied",
+      "notes": "Referred by Jane; deck sent"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+name: Morning Edition
+
+# Fires around 07:00 Atlantic. GitHub delays scheduled crons, so we fire early
+# to land near the target (pattern from the Curated Canopy's NS edition):
+# 07:00 ADT (UTC-3, summer) = 10:00 UTC -> fire 09:25 UTC. In winter (AST,
+# UTC-4) this lands ~06:25 local - fine for a morning email.
+
+on:
+  schedule:
+    - cron: "25 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  morning:
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/Halifax
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet -r requirements.txt
+
+      - name: Fetch, curate, render, send
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          CLAUDE_MODEL:   ${{ vars.CLAUDE_MODEL }}
+          ADZUNA_APP_ID:  ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          SMTP_USER:      ${{ secrets.SMTP_USER }}
+          SMTP_PASS:      ${{ secrets.SMTP_PASS }}
+          EMAIL_TO:       ${{ secrets.EMAIL_TO }}
+          RECIPIENT_NAME: ${{ secrets.RECIPIENT_NAME }}
+        run: |
+          python fetch.py
+          python curate.py --edition morning
+          python render.py
+
+      - name: Commit state (history + edition archive)
+        run: |
+          git config user.name "job-scout-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add history.json editions/
+          git diff --cached --quiet || git commit -m "Morning edition $(date +%F)"
+          git pull --rebase origin ${GITHUB_REF_NAME}
+          git push

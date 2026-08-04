@@ -1,0 +1,8 @@
+# Per-run artifacts (history.json and editions/ ARE committed - they're state)
+fetched_data.json
+curated_data.json
+newsletter.html
+__pycache__/
+*.pyc
+.venv/
+.env

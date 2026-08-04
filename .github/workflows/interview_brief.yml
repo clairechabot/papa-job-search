@@ -1,0 +1,45 @@
+name: Interview Brief
+
+# Manual: Actions tab -> Interview Brief -> Run workflow -> type the company.
+# Emails a one-page interview prep brief within a few minutes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      company:
+        description: "Company name"
+        required: true
+      website:
+        description: "Company website (optional)"
+        required: false
+        default: ""
+      role:
+        description: "Role (optional)"
+        required: false
+        default: "senior finance leadership role"
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet -r requirements.txt
+
+      - name: Generate + send brief
+        env:
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          CLAUDE_MODEL:   ${{ vars.CLAUDE_MODEL }}
+          SMTP_USER:      ${{ secrets.SMTP_USER }}
+          SMTP_PASS:      ${{ secrets.SMTP_PASS }}
+          EMAIL_TO:       ${{ secrets.EMAIL_TO }}
+        run: >
+          python interview_brief.py
+          --company "${{ inputs.company }}"
+          --website "${{ inputs.website }}"
+          --role "${{ inputs.role }}"
