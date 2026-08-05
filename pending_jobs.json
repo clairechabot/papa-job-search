@@ -1,5 +1,5 @@
 {
-  "scanned_at": "2026-08-05T09:13:24.019885-03:00",
+  "scanned_at": "2026-08-05T19:06:25.220730-03:00",
   "jobs": [
     {
       "source": "LinkedIn (authenticated)",
@@ -1646,6 +1646,236 @@
       "company": "",
       "location": "Nova Scotia",
       "url": "https://www.careerbeacon.com/en/job/2233301/best-buy-express/retail-sales-associate-upper-canada-mall/newmarket-on?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Estimator",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2236156/acadian-construction/estimator/dieppe-nb?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Retail Sales Associate, Promenades Gatineau",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2236152/best-buy-express/retail-sales-associate-promenades-gatineau/gatineau-qc?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Registered Nurse (RN) - Part-time 0.8",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2234561/von-canada/registered-nurse-rn-part-time-0-8/yarmouth-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Journeyperson Plumber (44.80 per hour Calgary)",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2227058/trotter-morton/journeyperson-plumber-44-80-per-hour-calgary/toronto-on?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "IT Network Security Analyst",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2228852/pal-group-of-companies/it-network-security-analyst/st-john-s-nl?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Executive Sous Chef",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2227049/meridia-recruitment-solutions/executive-sous-chef/hunts-point-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Counter/Inside Salesperson",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2235632/eddy-group-limited/counter-inside-salesperson/kentville-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Labourer- Shellfish Processing",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2234185/long-point-lobster-seafood-limited/labourer-shellfish-processing/newellton-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Investment Associate",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2233599/invest-nova-scotia/investment-associate/halifax-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Operations Manager",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2235166/halifax-region-military-family-resource-centre/operations-manager/halifax-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Manager, Structural Engineering",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2234658/gemtec-consulting-engineers-and-scientists-limited/manager-structural-engineering/moncton-nb?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Retail Sales Associate, Fort Saskatchewan",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2235976/best-buy-express/retail-sales-associate-fort-saskatchewan/fort-saskatchewan-ab?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Occupational Health And Safety Officer",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2233802/city-of-mount-pearl/occupational-health-and-safety-officer/mount-pearl-nl?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Occupational Therapist (OT)",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2117142/east-cumberland-lodge-ecl/occupational-therapist-ot/pugwash-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Dietitian 2 - Assistant Manager (DT02)",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2134104/vitalite-health-network/dietitian-2-assistant-manager-dt02/tracadie-nb?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Park Attendant (Maintenance Worker 1) (Casual)",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2236229/public-service-commission-government-of-nova-scotia/park-attendant-maintenance-worker-1-casual/shelburne-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Digital Marketing Officer",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2226484/university-of-new-brunswick/digital-marketing-officer/fredericton-nb?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Forklift Operator - Power Walkie",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2179422/advantage-personnel/forklift-operator-power-walkie/toronto-on?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Registered Nurse IC",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2234208/nl-health-services/registered-nurse-ic/carbonear-nl?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Retail Sales Associate, Pacific Centre",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2236154/virgin-plus/retail-sales-associate-pacific-centre/vancouver-bc?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Retail Sales Associate, Bedford Commons",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2230036/bell-canada/retail-sales-associate-bedford-commons/bedford-ns?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Retail Sales Associate, Promenades du Cuivre",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2234940/best-buy-express/retail-sales-associate-promenades-du-cuivre/rouyn-noranda-qc?utm_source=careerbeacon",
+      "date_posted": "",
+      "salary": "",
+      "snippet": ""
+    },
+    {
+      "source": "CareerBeacon",
+      "title": "Chief Executive Officer",
+      "company": "",
+      "location": "Nova Scotia",
+      "url": "https://www.careerbeacon.com/en/job/2236117/souris-credit-union/chief-executive-officer/prince-edward-island?utm_source=careerbeacon",
       "date_posted": "",
       "salary": "",
       "snippet": ""
