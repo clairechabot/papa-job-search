@@ -65,8 +65,10 @@ prep brief lands in the inbox in ~2 minutes.
 - **6:30 PM Montreal**: ONE email from Vern — top jobs scored and
   explained, "Start here" prompts, reach-out contacts, AI reading —
   linking to the full edition, Archive, and Grove on the web. (The
-  workflow fires at 5:55 PM local, year-round via a DST guard; GitHub's
-  cron jitter + the pipeline itself land it around 6:15-6:30.)
+  workflow fires early at 5:10 PM local year-round via a DST-aware
+  guard, does the scan and scoring, then deliberately holds the send
+  until 6:25 PM — so the email lands 6:25-6:30 even when GitHub starts
+  the scheduled run up to an hour late, which it routinely does.)
 
 ## Troubleshooting
 
