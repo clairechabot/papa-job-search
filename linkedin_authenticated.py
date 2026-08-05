@@ -156,7 +156,10 @@ def scrape(max_detail: int) -> list[dict]:
                         pass
                     jobs[href] = {
                         "source": "LinkedIn (authenticated)",
-                        "title": title, "company": company, "location": loc,
+                        "title": title, "company": company,
+                        # Card DOM sometimes hides the location; the search's
+                        # own location is the right fallback for tier tagging.
+                        "location": loc or location,
                         "url": f"https://www.linkedin.com{href}"
                                if href.startswith("/") else href,
                         "date_posted": "", "salary": "", "snippet": "",
