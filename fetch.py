@@ -54,11 +54,23 @@ NE_US = re.compile(r"\b(MA|Massachusetts|Boston|ME|Maine|Portland|NH|New"
                    r"|NY|New York|Albany|Buffalo|New England)\b", re.I)
 
 
+# Sources whose entire catchment is Atlantic Canada - their postings are
+# tier 1 even when the location text is vague. The national/US recruiter
+# firms added 2026-08 are NOT here: they tier by location, or by the
+# firm-level tier_hint recruiters.py attaches when a mandate's geography
+# isn't stated (e.g. TrueNorth's PE-CFO searches).
+ATLANTIC_SOURCES = {
+    "Meridia Recruitment (KBRS)", "CareerBeacon",
+    "Venor (recruiter)", "Summit Search Group (recruiter)",
+    "Macdonald Search Group (recruiter)", "Lock Search Group (recruiter)",
+    "Accountant Staffing (recruiter)",
+}
+
+
 def tag_tier(job: dict) -> None:
     """Annotate job['tier'] 1-4, or 0 (out of area - the gate rejects)."""
     text = f"{job.get('location', '')} {job.get('title', '')}"
-    if job.get("source", "").endswith("(recruiter)") or \
-       job.get("source") in ("Meridia Recruitment (KBRS)", "CareerBeacon"):
+    if job.get("source") in ATLANTIC_SOURCES:
         job["tier"] = 1  # Atlantic-scoped sources
     elif NS.search(text):
         job["tier"] = 1
@@ -69,7 +81,7 @@ def tag_tier(job: dict) -> None:
     elif NE_US.search(text):
         job["tier"] = 4
     else:
-        job["tier"] = 0
+        job["tier"] = job.get("tier_hint", 0)
 
 
 def _load_pending() -> list[dict]:
