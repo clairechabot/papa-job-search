@@ -39,6 +39,9 @@ jobs:
       - name: Authenticated LinkedIn scan + hiring-team extraction
         run: python3 linkedin_authenticated.py --max-detail 12
 
+      - name: VM-only sources (CareerBeacon 403s GitHub's IPs)
+        run: python3 vm_sources.py
+
       - name: Commit pending pool
         run: |
           git config user.name "vern-bot"
