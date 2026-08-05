@@ -84,9 +84,11 @@ SCORE_SCHEMA = {
                     "why": {"type": "string"},
                     "watch_out": {"type": "string"},
                     "kickoff_prompt": {"type": "string"},
+                    "attachments": {"type": "array",
+                                    "items": {"type": "string"}},
                 },
                 "required": ["index", "score", "summary", "why",
-                             "watch_out", "kickoff_prompt"],
+                             "watch_out", "kickoff_prompt", "attachments"],
                 "additionalProperties": False,
             },
         },
@@ -156,6 +158,13 @@ Per job, write:
   contact is listed, add "draft a LinkedIn note to <name>, <title>";
   (e) end with: "I'm pasting the posting text below." Keep it under 130
   words, first person, plain text.
+- "attachments": ONLY for scores 3-5, else []. The checklist of what he
+  must add to the chat himself alongside the prompt: 1-3 short imperative
+  items ("Paste the full posting text - open the job link and copy
+  everything"). Always include the posting text item. Add others only when
+  the prompt genuinely needs them (e.g. a company page or contact profile
+  worth pasting). His CV and targets already live in the Project knowledge,
+  so never list those unless the prompt asks him to update them.
 
 No em-dashes anywhere. Return every job you were given, by index."""
 
@@ -251,7 +260,8 @@ def score_jobs(client, jobs: list[dict], profile: str) -> None:
             if row:
                 job.update(score=row["score"], summary=row["summary"],
                            why=row["why"], watch_out=row["watch_out"],
-                           kickoff_prompt=row["kickoff_prompt"])
+                           kickoff_prompt=row["kickoff_prompt"],
+                           attachments=row.get("attachments", []))
 
 
 def pick_ai_articles(client, articles: list[dict],
