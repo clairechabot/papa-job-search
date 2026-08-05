@@ -54,18 +54,54 @@ def _pause() -> None:
     time.sleep(random.uniform(2.5, 6.0))  # human-ish pacing
 
 
+# LinkedIn's job cards have gone through several DOM generations; match any.
+CARD_SELECTOR = ("div.job-card-container, li[data-occludable-job-id], "
+                 "li.jobs-search-results__list-item")
+LINK_SELECTOR = ("a.job-card-container__link, a.job-card-list__title--link, "
+                 "a[href*='/jobs/view/']")
+
+
+def _goto(page, url: str, what: str) -> bool:
+    """LinkedIn pages stream requests forever, so the 'load' event routinely
+    never fires - wait for DOM only, and never let one slow page kill the
+    whole scan."""
+    try:
+        page.goto(url, timeout=45000, wait_until="domcontentloaded")
+        return True
+    except Exception as e:  # noqa: BLE001 - boundary: flaky remote site
+        print(f"[linkedin-auth] goto failed ({what}): {type(e).__name__}",
+              flush=True)
+        return False
+
+
 def scrape(max_detail: int) -> list[dict]:
     from playwright.sync_api import sync_playwright
 
     jobs: dict[str, dict] = {}
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        # dev-shm is tiny on small VMs; without this flag Chromium crashes
+        # or crawls on a 1GB droplet.
+        browser = p.chromium.launch(
+            headless=True,
+            args=["--disable-dev-shm-usage", "--disable-gpu"])
         context = browser.new_context(storage_state=str(AUTH_FILE))
+        # Skip images/media/fonts: halves memory and load time, and the
+        # scraper only reads text anyway.
+        context.route(
+            "**/*",
+            lambda route: route.abort()
+            if route.request.resource_type in ("image", "media", "font")
+            else route.continue_())
         page = context.new_page()
 
         # Session sanity check.
-        page.goto("https://www.linkedin.com/feed/", timeout=45000)
-        if "/login" in page.url or "authwall" in page.url:
+        if not _goto(page, "https://www.linkedin.com/feed/", "feed"):
+            print("[linkedin-auth] could not reach LinkedIn - skipping run",
+                  file=sys.stderr)
+            return []
+        _pause()
+        if any(marker in page.url for marker in ("/login", "authwall",
+                                                 "checkpoint")):
             print("[linkedin-auth] session EXPIRED - re-run linkedin_auth.py "
                   "locally and re-upload linkedin-auth.json", file=sys.stderr)
             return []
@@ -74,20 +110,34 @@ def scrape(max_detail: int) -> list[dict]:
             url = (f"https://www.linkedin.com/jobs/search/?keywords="
                    f"{quote(keywords)}&location={quote(location)}&f_TPR=r604800"
                    + ("&f_WT=2" if remote else ""))
-            page.goto(url, timeout=45000)
+            if not _goto(page, url, location):
+                continue
+            try:
+                page.wait_for_selector(CARD_SELECTOR, timeout=20000)
+            except Exception:  # noqa: BLE001 - empty result page is valid
+                print(f"[linkedin-auth] {location}: no result cards appeared "
+                      f"(url now: {page.url[:80]})", flush=True)
             _pause()
-            cards = page.locator("div.job-card-container").all()[:25]
+            cards = page.locator(CARD_SELECTOR).all()[:25]
             for card in cards:
                 try:
-                    link = card.locator("a.job-card-container__link").first
+                    link = card.locator(LINK_SELECTOR).first
                     href = (link.get_attribute("href") or "").split("?")[0]
                     if not href or href in jobs:
                         continue
                     title = (link.inner_text() or "").strip().split("\n")[0]
-                    company = card.locator(
-                        ".artdeco-entity-lockup__subtitle").first.inner_text().strip()
-                    loc = card.locator(
-                        ".job-card-container__metadata-wrapper").first.inner_text().strip()
+                    company, loc = "", ""
+                    try:
+                        company = card.locator(
+                            ".artdeco-entity-lockup__subtitle, "
+                            ".job-card-container__primary-description"
+                        ).first.inner_text().strip()
+                        loc = card.locator(
+                            ".job-card-container__metadata-wrapper, "
+                            ".job-card-container__metadata-item"
+                        ).first.inner_text().strip()
+                    except Exception:  # noqa: BLE001 - optional fields
+                        pass
                     jobs[href] = {
                         "source": "LinkedIn (authenticated)",
                         "title": title, "company": company, "location": loc,
@@ -108,7 +158,8 @@ def scrape(max_detail: int) -> list[dict]:
                 continue
             detailed += 1
             try:
-                page.goto(job["url"], timeout=45000)
+                if not _goto(page, job["url"], "detail"):
+                    continue
                 _pause()
                 desc = page.locator("#job-details, .jobs-description__content")
                 if desc.count():
