@@ -43,6 +43,20 @@ FIRMS = [
      "https://locksearchgroup.com/opportunities/"),
     ("Accountant Staffing", "Halifax · finance specialists",
      "https://www.accountantstaffing.com/job-opportunities"),
+    ("TrueNorth Executive Search", "US · PE-backed CFO mandates",
+     "https://careers.truenorthsearch.com"),
+    ("CFO Search Inc", "US · CFO boutique",
+     "https://www.cfo-search.com/cfo-jobs/"),
+    ("Page Executive", "Global · CFO practice",
+     "https://www.pageexecutive.com/jobs/cfo-financial-management"),
+    ("Robert Half", "Canada · finance & accounting",
+     "https://www.roberthalf.com/ca/en/jobs"),
+    ("Falcon", "US · PE talent partner - no public listings, introduce yourself",
+     "https://falcon-pe.com/"),
+    ("Vision Search Partners", "New England · financial search - no public "
+     "listings, introduce yourself", "https://visionsearchpartners.com/"),
+    ("Bohan & Bradstreet", "Connecticut · openings post to their LinkedIn",
+     "https://www.linkedin.com/company/bohan-&-bradstreet"),
 ]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,"
