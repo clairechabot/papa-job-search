@@ -5,17 +5,27 @@ name: Evening Edition
 # the short email cover, and rebuilds the GitHub Pages site (full edition,
 # Archive, Grove).
 #
-# Delivery target: ~18:30 in Montreal (America/Toronto), where Marcel reads
-# it. GitHub cron is fixed UTC and Montreal shifts with DST, so we fire two
-# crons - 21:55 UTC (= 17:55 EDT, summer) and 22:55 UTC (= 17:55 EST,
-# winter) - and a guard step lets only the one where the local hour is 17
-# proceed. Firing at 17:55 local leaves ~10-30 min of Actions queue delay +
-# pipeline time, landing the email around 18:15-18:30.
+# Delivery target: 18:30 in Montreal (America/Toronto), where Marcel reads
+# it. GitHub cron is fixed UTC, Montreal shifts with DST, and scheduled
+# runs can start up to an hour late - so precision comes from three parts:
+#   1. Two crons fire EARLY (17:10 local in their season): 21:10 UTC for
+#      EDT (summer), 22:10 UTC for EST (winter).
+#   2. A season guard skips the wrong cron by comparing which cron fired
+#      (github.event.schedule) against Montreal's CURRENT UTC offset
+#      (-0400 summer / -0500 winter). Offset, not wall-clock hour: a
+#      delayed right-season run must still pass. The first version of
+#      this guard checked the hour and silently dropped the 2026-08-04
+#      edition when both crons started late - never again.
+#   3. After fetching and scoring, a hold step sleeps until 18:25 local,
+#      then the email goes out - landing ~18:26-18:30 regardless of how
+#      late the cron fired (a delay beyond 18:25 sends immediately).
+# Manual workflow_dispatch runs skip the guard and the hold: they send
+# right away.
 
 on:
   schedule:
-    - cron: "55 21 * * *"   # 17:55 America/Toronto during EDT (summer)
-    - cron: "55 22 * * *"   # 17:55 America/Toronto during EST (winter)
+    - cron: "10 21 * * *"   # 17:10 America/Toronto during EDT (summer)
+    - cron: "10 22 * * *"   # 17:10 America/Toronto during EST (winter)
   workflow_dispatch:
 
 permissions:
@@ -28,16 +38,32 @@ concurrency:
 jobs:
   edition:
     runs-on: ubuntu-latest
+    timeout-minutes: 150
     env:
-      TZ: America/Halifax
+      TZ: America/Toronto
+      CLAUDE_API_KEY:    ${{ secrets.CLAUDE_API_KEY }}
+      CLAUDE_MODEL:      ${{ vars.CLAUDE_MODEL }}
+      CANDIDATE_PROFILE: ${{ secrets.CANDIDATE_PROFILE }}
+      ADZUNA_APP_ID:     ${{ secrets.ADZUNA_APP_ID }}
+      ADZUNA_APP_KEY:    ${{ secrets.ADZUNA_APP_KEY }}
+      SMTP_USER:         ${{ secrets.SMTP_USER }}
+      SMTP_PASS:         ${{ secrets.SMTP_PASS }}
+      EMAIL_TO:          ${{ secrets.EMAIL_TO }}
+      RECIPIENT_NAME:    ${{ secrets.RECIPIENT_NAME }}
+      EDITION_URL:       ${{ vars.EDITION_URL }}
     steps:
-      - name: DST guard - only run the cron matching Montreal local 17:55
+      - name: Season guard - skip the wrong-DST cron firing
         if: github.event_name == 'schedule'
         run: |
-          HOUR=$(TZ=America/Toronto date +%H)
-          echo "Local hour in Montreal: $HOUR"
-          if [ "$HOUR" != "17" ]; then
-            echo "Wrong-season cron firing; the other one covers today. Skipping."
+          OFFSET=$(TZ=America/Toronto date +%z)
+          CRON="${{ github.event.schedule }}"
+          echo "Cron '$CRON' fired; Montreal UTC offset now: $OFFSET"
+          if [ "$CRON" = "10 21 * * *" ] && [ "$OFFSET" != "-0400" ]; then
+            echo "Summer cron during standard time; the 22:10 cron covers today. Skipping."
+            echo "SKIP_EDITION=1" >> "$GITHUB_ENV"
+          fi
+          if [ "$CRON" = "10 22 * * *" ] && [ "$OFFSET" != "-0500" ]; then
+            echo "Winter cron during daylight time; the 21:10 cron covers today. Skipping."
             echo "SKIP_EDITION=1" >> "$GITHUB_ENV"
           fi
 
@@ -53,24 +79,29 @@ jobs:
         if: env.SKIP_EDITION != '1'
         run: pip install --quiet -r requirements.txt
 
-      - name: Fetch (merge pending pool), curate, render, publish, send
+      - name: Fetch (merge pending pool), curate, build web edition
         if: env.SKIP_EDITION != '1'
-        env:
-          CLAUDE_API_KEY:    ${{ secrets.CLAUDE_API_KEY }}
-          CLAUDE_MODEL:      ${{ vars.CLAUDE_MODEL }}
-          CANDIDATE_PROFILE: ${{ secrets.CANDIDATE_PROFILE }}
-          ADZUNA_APP_ID:     ${{ secrets.ADZUNA_APP_ID }}
-          ADZUNA_APP_KEY:    ${{ secrets.ADZUNA_APP_KEY }}
-          SMTP_USER:         ${{ secrets.SMTP_USER }}
-          SMTP_PASS:         ${{ secrets.SMTP_PASS }}
-          EMAIL_TO:          ${{ secrets.EMAIL_TO }}
-          RECIPIENT_NAME:    ${{ secrets.RECIPIENT_NAME }}
-          EDITION_URL:       ${{ vars.EDITION_URL }}
         run: |
           python fetch.py
           python curate.py --edition evening
           python webpage.py
-          python render.py
+
+      - name: Hold until 6:25pm Montreal
+        if: env.SKIP_EDITION != '1' && github.event_name == 'schedule'
+        run: |
+          TARGET=$(TZ=America/Toronto date -d "18:25" +%s)
+          NOW=$(date +%s)
+          WAIT=$(( TARGET - NOW ))
+          if [ $WAIT -gt 0 ]; then
+            echo "Holding $WAIT seconds so the email lands at 6:25-6:30pm Montreal."
+            sleep $WAIT
+          else
+            echo "Already past 6:25pm Montreal; sending immediately."
+          fi
+
+      - name: Send the email
+        if: env.SKIP_EDITION != '1'
+        run: python render.py
 
       - name: Commit state (history, cleared pending, editions, docs/Pages)
         if: env.SKIP_EDITION != '1'
