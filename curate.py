@@ -36,10 +36,11 @@ TIER_LABELS = {1: "Nova Scotia", 2: "Eastern Canada", 3: "Remote",
 # ---------------------------------------------------------------------------
 TITLE_PASS = re.compile(
     r"\b(cfo|cfoo|chief financial|chief administrative officer"
-    r"|[sae]?vp,? finance|[sae]?vp finance|v\.?p\.? finance"
-    r"|vice[- ]president,? finance|finance director|director of finance"
+    r"|[sae]?vp,?( of)? finance|v\.?p\.?( of)? finance"
+    r"|vice[- ]president,?( of)? finance|finance director|director of finance"
     r"|director,? finance|directeur financier|direction financi[eè]re"
-    r"|head of finance|finance lead|controller|contr[oô]leur|treasurer"
+    r"|head of finance|head of treasury|finance lead|controller"
+    r"|contr[oô]leur|treasurer"
     r"|secretary[- ]treasurer|finance executive|financial officer"
     r"|senior director,? finance|gm,? finance|operating partner"
     r"|portfolio (company )?cfo|interim cfo|fractional cfo)\b", re.I)
