@@ -83,8 +83,19 @@ def scrape(max_detail: int) -> list[dict]:
         # or crawls on a 1GB droplet.
         browser = p.chromium.launch(
             headless=True,
-            args=["--disable-dev-shm-usage", "--disable-gpu"])
-        context = browser.new_context(storage_state=str(AUTH_FILE))
+            args=["--disable-dev-shm-usage", "--disable-gpu",
+                  "--disable-blink-features=AutomationControlled"])
+        # Present the same fingerprint as the Windows Chrome that captured
+        # the session - a mismatched UA from a datacenter IP is what trips
+        # LinkedIn's "confirm it's you" wall.
+        context = browser.new_context(
+            storage_state=str(AUTH_FILE),
+            user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/151.0.0.0 Safari/537.36"),
+            viewport={"width": 1600, "height": 900},
+            locale="en-US",
+            timezone_id="America/Toronto")
         # Skip images/media/fonts: halves memory and load time, and the
         # scraper only reads text anyway.
         context.route(
@@ -102,7 +113,12 @@ def scrape(max_detail: int) -> list[dict]:
         _pause()
         if any(marker in page.url for marker in ("/login", "authwall",
                                                  "checkpoint")):
-            print("[linkedin-auth] session EXPIRED - re-run linkedin_auth.py "
+            kind = ("security checkpoint (approve the 'new sign-in' prompt "
+                    "on the LinkedIn account, then re-run)"
+                    if "checkpoint" in page.url else "EXPIRED")
+            print(f"[linkedin-auth] session {kind} - redirected to "
+                  f"{page.url[:100]}", file=sys.stderr)
+            print("[linkedin-auth] if this persists: re-run linkedin_auth.py "
                   "locally and re-upload linkedin-auth.json", file=sys.stderr)
             return []
 
