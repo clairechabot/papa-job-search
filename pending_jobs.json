@@ -1,5 +1,74 @@
 {
-  "scanned_at": "2026-08-04T14:34:29.656564-03:00",
-  "jobs": [],
-  "source_status": {}
+  "scanned_at": "2026-08-05T08:26:45.132848-03:00",
+  "jobs": [
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "Senior Manager, Finance and Strategy - R&D",
+      "company": "Samsara",
+      "location": "Canada (Remote)",
+      "url": "https://www.linkedin.com/jobs/view/4445538369/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 3
+    },
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "Expert Opportunity - FP&A Manager / Director ($80/hr, up to $1,600/week)",
+      "company": "Ethos",
+      "location": "Canada (Remote)",
+      "url": "https://www.linkedin.com/jobs/view/4439597823/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 3
+    },
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "🚀 VP of Finance | eCommerce [100% Remote]",
+      "company": "UpCounting",
+      "location": "Canada (Remote)",
+      "url": "https://www.linkedin.com/jobs/view/4446064718/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 3
+    },
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "Senior Associate Director, Fund Administration",
+      "company": "ACCA Careers",
+      "location": "Halifax, NS (On-site)",
+      "url": "https://www.linkedin.com/jobs/view/4446769206/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 1
+    },
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "Head of Treasury",
+      "company": "Revolut",
+      "location": "Canada (Remote)",
+      "url": "https://www.linkedin.com/jobs/view/4437077834/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 3
+    },
+    {
+      "source": "LinkedIn (authenticated)",
+      "title": "Directeur financier/Directrice financière",
+      "company": "",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4447022286/",
+      "date_posted": "",
+      "salary": "",
+      "snippet": "",
+      "tier": 0
+    }
+  ],
+  "source_status": {
+    "LinkedIn (authenticated)": "ok (6 found, 6 new)"
+  }
 }
