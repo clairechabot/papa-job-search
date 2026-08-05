@@ -181,6 +181,10 @@ details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1
 .copy{cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
 .copy:hover{background:var(--brass);color:var(--forest-deep)}
 .copyhint{font-size:12px;color:var(--ink-mute)}
+.addlist{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+.addlist .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.addlist ul{margin:8px 0 0;padding-left:20px}
+.addlist li{font-size:13.5px;line-height:1.6;color:var(--ink-soft);margin-top:4px}
 
 /* footer */
 footer{position:relative;margin-top:40px;background:var(--forest);color:var(--cream);padding:52px 40px 58px;text-align:center}
@@ -291,13 +295,21 @@ def job_row(job: dict, number: int, with_prompt: bool = True) -> str:
         body.append(f'<div class="block"><div class="k">Reach out</div>'
                     f'<p>{rows}</p></div>')
     if with_prompt and job.get("kickoff_prompt"):
+        attachments = job.get("attachments") or [
+            "Paste the full posting text - open the job link above and "
+            "copy everything."]
+        items = "".join(f"<li>{esc(a)}</li>" for a in attachments)
         body.append(f'''<details class="prompt">
             <summary>Start here — Claude Project prompt</summary>
             <div class="inner">
               <pre>{esc(job["kickoff_prompt"])}</pre>
               <div class="copyrow">
                 <button class="copy" type="button">Copy prompt</button>
-                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project, then add the posting text.</span>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul>{items}</ul>
               </div>
             </div>
           </details>''')
@@ -524,6 +536,7 @@ def update_grove(data: dict, now: datetime.datetime) -> None:
             "score": j.get("score"), "summary": j.get("summary"),
             "why": j.get("why"), "watch_out": j.get("watch_out"),
             "kickoff_prompt": j.get("kickoff_prompt"),
+            "attachments": j.get("attachments") or [],
             "wildcard": bool(j.get("wildcard")),
         })
     for a in (data.get("ai_picks", []) + data.get("ai_articles", [])
