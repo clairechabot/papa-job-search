@@ -49,7 +49,11 @@ def build_email(data: dict, now: datetime.datetime) -> tuple[str, str]:
     """Short-form email per newsletter-template.html: tables only, inline
     styles, web-safe fonts, no <style> block, no <details>."""
     date_short = now.strftime("%B %-d, %Y")
-    edition_url = os.environ.get("EDITION_URL", DEFAULT_EDITION_URL).rstrip("/")
+    # `or` (not a get() default): the workflow passes ${{ vars.EDITION_URL }},
+    # which is an EMPTY string when the repo variable doesn't exist - that
+    # empty value produced the http:/// dead link in the 2026-08-05 email.
+    edition_url = (os.environ.get("EDITION_URL")
+                   or DEFAULT_EDITION_URL).rstrip("/")
     stats = data.get("stats", {})
     apply_n = stats.get("apply", 0)
 
