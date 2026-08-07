@@ -68,6 +68,11 @@ details.prompt[open] summary::before{content:"–"}
 details.prompt .inner{margin-top:12px;background:var(--surface);border:1px solid var(--line);padding:16px 18px}
 details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;white-space:pre-wrap;color:var(--ink-soft)}
 .copy{cursor:pointer;margin-top:14px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
+.actions{margin-top:8px}
+.saveb{cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border:1px solid var(--line);background:transparent;color:var(--ink-mute)}
+.saveb:hover{border-color:var(--brass);color:var(--brass-deep)}
+.saveb.on{border-color:var(--brass);background:var(--brass);color:var(--forest-deep)}
+.badge.tstat{background:var(--forest);color:var(--cream);border-color:var(--forest)}
 .addlist{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
 .addlist .k{font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
 .addlist ul{margin:7px 0 0;padding-left:20px}
@@ -110,6 +115,8 @@ footer .links a{color:var(--brass-soft)}
       <button class="chip" data-filter="articles">Articles only</button>
       <button class="chip" data-filter="ns">Nova Scotia</button>
       <button class="chip" data-filter="top">4&#9733; and up</button>
+      <button class="chip" data-filter="saved">&#9733; Saved</button>
+      <button class="chip" data-filter="applied">Applied</button>
       <div class="count" id="count"></div>
     </div>
   </div>
@@ -129,6 +136,7 @@ footer .links a{color:var(--brass-soft)}
   </div>
 </footer>
 
+<script>window.NC_CFG = {"webhook": "", "token": "", "csv": "", "sheet": ""};</script>
 <script>
 // Reads ./grove.json — same shape as before: { jobs: [...], articles: [...] }
 // job:     {date, score, tier, wildcard, title, company, location, salary, source, url, summary, why, kickoff_prompt}
@@ -140,20 +148,69 @@ var esc = function (s) {
 };
 var stars = function (n) { return n ? '\u2605'.repeat(n) + '\u2606'.repeat(5 - n) : ''; };
 
-var state = { q: '', filter: 'all', jobs: [], articles: [] };
+var state = { q: '', filter: 'all', jobs: [], articles: [], applied: {} };
+
+// Tracker identity + saved/applied sets --------------------------------------
+var cfg = window.NC_CFG || {};
+function normUrl(url) {
+  var u = String(url || '').trim();
+  var m = u.match(/linkedin\.com\/jobs\/view\/(?:[^\/?#]*?-)?(\d{6,})/i);
+  if (m) return 'linkedin:' + m[1];
+  u = u.split('#')[0].split('?')[0].replace(/\/+$/, '').toLowerCase();
+  return u.replace(/^https?:\/\/(www\.)?/, '');
+}
+function loadSaved() { try { return JSON.parse(localStorage.getItem('nc_saved') || '{}'); } catch (e) { return {}; } }
+function storeSaved(s) { try { localStorage.setItem('nc_saved', JSON.stringify(s)); } catch (e) {} }
+// The tracker sheet, published as CSV: "Job URL" + "Status" columns give the
+// Applied set (statuses past Saved). Absent config = filter uses localStorage
+// saves only.
+function loadTrackerCsv() {
+  if (!cfg.csv) return;
+  fetch(cfg.csv, { cache: 'no-cache' }).then(function (r) { return r.text(); }).then(function (text) {
+    var rows = text.split(/\r?\n/).map(function (line) {
+      var out = [], cur = '', inQ = false;
+      for (var i = 0; i < line.length; i++) {
+        var ch = line[i];
+        if (inQ) { if (ch === '"') { if (line[i + 1] === '"') { cur += '"'; i++; } else inQ = false; } else cur += ch; }
+        else if (ch === '"') inQ = true;
+        else if (ch === ',') { out.push(cur); cur = ''; }
+        else cur += ch;
+      }
+      out.push(cur); return out;
+    });
+    if (!rows.length) return;
+    var head = rows[0], iUrl = head.indexOf('Job URL'), iStatus = head.indexOf('Status');
+    if (iUrl < 0 || iStatus < 0) return;
+    rows.slice(1).forEach(function (r) {
+      var st = (r[iStatus] || '').trim();
+      if (st && st !== 'Saved' && r[iUrl]) state.applied[normUrl(r[iUrl])] = st;
+    });
+    render();
+  }).catch(function () {});
+}
 
 function jobRow(j) {
   var meta = [j.company, j.location, j.salary, j.source].filter(Boolean).map(esc).join(' &middot; ');
+  var nurl = normUrl(j.url);
+  var savedOn = !!loadSaved()[nurl];
+  var tstat = state.applied[nurl] || '';
   return '<article class="row">'
     + '<div class="rail">'
       + (j.date ? '<div class="date">' + esc(j.date) + '</div>' : '')
       + (j.score ? '<div class="stars">' + stars(j.score) + '</div>' : '')
       + (j.tier ? '<div class="badge">' + esc(j.tier) + '</div>' : '')
       + (j.wildcard ? '<div class="badge">Left field</div>' : '')
+      + (tstat ? '<div class="badge tstat">' + esc(tstat) + '</div>' : '')
     + '</div>'
     + '<div class="body">'
       + '<h4><a href="' + esc(j.url) + '" target="_blank" rel="noopener">' + esc(j.title) + '</a></h4>'
       + '<div class="meta">' + meta + '</div>'
+      + '<div class="actions"><button class="saveb' + (savedOn ? ' on' : '') + '" type="button"'
+        + ' data-nurl="' + esc(nurl) + '" data-url="' + esc(j.url) + '"'
+        + ' data-title="' + esc(j.title) + '" data-company="' + esc(j.company) + '"'
+        + ' data-location="' + esc(j.location) + '" data-salary="' + esc(j.salary) + '"'
+        + ' data-score="' + (j.score || '') + '" data-source="' + esc(j.source) + '">'
+        + (savedOn ? '&#9733; Saved' : '&#9734; Save') + '</button></div>'
       + (j.summary ? '<p class="summary">' + esc(j.summary) + '</p>' : '')
       + (j.why ? '<div class="block"><div class="k">Why</div><p>' + esc(j.why) + '</p></div>' : '')
       + (j.kickoff_prompt ? '<details class="prompt"><summary>Claude Project prompt</summary>'
@@ -188,6 +245,8 @@ function render() {
   if (f === 'articles') jobs = [];
   if (f === 'ns') { jobs = jobs.filter(function (j) { return /nova scotia|halifax|atlantic/i.test([j.tier, j.location].join(' ')); }); arts = []; }
   if (f === 'top') { jobs = jobs.filter(function (j) { return (j.score || 0) >= 4; }); arts = []; }
+  if (f === 'saved') { var s = loadSaved(); jobs = jobs.filter(function (j) { return s[normUrl(j.url)]; }); arts = []; }
+  if (f === 'applied') { jobs = jobs.filter(function (j) { return state.applied[normUrl(j.url)]; }); arts = []; }
 
   document.getElementById('count').textContent =
     jobs.length + ' job' + (jobs.length === 1 ? '' : 's') + ' \u00b7 ' + arts.length + ' article' + (arts.length === 1 ? '' : 's');
@@ -203,6 +262,39 @@ fetch('./grove.json', { cache: 'no-cache' })
   .then(function (r) { return r.json(); })
   .then(function (d) { state.jobs = d.jobs || []; state.articles = d.articles || []; render(); })
   .catch(function () { render(); });
+loadTrackerCsv();
+
+// Footer link to the tracker sheet (his source of truth), when configured.
+if (cfg.sheet) {
+  var links = document.querySelector('footer .links');
+  if (links) {
+    var a = document.createElement('a');
+    a.href = cfg.sheet; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'The Tracker';
+    links.appendChild(a);
+  }
+}
+
+// Save buttons: localStorage + fire-and-forget webhook POST.
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.saveb'); if (!b) return;
+  var s = loadSaved();
+  var on = !s[b.dataset.nurl];
+  if (on) s[b.dataset.nurl] = 1; else delete s[b.dataset.nurl];
+  storeSaved(s);
+  b.classList.toggle('on', on);
+  b.innerHTML = on ? '&#9733; Saved' : '&#9734; Save';
+  if (cfg.webhook) {
+    try {
+      fetch(cfg.webhook, { method: 'POST', mode: 'no-cors', body: JSON.stringify({
+        token: cfg.token, action: on ? 'save' : 'unsave', via: 'grove',
+        title: b.dataset.title, company: b.dataset.company,
+        location: b.dataset.location, salary: b.dataset.salary,
+        score: b.dataset.score, source: b.dataset.source, url: b.dataset.url
+      }) });
+    } catch (err) {}
+  }
+});
 
 document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
 document.getElementById('chips').addEventListener('click', function (e) {

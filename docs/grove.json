@@ -1087,6 +1087,227 @@
    "kickoff_prompt": "",
    "attachments": [],
    "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Chief Financial Officer",
+   "company": "Venor",
+   "location": "Bedford, Nova Scotia, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/chief-financial-officer-at-venor-4449202154",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 5,
+   "summary": "CFO search run by Venor out of Bedford, Nova Scotia, no compensation stated. Tier 1 location and your exact title.",
+   "why": "Nova Scotia CFO seat through the province's top executive search firm, which is precisely the door you want opened. Venor also tends to place across manufacturing and PE-backed mid-market clients.",
+   "watch_out": "Recruiter posting, so confirm the client's size, ownership and whether the seat owns the full P&L before you invest in a tailored package.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, client of Venor, Bedford, Nova Scotia (https://ca.linkedin.com/jobs/view/chief-financial-officer-at-venor-4449202154). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in, including how to approach the Venor consultant leading the search. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the Venor consultant's profile or bio if a name is listed on the posting"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Chief Financial Officer Commissionaires NS Bedford, Nova Scotia Permanent Executive & C-Suite Shardeigh & Anna View Role",
+   "company": "via Venor",
+   "location": "Atlantic Canada",
+   "url": "https://venor.ca/opportunities/chief-financial-officer-commissionaires-ns-bedford/",
+   "source": "Venor (recruiter)",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 5,
+   "summary": "CFO of Commissionaires Nova Scotia in Bedford, a permanent C-suite seat marketed by Venor. Tier 1 location and your core title.",
+   "why": "A Nova Scotia CFO role that puts you home and close to the numbers, with Venor as the intermediary you want on your side for future NS mandates.",
+   "watch_out": "Not-for-profit veteran services organization, so the pay band and pace may be more modest than a PE-backed industrial; ask early.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Commissionaires NS, Bedford, Nova Scotia via Venor (https://venor.ca/opportunities/chief-financial-officer-commissionaires-ns-bedford/). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Also draft a LinkedIn note to Shardeigh, the Venor consultant listed on this search. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the Venor consultant profiles for Shardeigh and Anna from the posting page"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Chief Financial Officer - Opportunities New Brunswick",
+   "company": "Royer Thompson",
+   "location": "Fredericton, New Brunswick, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/chief-financial-officer-opportunities-new-brunswick-at-royer-thompson-4450351506",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Eastern Canada",
+   "score": 4,
+   "summary": "CFO for Opportunities New Brunswick, recruited by Royer Thompson, based in Fredericton. Senior finance leadership in Eastern Canada, one tier below your Nova Scotia preference.",
+   "why": "Full CFO mandate in an agency where your KPI cascades, ERP work and governance reporting travel well, and Fredericton is inside your relocation zone.",
+   "watch_out": "Public-sector economic development agency, so expect a compensation grid and less of the PE or manufacturing texture you prefer.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Opportunities New Brunswick via Royer Thompson, Fredericton NB (https://ca.linkedin.com/jobs/view/chief-financial-officer-opportunities-new-brunswick-at-royer-thompson-4450351506). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Be direct about how a public agency CFO role fits my operating-company track record and my Nova Scotia relocation plan. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the Opportunities New Brunswick about page if you want the mandate reflected in the letter"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "The St. Paul Auto Group seeking Controller",
+   "company": "DealerRefresh",
+   "location": "St.-Paul, New Brunswick, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/the-st-paul-auto-group-seeking-controller-at-dealerrefresh-4450741812",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Eastern Canada",
+   "score": 3,
+   "summary": "Controller for the St. Paul Auto Group in northern New Brunswick, advertised through DealerRefresh. Tier 2 location, title a notch below your level.",
+   "why": "Dealer group controller work is hands-on and close to the numbers, which is what you said you want, but the scale is well under your recent scope.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L and the group's revenue scale; a small rural dealer group may not clear your salary floor.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller, St. Paul Auto Group via DealerRefresh, St.-Paul NB (https://ca.linkedin.com/jobs/view/the-st-paul-auto-group-seeking-controller-at-dealerrefresh-4450741812). Weight your answer toward telling me whether this is worth an evening given the group's likely size, the pay ceiling for a dealer controller, and how far it sits below my last P&L. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Contrôleur financier",
+   "company": "Aneyro Hotels",
+   "location": "Québec, Quebec, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/contr%C3%B4leur-financier-at-aneyro-hotels-4450335088",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Eastern Canada",
+   "score": 3,
+   "summary": "Financial controller for Aneyro Hotels in Quebec City, a founder-led hospitality group. Tier 2 location, French-language environment, title one notch down.",
+   "why": "Your bilingualism and hands-on controller roots fit, and founder-led is the ownership type you target, but hospitality is a sector stretch from industrial.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L, and check whether a hotel group at this scale can reach your $200,000 floor.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controleur financier, Aneyro Hotels, Quebec City (https://ca.linkedin.com/jobs/view/contr%C3%B4leur-financier-at-aneyro-hotels-4450335088). Weight your answer toward telling me if this is worth an evening: hospitality versus my industrial background, likely pay band, and whether the role really owns the full P&L. Note anything I should ask about growth or acquisition plans. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Manufacturing Finance Director",
+   "company": "Atlantic Group",
+   "location": "Massachusetts, United States",
+   "url": "https://www.linkedin.com/jobs/view/manufacturing-finance-director-at-atlantic-group-4450768757",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "Manufacturing Finance Director search run by recruiter Atlantic Group somewhere in Massachusetts. Strong sector match, but in-person Northeast US and a title a notch below yours.",
+   "why": "Manufacturing finance leadership is your home turf and your dual citizenship removes any work authorization friction.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L; also a Massachusetts relocation, which sits below your Canadian options, and your US floor is $250,000.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Manufacturing Finance Director, Atlantic Group (recruiter), Massachusetts (https://www.linkedin.com/jobs/view/manufacturing-finance-director-at-atlantic-group-4450768757). Weight your answer toward telling me if this is worth an evening given it is in-person in Massachusetts while my family plan points to Nova Scotia, and whether a Finance Director title likely carries full plant P&L ownership. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Corporate Controller",
+   "company": "Copley Controls",
+   "location": "Salem, NH",
+   "url": "https://www.linkedin.com/jobs/view/corporate-controller-at-copley-controls-4450314713",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "Corporate Controller at Copley Controls, a motion control manufacturer in Salem, New Hampshire. Real manufacturing scope, title one notch down, Northeast US in person.",
+   "why": "Mid-size industrial manufacturer, exactly the environment you know, and no visa issue as a dual citizen.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L rather than pure accounting; New Hampshire relocation runs against your Nova Scotia family priority and your US floor is $250,000.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Corporate Controller, Copley Controls, Salem NH (https://www.linkedin.com/jobs/view/corporate-controller-at-copley-controls-4450314713). Weight your answer toward telling me if this is worth an evening: controller scope versus my Business Line CFO track record, likely US pay band against my $250,000 floor, and the New England relocation. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Corporate Controller",
+   "company": "via Summit Search Group",
+   "location": "Atlantic Canada",
+   "url": "https://summitsearchgroup.com/job/corporate-controller-drayton-valley-ab-18221/",
+   "source": "Summit Search Group (recruiter)",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 2,
+   "summary": "Corporate Controller listed through Summit Search Group under an Atlantic Canada tag, but the posting URL points to Drayton Valley, Alberta.",
+   "why": "If the seat is genuinely in Drayton Valley it is in-person well outside your tiers, which makes it a non-starter.",
+   "watch_out": "Location conflict: the link reads Drayton Valley AB, not Atlantic Canada. Only worth a second look if Summit confirms an Atlantic Canada base.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "finance director",
+   "company": "P4G",
+   "location": " Dartmouth (NS)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50027416",
+   "source": "Job Bank (Canada)",
+   "salary": "$110,000.00 annually",
+   "tier": "Nova Scotia",
+   "score": 1,
+   "summary": "Finance Director title at P4G in Dartmouth, but the posting states $110,000 annually, less than half your Nova Scotia floor.",
+   "why": "Right city, right title family, wrong money by a wide margin.",
+   "watch_out": "Stated salary $110,000 CAD annually, far below your $200,000 floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "financial controller",
+   "company": "Millette et Fils ltée",
+   "location": " Lawrenceville (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50031405",
+   "source": "Job Bank (Canada)",
+   "salary": "$100,000.00 to $115,000.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Financial controller role at a small Quebec family firm with posted pay of $100,000 to $115,000.",
+   "why": "Compensation is roughly half your floor, so there is nothing to weigh here.",
+   "watch_out": "Stated salary $100,000 to $115,000 CAD annually, below your $200,000 floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "financial controller",
+   "company": "Mallette",
+   "location": " Trois-Rivières (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50028421",
+   "source": "Job Bank (Canada)",
+   "salary": "$70,000.00 to $83,000.00 hourly",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Controller seat at accounting firm Mallette in Trois-Rivieres with a posted range of $70,000 to $83,000.",
+   "why": "Public practice controller work at that pay level is nowhere near your operating CFO target.",
+   "watch_out": "Stated compensation $70,000 to $83,000, below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-07",
+   "title": "financial controller",
+   "company": "Gestion Providentia",
+   "location": " Gatineau (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50028116",
+   "source": "Job Bank (Canada)",
+   "salary": "$93,400.00 to $113,700.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Financial controller at Gestion Providentia in Gatineau with posted pay of $93,400 to $113,700.",
+   "why": "Below your floor and a mid-level scope, so not worth an evening.",
+   "watch_out": "Stated salary $93,400 to $113,700 CAD annually, below your $200,000 floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
   }
  ],
  "articles": [
@@ -1830,6 +2051,90 @@
    "title": "Inceptio Oil and Gas misses one deadline, receives another",
    "feed": "Halifax Examiner",
    "url": "https://www.halifaxexaminer.ca/economy/energy/inceptio-oil-and-gas-misses-one-deadline-receives-another/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "IBM Apptio helps CFOs connect AI spend to business value",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/ibm-apptio-helps-cfos-connect-ai-spend-business-value-uber/827376/",
+   "note": "A governance instrument you can name in an interview: tying AI expenditure to measurable business value is precisely the question a PE sponsor will put to a finance chief in the first ninety days."
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Zoetis nabs GE Health CFO for dual finance chief, COO role",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/zoetis-nabs-ge-health-cfo-dual-finance-chief-coo-role-comp-earnings/827371/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "N.S. Court of Appeal says province can't deny people in tents enhanced income support",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/ns-court-of-appeal-province-people-in-tents-enhanced-income-support-9.7299928?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Why Nova Scotia was chosen to test a new Ebola vaccine",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/why-nova-scotia-was-chosen-to-test-new-ebola-vaccine-9.7299588?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Urgent water main repair underway in Eastern Passage",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/water-main-repair-eastern-passage-9.7299828?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "'He just didn't deserve it': N.S. man sues province, health authority over son's death in custody",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/brandon-hendershot-lawsuit-9.7298314?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "When the plant can’t burn coal anymore, what’s a coal plant town to do?",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/when-the-plant-cant-burn-coal-anymore-whats-a-coal-plant-town-to-do-9.7297284?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "City workers remove unauthorized 'indoor voice' sign from Halifax-area park",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/unauthorized-indoor-voice-sign-removed-9.7299485?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Books & Backroads: Postcard from Louisbourg",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/player/play/9.7242046?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "A Call for New Attitudes in NS",
+   "feed": "Entrevestor (Atlantic startups)",
+   "url": "https://entrevestor.com/blog/a-call-for-new-attitudes-in-ns",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Nova Scotia SPCA now has control of enforcement, compliance of farm animals as it cuts back on contracts for dogs, cats",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/economy/natural-resources/agriculture-and-farming/nova-scotia-spca-now-has-control-of-enforcement-compliance-of-farm-animals-as-it-cuts-back-on-contracts-for-dogs-cats/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-07",
+   "title": "Here’s one reason for Brandon Klayme’s wrongful conviction. There are more.",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/morning-file/heres-one-reason-for-brandon-klaymes-wrongful-conviction-there-are-more/",
    "note": ""
   }
  ]
