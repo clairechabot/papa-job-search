@@ -92,6 +92,7 @@ Repo → **Settings → Secrets and variables → Actions → Variables** tab �
 | `SHEET_WEBHOOK_URL` | the Web app URL from Part 3 (ends `/exec`) |
 | `SHEET_CSV_URL` | the published-CSV URL from Part 4 |
 | `SHEET_TOKEN` | the random words you invented in Part 2 |
+| `SHEET_LINK_URL` | the sheet's address from the browser bar (docs.google.com/spreadsheets/d/…/edit) — puts a "The Tracker" button on the edition |
 
 Done. From the next evening edition: ☆ Save buttons write to the sheet,
 badges and the "In play" section appear, and the daily scans keep statuses

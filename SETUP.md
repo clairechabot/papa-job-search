@@ -26,6 +26,7 @@ Repo → **Settings → Secrets and variables → Actions**.
 | `SHEET_WEBHOOK_URL` | application-tracker webhook — see [SHEET-SETUP.md](SHEET-SETUP.md) |
 | `SHEET_CSV_URL` | tracker sheet's published-CSV URL — see SHEET-SETUP.md |
 | `SHEET_TOKEN` | the shared token from SHEET-SETUP.md Part 2 |
+| `SHEET_LINK_URL` | the sheet's normal browser URL (docs.google.com/spreadsheets/d/…/edit) — powers "The Tracker" buttons |
 
 ## 2. GitHub Pages (the full edition / Archive / Grove)
 
