@@ -15,14 +15,22 @@ every few months). Treat linkedin-auth.json like a password - never commit it.
 """
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-OUT = Path("linkedin-auth.json")
-
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--account", default="",
+                        help="e.g. 'marcel' - writes linkedin-auth-marcel.json "
+                             "(Marcel's session powers the application-tracker "
+                             "feed; the default file is the job-scan session)")
+    args = parser.parse_args()
+    out = Path(f"linkedin-auth-{args.account}.json" if args.account
+               else "linkedin-auth.json")
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()
@@ -30,10 +38,10 @@ def main() -> None:
         page.goto("https://www.linkedin.com/login")
         input("Log in to LinkedIn in the browser window, wait for the feed "
               "to load, then press Enter here... ")
-        context.storage_state(path=str(OUT))
+        context.storage_state(path=str(out))
         browser.close()
-    print(f"Saved session to {OUT.resolve()}")
-    print("Now: scp linkedin-auth.json <vm>:~/.config/linkedin-auth.json")
+    print(f"Saved session to {out.resolve()}")
+    print(f"Now: scp {out.name} <vm>:~/.config/{out.name}")
 
 
 if __name__ == "__main__":

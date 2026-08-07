@@ -16,12 +16,15 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import re
 import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from history import is_seen, job_fingerprint, load_history
+import requests
+
+from history import is_seen, job_fingerprint, load_history, normalize_url
 from sources import adzuna, ai_news, careerbeacon, job_bank, linkedin, meridia, recruiters
 
 HERE = Path(__file__).parent
@@ -90,6 +93,43 @@ def _load_pending() -> list[dict]:
     return []
 
 
+def download_tracker(now: datetime.datetime) -> None:
+    """Application-tracker read-back: pull the sheet's published CSV into
+    tracker_data.json for curate/webpage. `or`-guard (not a get default) -
+    the workflow passes the repo variable, which is EMPTY when unset."""
+    csv_url = os.environ.get("SHEET_CSV_URL") or ""
+    if not csv_url:
+        return
+    import csv as csvmod
+    import io
+
+    try:
+        resp = requests.get(csv_url, timeout=30)
+        resp.raise_for_status()
+        rows = []
+        for r in csvmod.DictReader(io.StringIO(resp.text)):
+            if not (r.get("Title") or r.get("Company")):
+                continue
+            rows.append({
+                "title": r.get("Title", ""), "company": r.get("Company", ""),
+                "url": r.get("Job URL", ""),
+                "normalized_url": normalize_url(r.get("Job URL", "")),
+                "fingerprint": job_fingerprint(
+                    {"company": r.get("Company", ""),
+                     "title": r.get("Title", "")}),
+                "status": r.get("Status", ""),
+                "applied_on": r.get("Applied on", ""),
+                "last_contact_on": r.get("Last contact on", ""),
+                "meeting_on": r.get("Meeting on", ""),
+                "contact_via": r.get("Contact via", ""),
+            })
+        (HERE / "tracker_data.json").write_text(
+            json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"[fetch] tracker: {len(rows)} tracked row(s)")
+    except Exception as e:  # noqa: BLE001 - boundary: external fetch
+        print(f"[fetch] tracker unavailable: {type(e).__name__}", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--scan-only", action="store_true",
@@ -137,6 +177,8 @@ def main() -> None:
         }, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"[fetch] scan-only: {len(jobs)} job(s) pending for the evening edition")
         return
+
+    download_tracker(now)
 
     ai_articles, ai_status = ai_news.fetch_articles(ai_news.AI_FEEDS)
     ai_articles = [a for a in ai_articles

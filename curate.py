@@ -278,7 +278,8 @@ def score_jobs(client, jobs: list[dict], profile: str) -> None:
 
 def pick_ai_articles(client, articles: list[dict],
                      recent_notes: list[str] | None = None,
-                     top_jobs: list[str] | None = None) -> tuple[list[dict], str]:
+                     top_jobs: list[str] | None = None,
+                     progress: str = "") -> tuple[list[dict], str]:
     if not articles:
         return [], ""
     listing = "\n".join(
@@ -290,7 +291,10 @@ def pick_ai_articles(client, articles: list[dict],
         client, PICKS_SYSTEM,
         f"ARTICLES:\n{listing}\n\nRECENT NOTES (do not repeat their themes or "
         f"structures):\n{recent}\n\nTONIGHT'S STRONGEST LEADS (usable as a "
-        f"theme): {tonight}",
+        f"theme): {tonight}"
+        + (f"\n\nHIS REAL PROGRESS (from the application tracker; usable as "
+           f"a theme, cite specifics sparingly): {progress}" if progress
+           else ""),
         PICKS_SCHEMA)
     if not result:
         return [], ""
@@ -329,7 +333,48 @@ def fetch_dad_joke(hist: dict) -> str:
     return ""
 
 
-def build_digest(gated: list[dict], total_read: int, one_action: str) -> list[dict]:
+def load_tracker() -> list[dict]:
+    """Rows from tracker_data.json (written by fetch.py from the sheet's
+    published CSV). Absent/broken file = empty: read-back quietly off."""
+    f = HERE / "tracker_data.json"
+    if not f.exists():
+        return []
+    try:
+        return json.loads(f.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001 - boundary: generated file
+        return []
+
+
+def tracker_progress(rows: list[dict]) -> tuple[str, str]:
+    """(digest-row value, Vern-context line) for live applications."""
+    live = [r for r in rows if r.get("status") in
+            ("Applied", "Heard back", "Interview", "Offer")]
+    if not live:
+        return "", ""
+    quiet_days = 0
+    for r in live:
+        if r.get("status") == "Applied" and r.get("applied_on") \
+                and not r.get("last_contact_on"):
+            try:
+                d = (datetime.date.today() - datetime.date.fromisoformat(
+                    r["applied_on"][:10])).days
+                quiet_days = max(quiet_days, d)
+            except ValueError:
+                pass
+    meetings = [r for r in live if r.get("status") == "Interview"]
+    value = f"{len(live)} application{'s' if len(live) != 1 else ''} live"
+    if meetings:
+        value += f", {len(meetings)} interview{'s' if len(meetings) != 1 else ''} booked"
+    if quiet_days >= 10:
+        value += f"; one quiet {quiet_days} days - a short follow-up is due"
+    context = "; ".join(
+        f"{r.get('title') or r.get('company')} at {r.get('company', '?')}: "
+        f"{r.get('status')}" for r in live[:5])
+    return value + ".", context
+
+
+def build_digest(gated: list[dict], total_read: int, one_action: str,
+                 inplay_value: str = "") -> list[dict]:
     """The 'Tonight in one minute' rows, shared by the email and the full
     edition so the two always agree."""
     scored = [j for j in gated if j.get("score")]
@@ -337,6 +382,8 @@ def build_digest(gated: list[dict], total_read: int, one_action: str) -> list[di
     apply_n = sum(1 for j in gated if (j.get("score") or 0) >= 4)
     ns = [j for j in gated if j.get("tier") == 1]
     rows = []
+    if inplay_value:
+        rows.append({"label": "In play", "value": inplay_value})
     if top and top["score"] >= 3:
         rows.append({"label": "Top pick",
                      "value": f"{top['title']} at {top.get('company', '?')}"
@@ -354,7 +401,7 @@ def build_digest(gated: list[dict], total_read: int, one_action: str) -> list[di
     rows.append({"label": "One action",
                  "value": one_action or "Open the full edition and give the "
                           "top pick ten unhurried minutes."})
-    return rows[:4]
+    return rows[:5]
 
 
 def main() -> None:
@@ -369,6 +416,25 @@ def main() -> None:
 
     gated = [j for j in data["jobs"] if gate(j)]
     print(f"[curate] gate: {len(gated)} passed, {len(data['jobs']) - len(gated)} rejected")
+
+    # Application tracker read-back: never re-pitch a job he's already
+    # applied to (or further along on) - it lives in the In-play section.
+    tracker_rows = load_tracker()
+    in_flight = {r.get("normalized_url") for r in tracker_rows
+                 if r.get("status") in ("Applied", "Heard back", "Interview",
+                                        "Offer", "Rejected")}
+    in_flight |= {r.get("fingerprint") for r in tracker_rows
+                  if r.get("status") in ("Applied", "Heard back", "Interview",
+                                         "Offer", "Rejected")}
+    from history import job_fingerprint, normalize_url
+    before = len(gated)
+    gated = [j for j in gated
+             if normalize_url(j.get("url", "")) not in in_flight
+             and job_fingerprint(j) not in in_flight]
+    if before != len(gated):
+        print(f"[curate] tracker: {before - len(gated)} job(s) he already "
+              f"applied to excluded from tonight's pitch")
+    inplay_value, progress = tracker_progress(tracker_rows)
 
     history_file = HERE / "history.json"
     hist = (json.loads(history_file.read_text(encoding="utf-8-sig"))
@@ -390,7 +456,8 @@ def main() -> None:
         top_jobs = [f"{j['title']} at {j.get('company', '?')}"
                     for j in gated if (j.get("score") or 0) >= 4]
         ai_picks, encouragement, one_action = pick_ai_articles(
-            client, data["ai_articles"], hist.get("recent_notes", []), top_jobs)
+            client, data["ai_articles"], hist.get("recent_notes", []),
+            top_jobs, progress)
         if encouragement:
             hist["recent_notes"] = (hist.get("recent_notes", [])
                                     + [encouragement])[-7:]
@@ -412,7 +479,8 @@ def main() -> None:
         "ns_articles": data.get("ns_articles", []),
         "encouragement": encouragement,
         "dad_joke": dad_joke,
-        "digest": build_digest(gated, len(data["jobs"]), one_action),
+        "digest": build_digest(gated, len(data["jobs"]), one_action,
+                               inplay_value),
         "stats": {
             "postings_read": len(data["jobs"]),
             "apply": sum(1 for j in gated if (j.get("score") or 0) >= 4),

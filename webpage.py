@@ -18,8 +18,11 @@ from __future__ import annotations
 import datetime
 import html
 import json
+import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from history import job_fingerprint, normalize_url
 
 HERE = Path(__file__).parent
 CURATED_FILE = HERE / "curated_data.json"
@@ -185,6 +188,14 @@ details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1
 .copy{cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
 .copy:hover{background:var(--brass);color:var(--forest-deep)}
 .copyhint{font-size:12px;color:var(--ink-mute)}
+/* save button + tracker badges */
+.actions{margin-top:10px}
+.saveb{cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--line);background:transparent;color:var(--ink-mute)}
+.saveb:hover{border-color:var(--brass);color:var(--brass-deep)}
+.saveb.on{border-color:var(--brass);background:var(--brass);color:var(--forest-deep)}
+.badge.tstat{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.inplay-status{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep)}
+.inplay-quiet{color:var(--clay-deep)}
 .addlist{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
 .addlist .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
 .addlist ul{margin:8px 0 0;padding-left:20px}
@@ -231,6 +242,35 @@ document.addEventListener('click', function (e) {
   var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy prompt'; }, 1600); };
   if (navigator.clipboard) navigator.clipboard.writeText(pre.textContent).then(done, done); else done();
 });
+// Save buttons: localStorage immediately, then fire-and-forget to the
+// tracker sheet's webhook when configured (window.NC_CFG, injected at
+// build time from repo variables). Browser-only mode otherwise.
+(function () {
+  var KEY = 'nc_saved';
+  var cfg = window.NC_CFG || {};
+  function loadSaved() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } }
+  function storeSaved(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function paint(b, on) { b.classList.toggle('on', on); b.innerHTML = on ? '&#9733; Saved' : '&#9734; Save'; }
+  var saved = loadSaved();
+  document.querySelectorAll('.saveb').forEach(function (b) { paint(b, !!saved[b.dataset.nurl]); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.saveb'); if (!b) return;
+    var s = loadSaved();
+    var on = !s[b.dataset.nurl];
+    if (on) s[b.dataset.nurl] = 1; else delete s[b.dataset.nurl];
+    storeSaved(s); paint(b, on);
+    if (cfg.webhook) {
+      try {
+        fetch(cfg.webhook, { method: 'POST', mode: 'no-cors', body: JSON.stringify({
+          token: cfg.token, action: on ? 'save' : 'unsave', via: 'edition',
+          title: b.dataset.title, company: b.dataset.company,
+          location: b.dataset.location, salary: b.dataset.salary,
+          score: b.dataset.score, source: b.dataset.source, url: b.dataset.url
+        }) });
+      } catch (err) {}
+    }
+  });
+})();
 </script>
 """
 
@@ -249,7 +289,46 @@ FOOTER = """
 </footer>
 """
 
-ROMAN = ["I", "II", "III", "IV", "V", "VI"]
+ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII"]
+
+# ---------------------------------------------------------------------------
+# Tracker read-back (fetch.py downloads the published sheet CSV into
+# tracker_data.json when SHEET_CSV_URL is configured; absent file = feature
+# quietly off). TRACKER maps normalized url / fingerprint -> row dict.
+# ---------------------------------------------------------------------------
+TRACKER_FILE = Path(__file__).parent / "tracker_data.json"
+TRACKER: dict = {"rows": [], "by_id": {}}
+
+
+def load_tracker() -> None:
+    if not TRACKER_FILE.exists():
+        return
+    try:
+        rows = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001 - boundary: generated file
+        return
+    TRACKER["rows"] = rows
+    for r in rows:
+        if r.get("normalized_url"):
+            TRACKER["by_id"][r["normalized_url"]] = r
+        if r.get("fingerprint"):
+            TRACKER["by_id"][r["fingerprint"]] = r
+
+
+def tracker_status(job: dict) -> str:
+    r = (TRACKER["by_id"].get(normalize_url(job.get("url", "")))
+         or TRACKER["by_id"].get(job_fingerprint(job)))
+    return (r or {}).get("status", "")
+
+
+# Config the page's client script needs; injected at build time from repo
+# variables. Empty values (var not set) leave buttons in browser-only mode -
+# `or` guards per the EDITION_URL empty-string lesson.
+def nc_cfg() -> str:
+    cfg = {"webhook": os.environ.get("SHEET_WEBHOOK_URL") or "",
+           "token": os.environ.get("SHEET_TOKEN") or "",
+           "csv": os.environ.get("SHEET_CSV_URL") or ""}
+    return f"<script>window.NC_CFG = {json.dumps(cfg)};</script>"
 
 
 def esc(t) -> str:
@@ -275,11 +354,24 @@ def job_row(job: dict, number: int, with_prompt: bool = True) -> str:
     region = region_label(job)
     if region:
         rail.append(f'<div class="badge">{esc(region)}</div>')
+    tstat = tracker_status(job)
+    if tstat:
+        rail.append(f'<div class="badge tstat">{esc(tstat)}</div>')
     meta = " · ".join(b for b in (job.get("company"), job.get("location"),
                                   job.get("salary"), job.get("source")) if b)
+    save_btn = (f'<div class="actions"><button class="saveb" type="button" '
+                f'data-nurl="{esc(normalize_url(job.get("url", "")))}" '
+                f'data-url="{esc(job.get("url", ""))}" '
+                f'data-title="{esc(job.get("title", ""))}" '
+                f'data-company="{esc(job.get("company", ""))}" '
+                f'data-location="{esc(job.get("location", ""))}" '
+                f'data-salary="{esc(job.get("salary", ""))}" '
+                f'data-score="{job.get("score") or ""}" '
+                f'data-source="{esc(job.get("source", ""))}">'
+                f'&#9734; Save</button></div>')
     body = [f'<h4><a href="{esc(job.get("url", ""))}" target="_blank" '
             f'rel="noopener">{esc(job.get("title", "Untitled role"))}</a></h4>',
-            f'<div class="meta">{esc(meta)}</div>']
+            f'<div class="meta">{esc(meta)}</div>', save_btn]
     if job.get("summary"):
         body.append(f'<p class="summary">{esc(job["summary"])}</p>')
     if job.get("why"):
@@ -321,6 +413,37 @@ def job_row(job: dict, number: int, with_prompt: bool = True) -> str:
             f'<div class="body">{"".join(body)}</div></article>')
 
 
+def inplay_row(r: dict, number: int) -> str:
+    """One tracked application in the In-play section."""
+    line, quiet = "", False
+    if r.get("applied_on"):
+        try:
+            days = (datetime.date.today()
+                    - datetime.date.fromisoformat(r["applied_on"][:10])).days
+            line = f"Applied {r['applied_on'][:10]} ({days} days ago)"
+            quiet = (r.get("status") == "Applied" and days >= 10
+                     and not r.get("last_contact_on"))
+        except ValueError:
+            line = f"Applied {r['applied_on'][:10]}"
+    bits = [b for b in (line,
+                        f"last contact {r['last_contact_on'][:10]}"
+                        if r.get("last_contact_on") else "",
+                        f"meeting {r['meeting_on'][:10]}"
+                        if r.get("meeting_on") else "") if b]
+    body = [f'<h4><a href="{esc(r.get("url", "") or "#")}" target="_blank" '
+            f'rel="noopener">{esc(r.get("title") or r.get("company", ""))}</a></h4>',
+            f'<div class="meta">{esc(" · ".join(x for x in (r.get("company"), ", ".join(bits)) if x))}</div>']
+    if quiet:
+        body.append('<div class="watch"><div class="k">Gone quiet</div>'
+                    '<p>No response in 10+ days. Worth a short follow-up '
+                    'note - ask Vern in the Project to draft it.</p></div>')
+    rail = [f'<div class="no">No. {number:02d}</div>',
+            f'<div class="inplay-status{" inplay-quiet" if quiet else ""}">'
+            f'{esc(r.get("status", ""))}</div>']
+    return (f'<article class="job"><div class="rail">{"".join(rail)}</div>'
+            f'<div class="body">{"".join(body)}</div></article>')
+
+
 def article_row(a: dict) -> str:
     body = [f'<h4><a href="{esc(a.get("url", ""))}" target="_blank" '
             f'rel="noopener">{esc(a.get("title", ""))}</a></h4>',
@@ -358,11 +481,19 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
     articles = data.get("ai_picks", []) + [
         a for a in data.get("ai_articles", []) if a["url"] not in picks][:12]
 
+    inplay = [r for r in TRACKER["rows"]
+              if r.get("status") in ("Applied", "Heard back", "Interview",
+                                     "Offer")]
+
     # Tabs + panels, empty sections dropped (tab and panel together).
     sections = [
         ("apply", "Apply-worthy",
          "The seats that clear the bar tonight. Start at the top and work down.",
          [job_row(j, i + 1) for i, j in enumerate(apply)]),
+        ("inplay", "In play",
+         "Every live application, tracked automatically - applies, replies "
+         "and meetings detected from email, calendar and LinkedIn.",
+         [inplay_row(r, i + 1) for i, r in enumerate(inplay)]),
         ("maybe", "Worth a look",
          "Real mandates with one thing to verify before you spend an evening on them.",
          [job_row(j, i + 1) for i, j in enumerate(maybe)]),
@@ -382,9 +513,9 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
           f'job sections automatically when they match.</p></div></article>'
           for i, (n, where, u) in enumerate(FIRMS)]),
     ]
-    titles = {"apply": "Apply-worthy", "maybe": "Worth a look",
-              "screened": "Screened out", "reading": "Reading list",
-              "recruiters": "Recruiter watch"}
+    titles = {"apply": "Apply-worthy", "inplay": "In play",
+              "maybe": "Worth a look", "screened": "Screened out",
+              "reading": "Reading list", "recruiters": "Recruiter watch"}
     present = [(pid, title, lede, rows) for pid, title, lede, rows in sections
                if rows]
     tabs, panels = [], []
@@ -480,6 +611,7 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
 {"".join(panels)}
 </main>
 {FOOTER}
+{nc_cfg()}
 {INDEX_SCRIPTS}
 </body>
 </html>'''
@@ -565,13 +697,19 @@ def update_grove(data: dict, now: datetime.datetime) -> None:
 
 
 def build_grove_page() -> None:
-    """The Grove - template applied verbatim (it reads ./grove.json)."""
+    """The Grove - template applied verbatim except the __NC_CFG__ token,
+    which receives the webhook/CSV config (empty strings = features off)."""
     template = (Path(__file__).parent / "templates" / "grove.html")
-    (DOCS / "grove.html").write_text(
-        template.read_text(encoding="utf-8"), encoding="utf-8")
+    cfg = {"webhook": os.environ.get("SHEET_WEBHOOK_URL") or "",
+           "token": os.environ.get("SHEET_TOKEN") or "",
+           "csv": os.environ.get("SHEET_CSV_URL") or ""}
+    html_text = template.read_text(encoding="utf-8").replace(
+        "__NC_CFG__", json.dumps(cfg))
+    (DOCS / "grove.html").write_text(html_text, encoding="utf-8")
 
 
 def main() -> None:
+    load_tracker()
     data = json.loads(CURATED_FILE.read_text(encoding="utf-8"))
     now = datetime.datetime.now(HALIFAX)
     DOCS.mkdir(exist_ok=True)

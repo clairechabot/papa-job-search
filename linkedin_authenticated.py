@@ -20,9 +20,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
-import random
 import sys
-import time
 from pathlib import Path
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
@@ -50,8 +48,12 @@ SEARCHES = [
 ]
 
 
-def _pause() -> None:
-    time.sleep(random.uniform(2.5, 6.0))  # human-ish pacing
+from linkedin_common import linkedin_page, pause as _pause  # noqa: E402
+from linkedin_common import goto as _common_goto  # noqa: E402
+
+
+def _goto(page, url: str, what: str) -> bool:
+    return _common_goto(page, url, what, tag="linkedin-auth")
 
 
 # LinkedIn's job cards have gone through several DOM generations; match any.
@@ -61,65 +63,10 @@ LINK_SELECTOR = ("a.job-card-container__link, a.job-card-list__title--link, "
                  "a[href*='/jobs/view/']")
 
 
-def _goto(page, url: str, what: str) -> bool:
-    """LinkedIn pages stream requests forever, so the 'load' event routinely
-    never fires - wait for DOM only, and never let one slow page kill the
-    whole scan."""
-    try:
-        page.goto(url, timeout=45000, wait_until="domcontentloaded")
-        return True
-    except Exception as e:  # noqa: BLE001 - boundary: flaky remote site
-        print(f"[linkedin-auth] goto failed ({what}): {type(e).__name__}",
-              flush=True)
-        return False
-
-
 def scrape(max_detail: int) -> list[dict]:
-    from playwright.sync_api import sync_playwright
-
     jobs: dict[str, dict] = {}
-    with sync_playwright() as p:
-        # dev-shm is tiny on small VMs; without this flag Chromium crashes
-        # or crawls on a 1GB droplet.
-        browser = p.chromium.launch(
-            headless=True,
-            args=["--disable-dev-shm-usage", "--disable-gpu",
-                  "--disable-blink-features=AutomationControlled"])
-        # Present the same fingerprint as the Windows Chrome that captured
-        # the session - a mismatched UA from a datacenter IP is what trips
-        # LinkedIn's "confirm it's you" wall.
-        context = browser.new_context(
-            storage_state=str(AUTH_FILE),
-            user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                        "AppleWebKit/537.36 (KHTML, like Gecko) "
-                        "Chrome/151.0.0.0 Safari/537.36"),
-            viewport={"width": 1600, "height": 900},
-            locale="en-US",
-            timezone_id="America/Toronto")
-        # Skip images/media/fonts: halves memory and load time, and the
-        # scraper only reads text anyway.
-        context.route(
-            "**/*",
-            lambda route: route.abort()
-            if route.request.resource_type in ("image", "media", "font")
-            else route.continue_())
-        page = context.new_page()
-
-        # Session sanity check.
-        if not _goto(page, "https://www.linkedin.com/feed/", "feed"):
-            print("[linkedin-auth] could not reach LinkedIn - skipping run",
-                  file=sys.stderr)
-            return []
-        _pause()
-        if any(marker in page.url for marker in ("/login", "authwall",
-                                                 "checkpoint")):
-            kind = ("security checkpoint (approve the 'new sign-in' prompt "
-                    "on the LinkedIn account, then re-run)"
-                    if "checkpoint" in page.url else "EXPIRED")
-            print(f"[linkedin-auth] session {kind} - redirected to "
-                  f"{page.url[:100]}", file=sys.stderr)
-            print("[linkedin-auth] if this persists: re-run linkedin_auth.py "
-                  "locally and re-upload linkedin-auth.json", file=sys.stderr)
+    with linkedin_page(AUTH_FILE, tag="linkedin-auth") as page:
+        if page is None:
             return []
 
         for keywords, location, remote in SEARCHES:
@@ -203,7 +150,6 @@ def scrape(max_detail: int) -> list[dict]:
             except Exception as e:  # noqa: BLE001 - boundary: DOM drift
                 print(f"[linkedin-auth] detail failed for {job['url']}: "
                       f"{type(e).__name__}", flush=True)
-        browser.close()
     return list(jobs.values())
 
 
