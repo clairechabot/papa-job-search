@@ -54,6 +54,7 @@ jobs:
       SHEET_WEBHOOK_URL: ${{ vars.SHEET_WEBHOOK_URL }}
       SHEET_CSV_URL:     ${{ vars.SHEET_CSV_URL }}
       SHEET_TOKEN:       ${{ vars.SHEET_TOKEN }}
+      SHEET_LINK_URL:    ${{ vars.SHEET_LINK_URL }}
     steps:
       - name: Season guard - skip the wrong-DST cron firing
         if: github.event_name == 'schedule'

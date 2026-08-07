@@ -264,6 +264,17 @@ fetch('./grove.json', { cache: 'no-cache' })
   .catch(function () { render(); });
 loadTrackerCsv();
 
+// Footer link to the tracker sheet (his source of truth), when configured.
+if (cfg.sheet) {
+  var links = document.querySelector('footer .links');
+  if (links) {
+    var a = document.createElement('a');
+    a.href = cfg.sheet; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'The Tracker';
+    links.appendChild(a);
+  }
+}
+
 // Save buttons: localStorage + fire-and-forget webhook POST.
 document.addEventListener('click', function (e) {
   var b = e.target.closest('.saveb'); if (!b) return;

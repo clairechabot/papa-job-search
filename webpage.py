@@ -105,6 +105,8 @@ a:hover{color:var(--clay)}
 .cover .tagline{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,26px);color:var(--cream-mute);margin-top:12px}
 .cover .stats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;margin-top:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mute)}
 .cover .stats .dot{width:4px;height:4px;border-radius:50%;background:var(--brass-soft)}
+.trackbtn{display:inline-block;margin-top:24px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);border:1px solid var(--brass);padding:11px 22px}
+.trackbtn:hover{background:var(--brass);color:var(--forest-deep)}
 
 /* the daily groaner (Marcel's request: one fresh dad joke per edition) */
 .groaner{max-width:720px;margin:0 auto;padding:38px 40px 0;text-align:center}
@@ -274,7 +276,16 @@ document.addEventListener('click', function (e) {
 </script>
 """
 
-FOOTER = """
+# The sheet's human URL (browser address bar), distinct from SHEET_CSV_URL
+# (the machine-readable published-CSV endpoint). Unset = no link anywhere.
+def sheet_link() -> str:
+    return os.environ.get("SHEET_LINK_URL") or ""
+
+
+def footer() -> str:
+    tracker = (f'\n      <a href="{esc(sheet_link())}" target="_blank" '
+               f'rel="noopener">The Tracker</a>' if sheet_link() else "")
+    return f"""
 <footer>
   <div class="in">
     <div class="rule"><i></i><b></b><i></i></div>
@@ -283,7 +294,7 @@ FOOTER = """
     <div class="links">
       <a href="./index.html">Today</a>
       <a href="./archive.html">The Archive</a>
-      <a href="./grove.html">The Grove</a>
+      <a href="./grove.html">The Grove</a>{tracker}
     </div>
   </div>
 </footer>
@@ -327,7 +338,8 @@ def tracker_status(job: dict) -> str:
 def nc_cfg() -> str:
     cfg = {"webhook": os.environ.get("SHEET_WEBHOOK_URL") or "",
            "token": os.environ.get("SHEET_TOKEN") or "",
-           "csv": os.environ.get("SHEET_CSV_URL") or ""}
+           "csv": os.environ.get("SHEET_CSV_URL") or "",
+           "sheet": os.environ.get("SHEET_LINK_URL") or ""}
     return f"<script>window.NC_CFG = {json.dumps(cfg)};</script>"
 
 
@@ -492,7 +504,10 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
          [job_row(j, i + 1) for i, j in enumerate(apply)]),
         ("inplay", "In play",
          "Every live application, tracked automatically - applies, replies "
-         "and meetings detected from email, calendar and LinkedIn.",
+         "and meetings detected from email, calendar and LinkedIn."
+         + (f' The full log lives in <a href="{esc(sheet_link())}" '
+            f'target="_blank" rel="noopener">The Tracker</a>.'
+            if sheet_link() else ""),
          [inplay_row(r, i + 1) for i, r in enumerate(inplay)]),
         ("maybe", "Worth a look",
          "Real mandates with one thing to verify before you spend an evening on them.",
@@ -533,6 +548,10 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
         for d in data.get("digest", []))
 
     # Top pick.
+    tracker_btn = (f'<a class="trackbtn" href="{esc(sheet_link())}" '
+                   f'target="_blank" rel="noopener">The Tracker &#8599;</a>'
+                   if sheet_link() else "")
+
     joke_html = ""
     if data.get("dad_joke"):
         joke_html = f'''
@@ -587,6 +606,7 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
       <span>{stats.get("apply", 0)} apply-worthy</span><span class="dot"></span>
       <span>{stats.get("home", 0)} in Nova Scotia</span>
     </div>
+    {tracker_btn}
   </div>
 </header>
 
@@ -610,7 +630,7 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
 <main class="wrap">
 {"".join(panels)}
 </main>
-{FOOTER}
+{footer()}
 {nc_cfg()}
 {INDEX_SCRIPTS}
 </body>
@@ -649,7 +669,7 @@ main.wrap{{padding-top:36px}}
   <div class="list" style="margin-top:30px">{rows or
     '<article class="job"><div class="body"><p class="summary">Nothing yet.</p></div></article>'}</div>
 </main>
-{FOOTER}
+{footer()}
 </body></html>'''
     (DOCS / "archive.html").write_text(body, encoding="utf-8")
 
@@ -702,7 +722,8 @@ def build_grove_page() -> None:
     template = (Path(__file__).parent / "templates" / "grove.html")
     cfg = {"webhook": os.environ.get("SHEET_WEBHOOK_URL") or "",
            "token": os.environ.get("SHEET_TOKEN") or "",
-           "csv": os.environ.get("SHEET_CSV_URL") or ""}
+           "csv": os.environ.get("SHEET_CSV_URL") or "",
+           "sheet": os.environ.get("SHEET_LINK_URL") or ""}
     html_text = template.read_text(encoding="utf-8").replace(
         "__NC_CFG__", json.dumps(cfg))
     (DOCS / "grove.html").write_text(html_text, encoding="utf-8")

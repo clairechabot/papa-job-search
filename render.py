@@ -54,6 +54,10 @@ def build_email(data: dict, now: datetime.datetime) -> tuple[str, str]:
     # empty value produced the http:/// dead link in the 2026-08-05 email.
     edition_url = (os.environ.get("EDITION_URL")
                    or DEFAULT_EDITION_URL).rstrip("/")
+    sheet_url = os.environ.get("SHEET_LINK_URL") or ""
+    tracker_link = (f' &nbsp;&middot;&nbsp;\n      <a href="{sheet_url}" '
+                    f'style="color:#984417;text-decoration:none;">'
+                    f'The Tracker</a>' if sheet_url else "")
     stats = data.get("stats", {})
     apply_n = stats.get("apply", 0)
 
@@ -112,7 +116,7 @@ def build_email(data: dict, now: datetime.datetime) -> tuple[str, str]:
     <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:15.5px;line-height:1.6;color:#79735C;padding-top:18px;">The full edition has every job with Vern's notes and Claude prompts, the recruiter watch and the complete reading list.</p>
     <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#79735C;padding-top:18px;">
       <a href="{edition_url}/archive.html" style="color:#984417;text-decoration:none;">The Archive</a> &nbsp;&middot;&nbsp;
-      <a href="{edition_url}/grove.html" style="color:#984417;text-decoration:none;">The Grove</a>
+      <a href="{edition_url}/grove.html" style="color:#984417;text-decoration:none;">The Grove</a>{tracker_link}
     </div>
   </td></tr>
 
