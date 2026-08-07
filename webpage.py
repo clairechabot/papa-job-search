@@ -103,6 +103,10 @@ a:hover{color:var(--clay)}
 .cover .stats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;margin-top:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mute)}
 .cover .stats .dot{width:4px;height:4px;border-radius:50%;background:var(--brass-soft)}
 
+/* the daily groaner (Marcel's request: one fresh dad joke per edition) */
+.groaner{max-width:720px;margin:0 auto;padding:38px 40px 0;text-align:center}
+.groaner p{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.6;color:var(--ink-soft);margin-top:12px}
+
 /* intro: digest only (Vern's note removed from the full edition) */
 .intro{max-width:720px;margin:0 auto;padding:44px 40px 0}
 .digest{min-width:0}
@@ -398,6 +402,14 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
         for d in data.get("digest", []))
 
     # Top pick.
+    joke_html = ""
+    if data.get("dad_joke"):
+        joke_html = f'''
+<div class="groaner">
+  <div class="eyebrow">The daily groaner</div>
+  <p>{esc(data["dad_joke"])}</p>
+</div>'''
+
     top_html = ""
     top = next(iter(apply), None)
     if top:
@@ -447,6 +459,7 @@ def build_edition(data: dict, now: datetime.datetime) -> str:
   </div>
 </header>
 
+{joke_html}
 <div class="intro">
   <aside class="digest">
     <div class="eyebrow" style="margin-bottom:16px">Tonight in one minute</div>

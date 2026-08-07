@@ -31,15 +31,36 @@ def job_fingerprint(job: dict) -> str:
     return f"{normalize(job.get('company', ''))}|{normalize(job.get('title', ''))}"
 
 
+# The same LinkedIn posting arrives under multiple URLs - the guest layer
+# sees ca.linkedin.com/jobs/view/<title-slug>-<id> while the authenticated
+# scan sees linkedin.com/jobs/view/<id>/ - which let the Placemaking 4G CFO
+# posting repeat across editions (2026-08-06 feedback). Collapse them to the
+# numeric job id; everything else gets scheme/www/query/slash-insensitive.
+LINKEDIN_ID = re.compile(r"linkedin\.com/jobs/view/(?:[^/?#]*?-)?(\d{6,})", re.I)
+
+
+def normalize_url(url: str) -> str:
+    u = (url or "").strip()
+    m = LINKEDIN_ID.search(u)
+    if m:
+        return f"linkedin:{m.group(1)}"
+    u = u.split("#")[0].split("?")[0].rstrip("/").lower()
+    return re.sub(r"^https?://(www\.)?", "", u)
+
+
 def load_history() -> dict:
     """Return {job_fingerprints: set, job_urls: set, ai_article_urls: set}.
     Missing buckets default to empty so an older/absent history.json loads."""
     data = {}
     if HISTORY_FILE.exists():
         data = json.loads(HISTORY_FILE.read_text(encoding="utf-8-sig"))
+    urls = set(data.get("job_urls", []))
+    # Entries recorded before normalize_url existed are raw; index their
+    # normalized forms too so a variant URL of an already-seen job matches.
+    urls |= {normalize_url(u) for u in list(urls)}
     return {
         "job_fingerprints": set(data.get("job_fingerprints", [])),
-        "job_urls": set(data.get("job_urls", [])),
+        "job_urls": urls,
         "ai_article_urls": set(data.get("ai_article_urls", [])),
     }
 
@@ -57,11 +78,14 @@ def save_history(history: dict) -> None:
 
 
 def is_seen(job: dict, history: dict) -> bool:
-    return (job.get("url") in history["job_urls"]
+    url = job.get("url", "")
+    return (url in history["job_urls"]
+            or normalize_url(url) in history["job_urls"]
             or job_fingerprint(job) in history["job_fingerprints"])
 
 
 def mark_seen(job: dict, history: dict) -> None:
     if job.get("url"):
         history["job_urls"].add(job["url"])
+        history["job_urls"].add(normalize_url(job["url"]))
     history["job_fingerprints"].add(job_fingerprint(job))
