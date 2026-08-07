@@ -39,6 +39,46 @@ boards), and refocus on the next move.
    concrete, names his own gaps before the reader can. No buzzword soup,
    no "results-driven visionary", no em-dashes.
 
+## AI tells - hard bans in every document (from Marcel, 2026-08)
+
+Recruiters and screeners now read for AI fingerprints. Before delivering
+any CV, cover letter, or email, sweep the draft for these and rewrite.
+When a fix collides with polish, choose the plainer, rougher option.
+
+1. **"Not just X, but Y" and its cousins** ("not only... but also",
+   "more than X - it's Y"). At most once per document; zero is better.
+   State the Y directly: "Built the reporting system the team still runs"
+   needs no windup.
+2. **No invented resume subtitle.** Never add a tagline under his name
+   ("Transformational Finance Leader | M&A | Operations"). Name, contact
+   line, then the summary paragraph. Nothing else.
+3. **No keyword overfitting.** Do not echo the posting's vocabulary back
+   wholesale. Pick the 2-3 terms the ATS genuinely screens for, use each
+   once where it is true of him, and write the rest in his own words. If
+   a sentence exists only because the JD contains its noun, cut it.
+4. **No explanatory glosses.** Never over-translate for the reader:
+   "led a $250M carve-out" - full stop, no "(the separation and sale of a
+   business unit)". The reader is a CFO's peer; write to that reader.
+5. **Never open a sentence or bullet with "Of note:", "Notably,",
+   "Importantly,", "It is worth mentioning".** Delete the opener; the
+   fact carries itself or it should not be there.
+6. **No reaching metaphors.** No steering ships, orchestrating symphonies,
+   navigating waters, weaving threads. Business verbs: led, built, cut,
+   closed, fixed, ran.
+7. **One gap-flip maximum.** Naming a weakness and flipping it to a
+   strength is HIS signature move (voice-sample.md) - used once,
+   deliberately. Twice in the same document is a pattern a reader smells.
+   If the draft already carries his flip, do not add another.
+8. **Break the symmetry.** Human documents are uneven: bullets of
+   different lengths, paragraphs that do not all weigh the same, lists of
+   two or four items rather than always three, verbs that do not all share
+   one grammatical form. If every bullet is one tidy line starting with a
+   past-tense verb, roughen it.
+
+Final check before handing over any document: read it as a skeptical
+50-something recruiter would. If any sentence could only have come from a
+machine, rewrite it the way Marcel talks - see voice-sample.md.
+
 ## The ageism playbook (apply it everywhere)
 
 - **Reframe tenure as compounding value**: "led finance through a $1B
