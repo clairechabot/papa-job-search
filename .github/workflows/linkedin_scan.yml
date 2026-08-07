@@ -42,6 +42,13 @@ jobs:
       - name: VM-only sources (CareerBeacon 403s GitHub's IPs)
         run: python3 vm_sources.py
 
+      - name: Application tracker feed (Marcel's LinkedIn, read-only)
+        env:
+          SHEET_WEBHOOK_URL: ${{ vars.SHEET_WEBHOOK_URL }}
+          SHEET_TOKEN:       ${{ vars.SHEET_TOKEN }}
+          SHEET_CSV_URL:     ${{ vars.SHEET_CSV_URL }}
+        run: python3 linkedin_tracker.py
+
       - name: Commit pending pool
         run: |
           git config user.name "vern-bot"
