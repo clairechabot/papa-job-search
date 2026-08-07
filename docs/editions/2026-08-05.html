@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Next Chapter — August 5, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFE7D6;--paper-deep:#E5DCC4;--surface:#FCF7EB;
+  --ink:#1B2716;--ink-soft:#3C4433;--ink-mute:#79735C;
+  --forest:#1E2E1A;--forest-deep:#162313;
+  --brass:#C09433;--brass-deep:#A87E28;--brass-soft:#D9B968;
+  --clay:#B6541F;--clay-deep:#984417;
+  --line:#DCD0B4;--line-on-dark:rgba(216,185,104,.32);
+  --cream:#F2EAD6;--cream-mute:#C6C3A6;
+  --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;overflow-wrap:break-word}
+main{flex:1 0 auto}
+a{color:var(--clay-deep);text-decoration:none}
+a:hover{color:var(--clay)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-deep)}
+.eyebrow::before,.eyebrow::after{content:"";width:6px;height:6px;background:var(--brass);transform:rotate(45deg);flex:none}
+.eyebrow.plain::before,.eyebrow.plain::after{display:none}
+
+/* masthead */
+.cover{position:relative;background:var(--forest);color:var(--cream);text-align:center;padding:64px 40px 54px;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:14px;border:1px solid var(--line-on-dark)}
+.cover::after{content:"";position:absolute;inset:19px;border:1px solid rgba(216,185,104,.14)}
+.cover-in{position:relative}
+.cover .eyebrow{color:var(--brass-soft)}
+.cover .eyebrow::before,.cover .eyebrow::after{background:var(--brass-soft)}
+.cover h1{font-family:var(--display);font-weight:600;font-size:clamp(52px,8vw,96px);line-height:.95;margin-top:18px}
+.cover .tagline{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,26px);color:var(--cream-mute);margin-top:12px}
+.cover .stats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;margin-top:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mute)}
+.cover .stats .dot{width:4px;height:4px;border-radius:50%;background:var(--brass-soft)}
+
+/* intro: digest only (Vern's note removed from the full edition) */
+.intro{max-width:720px;margin:0 auto;padding:44px 40px 0}
+.digest{min-width:0}
+.digest .row{display:flex;gap:16px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.digest .row:first-of-type{border-top:0}
+.digest .k{flex:none;width:96px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+.digest .v{font-family:var(--serif);font-size:16.5px;line-height:1.5;color:var(--ink-soft)}
+
+/* ornament rule */
+.rule{display:flex;justify-content:center;align-items:center;gap:10px;padding:34px 0 6px}
+.rule i{width:120px;height:1px;background:var(--brass);opacity:.55}
+.rule b{width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+
+/* top pick */
+.pick{display:grid;grid-template-columns:1.55fr 1fr;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+.pick .main{padding:44px 48px 44px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.pick h2{margin-top:16px}
+.pick h2 a{font-family:var(--display);font-weight:600;font-size:clamp(32px,3.6vw,46px);line-height:1.05;color:var(--forest)}
+.pick h2 a:hover{color:var(--clay-deep)}
+.pick .meta{margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.pick p{font-family:var(--serif);font-size:18px;line-height:1.6;color:var(--ink-soft);margin-top:18px;max-width:46ch}
+.pick .go{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.pick .go span{color:var(--brass-deep)}
+.pick .side{padding:44px 0 44px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.pick .side .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.pick .side .stars{color:var(--clay);font-size:22px;letter-spacing:5px;margin-top:6px}
+.pick .side .region{font-family:var(--display);font-size:26px;color:var(--forest);margin-top:2px}
+.pick .side p{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.5;color:var(--ink-mute);margin-top:4px;max-width:none}
+
+/* sticky tabs */
+.tabbar{position:sticky;top:0;z-index:50;background:rgba(239,231,214,.92);backdrop-filter:blur(10px) saturate(120%);border-bottom:1px solid var(--brass);margin-top:10px}
+.tabbar-in{max-width:1120px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:4px;height:62px;overflow-x:auto;scrollbar-width:none}
+.tabbar-in::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;cursor:pointer;padding:20px 15px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-mute)}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--forest);border-bottom-color:var(--brass)}
+.tab .ix{font-family:var(--display);font-style:italic;font-weight:600;font-size:14px;text-transform:none;letter-spacing:0;margin-right:7px;color:var(--brass-deep)}
+.tab .n{margin-left:8px;font-size:10px;letter-spacing:.08em;color:#B3AA92}
+.tab.active .n{color:var(--brass-deep)}
+
+/* sections */
+.panel{display:none;padding:52px 0 24px}
+.panel.active{display:block}
+.sec-head{margin-bottom:34px}
+.sec-head h3{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.2vw,48px);line-height:1.02;color:var(--forest);margin-top:12px}
+.sec-head .lede{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-mute);margin-top:9px;max-width:56ch}
+.list{border-bottom:1px solid var(--line)}
+
+/* job row */
+.job{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 32px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+.job .rail{display:flex;flex-direction:column;gap:9px;padding-top:7px}
+.job .no{font-family:var(--display);font-style:italic;font-weight:600;font-size:16px;color:var(--brass-deep)}
+.job .stars{color:var(--clay);font-size:15px;letter-spacing:3px}
+.badge{align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--brass);color:var(--brass-deep)}
+.job .body{min-width:0;max-width:72ch}
+.job h4 a{font-family:var(--display);font-weight:600;font-size:31px;line-height:1.12;color:var(--forest);display:block}
+.job h4 a:hover{color:var(--clay-deep)}
+.job .meta{margin-top:9px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+.job .summary{font-family:var(--serif);font-size:17.5px;line-height:1.62;color:var(--ink-soft);margin-top:15px}
+.block{margin-top:16px}
+.block .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-deep)}
+.block p{font-family:var(--serif);font-size:17px;line-height:1.58;color:var(--ink-soft);margin-top:3px}
+.watch{margin-top:16px;border-left:2px solid var(--clay);padding-left:16px}
+.watch .k{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-deep)}
+.watch p{font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.55;color:var(--ink-mute);margin-top:3px}
+
+/* prompt disclosure */
+details.prompt{margin-top:20px;border-top:1px solid var(--line)}
+details.prompt summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep)}
+details.prompt summary::-webkit-details-marker{display:none}
+details.prompt summary::before{content:"+";color:var(--brass-deep)}
+details.prompt[open] summary::before{content:"–"}
+details.prompt .inner{margin-top:14px;background:var(--surface);border:1px solid var(--line);padding:18px 20px}
+details.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;color:var(--ink-soft)}
+.copyrow{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.copy{cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--brass);background:transparent;color:var(--brass-deep)}
+.copy:hover{background:var(--brass);color:var(--forest-deep)}
+.copyhint{font-size:12px;color:var(--ink-mute)}
+.addlist{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+.addlist .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.addlist ul{margin:8px 0 0;padding-left:20px}
+.addlist li{font-size:13.5px;line-height:1.6;color:var(--ink-soft);margin-top:4px}
+
+/* footer */
+footer{position:relative;margin-top:40px;background:var(--forest);color:var(--cream);padding:52px 40px 58px;text-align:center}
+footer::before{content:"";position:absolute;inset:12px;border:1px solid var(--line-on-dark)}
+footer .in{position:relative}
+footer .mark{font-family:var(--display);font-weight:600;font-size:32px}
+footer .tag{font-family:var(--display);font-style:italic;font-size:18px;color:var(--cream-mute);margin-top:6px}
+footer .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:22px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+footer .links a{color:var(--brass-soft)}
+footer .rule i{background:var(--brass-soft);width:90px;opacity:.6}
+footer .rule b{background:var(--brass-soft)}
+
+@media (max-width:900px){
+  .pick{grid-template-columns:1fr}
+  .pick .main{padding:34px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .pick .side{padding:28px 0}
+}
+@media (max-width:620px){
+  .wrap,.intro,.tabbar-in{padding-left:22px;padding-right:22px}
+  .cover{padding:48px 22px 40px}
+  .job{grid-template-columns:1fr;gap:14px}
+  .job .rail{flex-direction:row;align-items:center;gap:14px;padding-top:0}
+  .job h4 a{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-in">
+    <div class="eyebrow">Evening Edition &nbsp;·&nbsp; Wednesday, August 5, 2026 &nbsp;·&nbsp; Atlantic Time</div>
+    <h1>The Next Chapter</h1>
+    <div class="tagline">A nightly field report from Vern, your scout</div>
+    <div class="stats">
+      <span>313 postings read</span><span class="dot"></span>
+      <span>7 apply-worthy</span><span class="dot"></span>
+      <span>2 in Nova Scotia</span>
+    </div>
+  </div>
+</header>
+
+<div class="intro">
+  <aside class="digest">
+    <div class="eyebrow" style="margin-bottom:16px">Tonight in one minute</div>
+    <div class="row"><div class="k">Top pick</div><div class="v">Chief Financial Officer at Placemaking 4G (Nova Scotia).</div></div><div class="row"><div class="k">New tonight</div><div class="v">313 postings read; 7 apply-worthy, 25 cleared the gate.</div></div><div class="row"><div class="k">Home turf</div><div class="v">2 Nova Scotia postings tonight, led by Chief Financial Officer.</div></div><div class="row"><div class="k">One action</div><div class="v">Write half a page this week on where you would deploy AI inside a finance function you have actually run, concrete enough to hold up under a hiring committee&#x27;s questions.</div></div>
+  </aside>
+</div>
+
+<div class="rule"><i></i><b></b><i></i></div>
+
+<div class="wrap">
+  <div class="pick">
+    <div class="main">
+      <div class="eyebrow">Tonight's top pick</div>
+      <h2><a href="https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230" target="_blank" rel="noopener">Chief Financial Officer</a></h2>
+      <div class="meta">Placemaking 4G · Millbrook, Nova Scotia, Canada · LinkedIn</div>
+      <p>CFO seat in Nova Scotia, which is your stated family priority. This is the location tier where your top scores live, and a smaller organisation means you get close to the numbers again.</p>
+      <a class="go" href="https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230" target="_blank" rel="noopener">Read the posting <span>&rarr;</span></a>
+    </div>
+    <div class="side">
+      <div><div class="k">Vern's score</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+      <div><div class="k">Region</div><div class="region">Nova Scotia</div></div>
+      <div><div class="k">Watch out</div><p>Placemaking 4G is a smaller and less known organisation - dig into funding structure, ownership and whether the comp can reach your Canadian floor.</p></div>
+    </div>
+  </div>
+</div>
+
+<nav class="tabbar">
+  <div class="tabbar-in" id="tabs">
+    <button class="tab active" data-tab="apply"><span class="ix">I</span>Apply-worthy<span class="n">7</span></button><button class="tab" data-tab="maybe"><span class="ix">II</span>Worth a look<span class="n">9</span></button><button class="tab" data-tab="screened"><span class="ix">III</span>Screened out<span class="n">9</span></button><button class="tab" data-tab="reading"><span class="ix">IV</span>Reading list<span class="n">15</span></button><button class="tab" data-tab="recruiters"><span class="ix">V</span>Recruiter watch<span class="n">13</span></button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="panel active" id="apply">
+    <div class="sec-head">
+      <div class="eyebrow">Section One</div>
+      <h3>Apply-worthy</h3>
+      <div class="lede">The seats that clear the bar tonight. Start at the top and work down.</div>
+    </div>
+    <div class="list"><article class="job"><div class="rail"><div class="no">No. 01</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="badge">Nova Scotia</div></div><div class="body"><h4><a href="https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230" target="_blank" rel="noopener">Chief Financial Officer</a></h4><div class="meta">Placemaking 4G · Millbrook, Nova Scotia, Canada · LinkedIn</div><p class="summary">Chief Financial Officer at Placemaking 4G in Millbrook, Nova Scotia. Core title, tier 1 location, and a development/placemaking organisation where a hands-on builder of finance systems is exactly what is needed.</p><div class="block"><div class="k">Why</div><p>CFO seat in Nova Scotia, which is your stated family priority. This is the location tier where your top scores live, and a smaller organisation means you get close to the numbers again.</p></div><div class="watch"><div class="k">Watch out</div><p>Placemaking 4G is a smaller and less known organisation - dig into funding structure, ownership and whether the comp can reach your Canadian floor.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer at Placemaking 4G, Millbrook, Nova Scotia, https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li><li>Paste anything you can find on Placemaking 4G&#x27;s company page or website - ownership, size, funding</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 02</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/head-of-finance-amp-operations-path-to-cfo-at-inspekt-ai-4449433560" target="_blank" rel="noopener">Head of Finance &amp;amp; Operations (Path to CFO)</a></h4><div class="meta">Inspekt AI · Boston, MA · LinkedIn</div><p class="summary">Head of Finance and Operations with a stated path to CFO at Inspekt AI, an early-stage company in Boston. Core title in tier 4, with the operations scope you like.</p><div class="block"><div class="k">Why</div><p>Head of Finance is a core target title and the operations half fits your hands-on intent. Boston is workable as a dual citizen, and a path-to-CFO framing means real upside.</p></div><div class="watch"><div class="k">Watch out</div><p>Early-stage AI startup means cash comp may sit below your $250,000 USD northeast floor with equity making up the gap; also an in-person Boston relocation away from Nova Scotia.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Head of Finance &amp; Operations (Path to CFO) at Inspekt AI, Boston MA, https://www.linkedin.com/jobs/view/head-of-finance-amp-operations-path-to-cfo-at-inspekt-ai-4449433560. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Be honest about how a 20-year Michelin industrial record reads to an early-stage AI company. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li><li>Paste Inspekt AI&#x27;s company page or funding details if you can find them</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 03</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/director-of-finance-at-mevion-medical-systems-4449315143" target="_blank" rel="noopener">Director of Finance</a></h4><div class="meta">Mevion Medical Systems · Littleton Common, MA · LinkedIn</div><p class="summary">Director of Finance at Mevion Medical Systems, a proton therapy equipment manufacturer in Littleton, MA. Highly engineered manufacturing, exactly his industrial territory, at a notch-down title.</p><div class="block"><div class="k">Why</div><p>Complex engineered manufacturing is your home ground and a Director of Finance at a company like this typically owns the whole finance function. Northeast US works as a dual citizen.</p></div><div class="watch"><div class="k">Watch out</div><p>Title below your level - confirm the seat owns the full P&amp;L. In-person Littleton MA means relocating away from Nova Scotia.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Director of Finance at Mevion Medical Systems, Littleton Common MA, https://www.linkedin.com/jobs/view/director-of-finance-at-mevion-medical-systems-4449315143. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Tell me how to frame a Business Line CFO record against a Director title without looking overqualified. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 04</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com/opportunities/view/258" target="_blank" rel="noopener">CFO – Industrial Manufacturing/Distribution – Private Equity, 79037</a></h4><div class="meta">via TrueNorth Executive Search · United States · TrueNorth Executive Search (recruiter)</div><p class="summary">CFO of a PE-backed industrial manufacturing and distribution business via TrueNorth Executive Search. Core title, PE sponsor, manufacturing sector - the archetype shape, held back only by an undisclosed location.</p><div class="block"><div class="k">Why</div><p>PE-backed industrial manufacturing CFO is your exact playbook: integration, carve-outs, plant-level KPI discipline. This is the shape of role you should be pushing hard on.</p></div><div class="watch"><div class="k">Watch out</div><p>Location is only listed as United States - confirm it falls in the northeast or is remote-friendly before investing much.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: CFO, Industrial Manufacturing/Distribution, Private Equity (ref 79037) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/258. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Lead with my $1B acquisition integration and the $250M carve-out. Also list the three questions I should put to the recruiter about location and sponsor. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 05</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com/opportunities/view/255" target="_blank" rel="noopener">Chief Financial Officer- Highly Engineered Design/Manufacturing, Private Equity, 79031</a></h4><div class="meta">via TrueNorth Executive Search · United States · TrueNorth Executive Search (recruiter)</div><p class="summary">CFO of a PE-backed highly engineered design and manufacturing business via TrueNorth Executive Search. Core title, PE sponsor, engineered manufacturing - very close to his archetype.</p><div class="block"><div class="k">Why</div><p>Highly engineered manufacturing under PE ownership is where your Michelin plant and business line record reads strongest. Sponsor-backed seats usually carry equity, worth confirming.</p></div><div class="watch"><div class="k">Watch out</div><p>Location listed only as United States - confirm it is northeast or remote before going deep.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Highly Engineered Design/Manufacturing, Private Equity (ref 79031) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/255. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Emphasize my engineered-manufacturing P&amp;L scope and the integration work. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 06</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Left field</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/interim-cfo-saas-company-remote/" target="_blank" rel="noopener">Interim CFO – SaaS Company – Remote</a></h4><div class="meta">via CFO Search Inc · United States · CFO Search Inc (recruiter)</div><p class="summary">Interim CFO for a SaaS company, fully remote in the US. Interim/fractional CFO is explicitly a boosted shape for him, and remote removes the relocation problem entirely.</p><div class="block"><div class="k">Why</div><p>Interim CFO is exactly the engagement shape PE buys your M&amp;A and turnaround record for, and remote means you can run it from Nova Scotia as a dual citizen.</p></div><div class="watch"><div class="k">Watch out</div><p>SaaS is outside your industrial sector and interim work is fixed-term, so treat it as a bridge rather than a landing spot.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Interim CFO, SaaS Company, Remote, via CFO Search Inc, https://www.cfo-search.com/cfo-jobs/interim-cfo-saas-company-remote/. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Frame my 90-day priority cycles and integration work as interim-CFO deliverables, and be honest about the SaaS gap. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 07</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.pageexecutive.com/job-detail/chief-financial-officer-manufacturing-seacoast-region-nh/ref/jn-052026-7017329" target="_blank" rel="noopener">Chief Financial Officer - Manufacturing - Seacoast Region, NH</a></h4><div class="meta">via Page Executive · Page Executive (recruiter)</div><p class="summary">CFO of a manufacturer in the Seacoast region of New Hampshire via Page Executive. Core title, core sector, tier 4 location - a strong shape held back only by geography.</p><div class="block"><div class="k">Why</div><p>Manufacturing CFO in New England is a clean match for your business line P&amp;L record, and as a dual citizen you can take it without visa friction.</p></div><div class="watch"><div class="k">Watch out</div><p>In-person Seacoast NH means relocating away from your Nova Scotia family priority - weigh that before investing heavily.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Manufacturing, Seacoast Region NH, via Page Executive, https://www.pageexecutive.com/job-detail/chief-financial-officer-manufacturing-seacoast-region-nh/ref/jn-052026-7017329. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Lead with business line P&amp;L scale, integration work and plant-level KPI systems. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article></div>
+  </section>
+  <section class="panel" id="maybe">
+    <div class="sec-head">
+      <div class="eyebrow">Section Two</div>
+      <h3>Worth a look</h3>
+      <div class="lede">Real mandates with one thing to verify before you spend an evening on them.</div>
+    </div>
+    <div class="list"><article class="job"><div class="rail"><div class="no">No. 01</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Remote</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/4446064718/" target="_blank" rel="noopener">🚀 VP of Finance | eCommerce [100% Remote]</a></h4><div class="meta">UpCounting · Canada (Remote) · LinkedIn (authenticated)</div><p class="summary">VP of Finance for an eCommerce-focused outsourced accounting firm, fully remote in Canada. Remote tier 3 and a core title, but the sector is eCommerce/services rather than his industrial sweet spot, and UpCounting is a small shop.</p><div class="block"><div class="k">Why</div><p>Fully remote across Canada means no relocation friction and the VP Finance title is dead centre of your target list. Sector and company scale are the open questions.</p></div><div class="watch"><div class="k">Watch out</div><p>Likely a small agency-style employer serving eCommerce clients, so confirm this is a real operating P&amp;L seat and not a client-services delivery role.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: VP of Finance (eCommerce, 100% Remote) at UpCounting, Canada, https://www.linkedin.com/jobs/view/4446064718/. Tell me straight if this is worth an evening of my time given my industrial and PE background, or if the company scale and eCommerce sector make it a pass. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li><li>Paste UpCounting&#x27;s LinkedIn company page blurb so we can gauge size</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 02</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Nova Scotia</div></div><div class="body"><h4><a href="https://www.careerbeacon.com/en/job/2218321/meridia-recruitment-solutions/controller/saint-john-nb?utm_source=careerbeacon" target="_blank" rel="noopener">Controller</a></h4><div class="meta">Nova Scotia · CareerBeacon</div><p class="summary">Controller role listed through Meridia Recruitment Solutions, tagged Nova Scotia but the link points to Saint John, NB. A notch-down title in tier 1-2 territory with a credible regional recruiter.</p><div class="block"><div class="k">Why</div><p>Meridia is the Atlantic Canada recruiter worth being on the radar of, and either NS or NB works for your relocation plan. Worth an evening even if the seat itself is a notch down.</p></div><div class="watch"><div class="k">Watch out</div><p>Title below your level and the location is ambiguous (Saint John, NB in the URL) - confirm the seat owns the full P&amp;L and where it actually sits.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller via Meridia Recruitment Solutions, Nova Scotia/Saint John NB, https://www.careerbeacon.com/en/job/2218321/meridia-recruitment-solutions/controller/saint-john-nb. Weight your answer toward whether this is worth an evening of my time given it is a notch below my level - does it own a full P&amp;L, and is the relationship with Meridia worth building regardless? I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 03</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/controller-at-603-manufacturing-connected-by-trexon-4449113737" target="_blank" rel="noopener">Controller</a></h4><div class="meta">603 Manufacturing, Connected by Trexon · Hudson, NH · LinkedIn</div><p class="summary">Controller at 603 Manufacturing, part of the Trexon group, in Hudson NH. Site or business unit controller inside a PE-style industrial platform - close to the numbers, but a clear notch down.</p><div class="block"><div class="k">Why</div><p>Trexon is an acquisitive industrial platform, and post-acquisition integration is your literal playbook. The seat is smaller than your level but the group could grow into more.</p></div><div class="watch"><div class="k">Watch out</div><p>Title below your level - confirm the seat owns the full P&amp;L, and this is a Hudson NH relocation.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller at 603 Manufacturing, Connected by Trexon, Hudson NH, https://www.linkedin.com/jobs/view/controller-at-603-manufacturing-connected-by-trexon-4449113737. Weight your answer toward whether this is worth an evening of my time given the title is a notch or two below my Business Line CFO scope, and whether Trexon&#x27;s acquisitive platform makes it a strategic entry point. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 04</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/chief-financial-officer-relocation-available-at-pressed-cafe-4431442390" target="_blank" rel="noopener">Chief Financial Officer (Relocation Available)</a></h4><div class="meta">Pressed Cafe · Nashua, NH · LinkedIn</div><p class="summary">Chief Financial Officer at Pressed Cafe, a growing multi-unit restaurant chain in Nashua NH, with relocation support offered. Founder-led growth company and a core title, but hospitality rather than industrial.</p><div class="block"><div class="k">Why</div><p>CFO title, founder-led multi-unit growth story, and relocation is on the table. Multi-site unit economics is a discipline you already run through KPI cascades.</p></div><div class="watch"><div class="k">Watch out</div><p>Restaurant/hospitality is a sector stretch from manufacturing, and it is an in-person NH relocation away from Nova Scotia.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer (Relocation Available) at Pressed Cafe, Nashua NH, https://www.linkedin.com/jobs/view/chief-financial-officer-relocation-available-at-pressed-cafe-4431442390. Weight your answer toward whether this is worth an evening given the hospitality sector stretch, then if the verdict is yes, sketch how I&#x27;d translate industrial KPI cascades into multi-unit restaurant economics. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 05</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/controller-at-trexon-4449911530" target="_blank" rel="noopener">Controller</a></h4><div class="meta">Trexon · Hudson, NH · LinkedIn</div><p class="summary">Controller at Trexon in Hudson NH, the group-level version of the 603 Manufacturing posting. Industrial platform with acquisition activity, but a notch-down title.</p><div class="block"><div class="k">Why</div><p>A group controller seat at an acquisitive industrial platform is close to your integration record. Worth a look mainly because Trexon&#x27;s deal flow suits what you do.</p></div><div class="watch"><div class="k">Watch out</div><p>Title below your level - confirm whether this is group or site scope and whether it owns the full P&amp;L. Overlaps heavily with the 603 Manufacturing posting; may be the same hiring team.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller at Trexon, Hudson NH, https://www.linkedin.com/jobs/view/controller-at-trexon-4449911530. Weight your answer toward whether this is worth an evening given the title sits below my level, and tell me whether it is distinct from the 603 Manufacturing controller posting or the same seat. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 06</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com/opportunities/view/259" target="_blank" rel="noopener">Chief Financial Officer, Multi-Unit Healthcare Services, Private Equity, 79039</a></h4><div class="meta">via TrueNorth Executive Search · United States · TrueNorth Executive Search (recruiter)</div><p class="summary">PE-backed multi-unit healthcare services CFO via TrueNorth Executive Search, location listed only as United States. Core title with the PE sponsor structure he wants, but the sector and geography are unknown.</p><div class="block"><div class="k">Why</div><p>PE portfolio company CFO is precisely what your M&amp;A and integration record sells. Getting on TrueNorth&#x27;s radar is worth the evening on its own.</p></div><div class="watch"><div class="k">Watch out</div><p>Location is undisclosed and could sit well outside your tiers; healthcare services is a sector stretch from manufacturing.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Multi-Unit Healthcare Services, Private Equity (ref 79039) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/259. Weight your answer toward whether this is worth an evening given the location is undisclosed and the sector is healthcare, not industrial. Tell me what to ask the recruiter first. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 07</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com/opportunities/view/257" target="_blank" rel="noopener">Chief Financial Officer – Multi-Location Healthcare Services, 79035</a></h4><div class="meta">via TrueNorth Executive Search · United States · TrueNorth Executive Search (recruiter)</div><p class="summary">CFO of a multi-location healthcare services business via TrueNorth Executive Search, location undisclosed. Core title and multi-site complexity, but healthcare and geography are both question marks.</p><div class="block"><div class="k">Why</div><p>Multi-site financial control and KPI cascades are transferable, and a search firm relationship here is worth cultivating.</p></div><div class="watch"><div class="k">Watch out</div><p>Sector stretch plus an undisclosed US location that may fall outside your acceptable tiers.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Multi-Location Healthcare Services (ref 79035) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/257. Weight your answer toward whether this is worth an evening given healthcare is off my core sector and the location is undisclosed. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 08</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com/opportunities/view/251" target="_blank" rel="noopener">Chief Financial Officer - Pharmaceutical Services – Equity opportunity, 79025</a></h4><div class="meta">via TrueNorth Executive Search · United States · TrueNorth Executive Search (recruiter)</div><p class="summary">CFO of a pharmaceutical services business with a stated equity opportunity, via TrueNorth Executive Search. Core title with equity upside, but pharma services and an undisclosed location.</p><div class="block"><div class="k">Why</div><p>The posting explicitly names an equity opportunity, which is the kind of upside worth chasing at this stage. PE-shaped CFO seats suit your deal record.</p></div><div class="watch"><div class="k">Watch out</div><p>Pharmaceutical services is outside your industrial track record and the location is not disclosed.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Pharmaceutical Services with equity opportunity (ref 79025) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/251. Weight your answer toward whether this is worth an evening given pharma services is off my sector and the location is undisclosed - and tell me how much the stated equity changes that calculus. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article><article class="job"><div class="rail"><div class="no">No. 09</div><div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-boston-ma/ref/jn-062026-7049770" target="_blank" rel="noopener">Chief Financial Officer - Construction - Boston, MA</a></h4><div class="meta">via Page Executive · Page Executive (recruiter)</div><p class="summary">CFO of a construction business in Boston via Page Executive. Core title in tier 4, with the project-based cost discipline that overlaps his operating background.</p><div class="block"><div class="k">Why</div><p>A Boston CFO seat is reachable as a dual citizen and construction runs on job-cost and margin discipline you already know. Page Executive is a useful search relationship.</p></div><div class="watch"><div class="k">Watch out</div><p>Construction is a sector stretch from manufacturing and this is an in-person Boston relocation away from Nova Scotia.</p></div><details class="prompt">
+            <summary>Start here — Claude Project prompt</summary>
+            <div class="inner">
+              <pre>Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Construction, Boston MA, via Page Executive, https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-boston-ma/ref/jn-062026-7049770. Weight your answer toward whether this is worth an evening given I have no construction background and it means relocating to Boston rather than Nova Scotia. I&#x27;m pasting the posting text below.</pre>
+              <div class="copyrow">
+                <button class="copy" type="button">Copy prompt</button>
+                <span class="copyhint">Paste into a new chat in your &ldquo;Next Chapter HQ&rdquo; project.</span>
+              </div>
+              <div class="addlist">
+                <div class="k">What Marcel should add to the chat:</div>
+                <ul><li>Paste the full posting text - open the job link and copy everything</li></ul>
+              </div>
+            </div>
+          </details></div></article></div>
+  </section>
+  <section class="panel" id="screened">
+    <div class="sec-head">
+      <div class="eyebrow">Section Three</div>
+      <h3>Screened out, for the record</h3>
+      <div class="lede">Read, rated and set aside — so you know nothing slipped past.</div>
+    </div>
+    <div class="list"><article class="job"><div class="rail"><div class="no">No. 01</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Remote</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/4437077834/" target="_blank" rel="noopener">Head of Treasury</a></h4><div class="meta">Revolut · Canada (Remote) · LinkedIn (authenticated)</div><p class="summary">Head of Treasury at Revolut, remote Canada. Functional treasury leadership inside a very large fintech, not an operating finance seat with P&amp;L ownership.</p><div class="block"><div class="k">Why</div><p>Remote Canada is fine and Treasurer sits in your extended title universe, but this is a specialist corporate function at a huge fintech, far from the hands-on mid-size operating role you want.</p></div><div class="watch"><div class="k">Watch out</div><p>Deep treasury/fintech specialism is not your track record, and there is no business P&amp;L attached to this seat.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 02</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/plant-controller-at-the-sjb-group-4449636144" target="_blank" rel="noopener">Plant Controller</a></h4><div class="meta">The SJB Group · Taunton, MA · LinkedIn</div><p class="summary">Plant Controller in Taunton MA via a recruiting firm. Single-site controller work, which he did early in his career, well below Business Line CFO scope.</p><div class="block"><div class="k">Why</div><p>You have already been an Industrial Controller at a single plant. This is a step backwards rather than the hands-on operating leadership you want.</p></div><div class="watch"><div class="k">Watch out</div><p>Single-plant scope with no business P&amp;L ownership, plus a Massachusetts relocation.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 03</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.linkedin.com/jobs/view/plant-controller-manufacturing-hampton-nh-at-page-executive-4449934192" target="_blank" rel="noopener">Plant Controller - Manufacturing - Hampton, NH</a></h4><div class="meta">Page Executive · Hampton, NH · LinkedIn</div><p class="summary">Plant Controller for a manufacturer in Hampton NH via Page Executive. Site-level finance role, below his target level.</p><div class="block"><div class="k">Why</div><p>Right industry, wrong altitude - plant controller is the job you held in the 2000s, not a step forward.</p></div><div class="watch"><div class="k">Watch out</div><p>Single-site scope and a NH relocation; Page Executive is however a recruiter worth knowing for the NH CFO seats they also list.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 04</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/cfo-real-estate-investment-firm-new-york-city/" target="_blank" rel="noopener">CFO – Real Estate Investment Firm – New York City</a></h4><div class="meta">via CFO Search Inc · United States · CFO Search Inc (recruiter)</div><p class="summary">CFO of a real estate investment firm in New York City. Core title, but NYC in-person and a financial-services sector with no manufacturing or operating P&amp;L content.</p><div class="block"><div class="k">Why</div><p>Real estate investment finance is a different discipline from operating industrial finance, and NYC sits outside your preferred geography.</p></div><div class="watch"><div class="k">Watch out</div><p>In-person New York City and a sector where your integration and plant record carries little weight.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 05</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/healthcare-cfo-private-equity-chicago/" target="_blank" rel="noopener">Healthcare CFO – Private Equity Backed – Chicago, IL</a></h4><div class="meta">via CFO Search Inc · United States · CFO Search Inc (recruiter)</div><p class="summary">PE-backed healthcare CFO based in Chicago. Right ownership structure and title, wrong geography for an in-person seat.</p><div class="block"><div class="k">Why</div><p>The PE-backed CFO shape suits you, but Chicago in-person falls outside every one of your location tiers.</p></div><div class="watch"><div class="k">Watch out</div><p>In-person Chicago, plus healthcare is a sector stretch - only worth a conversation if the firm will discuss remote or other mandates.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 06</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/manufacturing-cfo-dallas-fort-worth/" target="_blank" rel="noopener">Manufacturing CFO – Dallas / Fort Worth, Texas</a></h4><div class="meta">via CFO Search Inc · United States · CFO Search Inc (recruiter)</div><p class="summary">Manufacturing CFO in Dallas / Fort Worth, Texas. Perfect sector and title, but a Texas in-person relocation is outside his tiers.</p><div class="block"><div class="k">Why</div><p>Manufacturing CFO is your ideal shape, which makes the Texas location the only thing killing it.</p></div><div class="watch"><div class="k">Watch out</div><p>In-person DFW is outside your acceptable geography - worth contacting the recruiter about their northeast mandates instead.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 07</div><div class="stars">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.pageexecutive.com/job-detail/plant-controller-manufacturing-hampton-nh/ref/jn-072026-7072491" target="_blank" rel="noopener">Plant Controller - Manufacturing - Hampton, NH</a></h4><div class="meta">via Page Executive · Page Executive (recruiter)</div><p class="summary">Duplicate of the Page Executive plant controller role in Hampton NH, listed on the firm&#x27;s own site. Site-level scope, below his level.</p><div class="block"><div class="k">Why</div><p>Same single-plant seat as the LinkedIn version - not the altitude you are targeting, though Page Executive itself is worth a relationship.</p></div><div class="watch"><div class="k">Watch out</div><p>Duplicate posting and single-site scope with no business P&amp;L.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 08</div><div class="stars">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div class="badge">Eastern Canada</div></div><div class="body"><h4><a href="https://www.jobbank.gc.ca/jobsearch/jobposting/50011005" target="_blank" rel="noopener">financial controller</a></h4><div class="meta">Val-d&#x27;Or Native Friendship Centre ·  Val-d&#x27;Or (QC) · $38.32 to $49.57 hourly · Job Bank (Canada)</div><p class="summary">Financial controller at a non-profit friendship centre in Val-d&#x27;Or, Quebec, posted at an hourly rate. Small community organisation, well below his level.</p><div class="block"><div class="k">Why</div><p>Eastern Canada location is acceptable, but the scope and stated pay put this far outside anything you would leave Michelin for.</p></div><div class="watch"><div class="k">Watch out</div><p>Stated pay of $38.32 to $49.57 hourly is roughly $80K to $103K annualized, far below your $200,000 CAD floor.</p></div></div></article><article class="job"><div class="rail"><div class="no">No. 09</div><div class="stars">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div class="badge">Northeast US</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/pre-ipo-cfo-bitcoin-mining-orange-county/" target="_blank" rel="noopener">Pre-IPO CFO – Bitcoin Mining Company – Orange County, CA</a></h4><div class="meta">via CFO Search Inc · United States · CFO Search Inc (recruiter)</div><p class="summary">Pre-IPO CFO of a bitcoin mining company in Orange County, California. In-person far outside his tiers and a sector with no overlap.</p><div class="block"><div class="k">Why</div><p>Southern California in-person is a dealbreaker per your geography rules, and crypto pre-IPO is a long way from operating industrial finance.</p></div></div></article></div>
+  </section>
+  <section class="panel" id="reading">
+    <div class="sec-head">
+      <div class="eyebrow">Section Four</div>
+      <h3>AI for the workplace</h3>
+      <div class="lede">Pieces to turn into interview talking points.</div>
+    </div>
+    <div class="list"><article class="job"><div class="rail"><div class="badge">MIT Sloan Management Review</div></div><div class="body"><h4><a href="https://sloanreview.mit.edu/article/stop-prompting-ai-start-directing-it/" target="_blank" rel="noopener">Stop Prompting AI. Start Directing It</a></h4><div class="meta">MIT Sloan Management Review</div><p class="summary">The distinction between prompting and directing is exactly the governance question a PE-backed board will put to a finance chief: who sets the objective, who checks the work, and who owns the number that results.</p></div></article><article class="job"><div class="rail"><div class="badge">VentureBeat AI</div></div><div class="body"><h4><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank" rel="noopener">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h4><div class="meta">VentureBeat AI</div><p class="summary">An agent that works directly on files and spreadsheets without code is the first credible route to compressing close cycles, variance analysis, and diligence packages in a lean mid-size finance team.</p></div></article><article class="job"><div class="rail"><div class="badge">VentureBeat AI</div></div><div class="body"><h4><a href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and" target="_blank" rel="noopener">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a></h4><div class="meta">VentureBeat AI</div><p class="summary">As AI assistants embed themselves in the everyday messaging layer, a CFO should have a clear position on what financial data may pass through them, well before an auditor or sponsor asks.</p></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/mcdonalds-finance-insider-takes-us-president-reins-skye-anderson/827156/" target="_blank" rel="noopener">McDonald picks insider finance veteran as new US boss</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/flex-sues-former-cfo-candidate-alleges-stealing-of-strategic-crown-jewels/827146/" target="_blank" rel="noopener">Flex sues former CFO candidate; alleges stealing of ‘strategic crown jewels’</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/workers-are-all-in-fight-or-flight-mode/827092/" target="_blank" rel="noopener">Workers are all in fight-or-flight mode, expert says</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/fewer-companies-plan-peanut-butter-pay-increases-in-2027-payscale/827012/" target="_blank" rel="noopener">Fewer companies plan ‘peanut-butter’ pay increases in 2027: Payscale</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/chicago-budget-director-follows-acting-cfo-door-Brandon-Johnson/827010/" target="_blank" rel="noopener">Chicago budget director follows acting CFO out the door</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/best-buy-picks-nordstrom-alum-for-cfo/826979/" target="_blank" rel="noopener">Best Buy picks Nordstrom alum for CFO</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/water-cybersecurity-def-con-franklin-outcomes/826941/" target="_blank" rel="noopener">How volunteer cyber experts are helping protect rural water systems</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/resilience-study-ties-human-error-85percent-cyber-losses/826909/" target="_blank" rel="noopener">Resilience ties 85% of cyber insurance losses to human error</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">CFO Dive</div></div><div class="body"><h4><a href="https://www.cfodive.com/news/chicagos-acting-cfo-departs-budget-battle-looms/826875/" target="_blank" rel="noopener">Chicago’s acting CFO exits as budget battle looms</a></h4><div class="meta">CFO Dive</div></div></article><article class="job"><div class="rail"><div class="badge">MIT Sloan Management Review</div></div><div class="body"><h4><a href="https://sloanreview.mit.edu/article/the-elusiveness-of-merit-based-hiring/" target="_blank" rel="noopener">The Elusiveness of Merit-Based Hiring</a></h4><div class="meta">MIT Sloan Management Review</div></div></article><article class="job"><div class="rail"><div class="badge">MIT Sloan Management Review</div></div><div class="body"><h4><a href="https://sloanreview.mit.edu/article/the-marketing-capability-paradox-seven-forces-eroding-your-marketing-teams-effectiveness/" target="_blank" rel="noopener">The Marketing Capability Paradox: Seven Forces Eroding Your Marketing Team’s Effectiveness</a></h4><div class="meta">MIT Sloan Management Review</div></div></article><article class="job"><div class="rail"><div class="badge">MIT Sloan Management Review</div></div><div class="body"><h4><a href="https://sloanreview.mit.edu/article/how-a-healthy-work-culture-helps-trauma-survivors/" target="_blank" rel="noopener">How ﻿a Healthy ﻿Work Culture﻿ Help﻿s﻿ ﻿Trauma Survivors</a></h4><div class="meta">MIT Sloan Management Review</div></div></article></div>
+  </section>
+  <section class="panel" id="recruiters">
+    <div class="sec-head">
+      <div class="eyebrow">Section Five</div>
+      <h3>Recruiter watch — Atlantic Canada</h3>
+      <div class="lede">The firms Vern checks every night on your behalf.</div>
+    </div>
+    <div class="list"><article class="job"><div class="rail"><div class="no">01</div></div><div class="body"><h4><a href="https://meridiarecruitment.ca/career-opportunities/careers" target="_blank" rel="noopener">Meridia Recruitment (KBRS)</a></h4><div class="meta">Halifax · Atlantic Canada</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">02</div></div><div class="body"><h4><a href="https://venor.ca/opportunities" target="_blank" rel="noopener">Venor</a></h4><div class="meta">Halifax</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">03</div></div><div class="body"><h4><a href="https://www.summitsearchgroup.com/opportunities/" target="_blank" rel="noopener">Summit Search Group</a></h4><div class="meta">National · Atlantic desk</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">04</div></div><div class="body"><h4><a href="https://macdonaldsearchgroup.com/job-listings" target="_blank" rel="noopener">Macdonald Search Group</a></h4><div class="meta">Halifax office</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">05</div></div><div class="body"><h4><a href="https://locksearchgroup.com/opportunities/" target="_blank" rel="noopener">Lock Search Group</a></h4><div class="meta">Atlantic practice</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">06</div></div><div class="body"><h4><a href="https://www.accountantstaffing.com/job-opportunities" target="_blank" rel="noopener">Accountant Staffing</a></h4><div class="meta">Halifax · finance specialists</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">07</div></div><div class="body"><h4><a href="https://careers.truenorthsearch.com" target="_blank" rel="noopener">TrueNorth Executive Search</a></h4><div class="meta">US · PE-backed CFO mandates</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">08</div></div><div class="body"><h4><a href="https://www.cfo-search.com/cfo-jobs/" target="_blank" rel="noopener">CFO Search Inc</a></h4><div class="meta">US · CFO boutique</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">09</div></div><div class="body"><h4><a href="https://www.pageexecutive.com/jobs/cfo-financial-management" target="_blank" rel="noopener">Page Executive</a></h4><div class="meta">Global · CFO practice</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">10</div></div><div class="body"><h4><a href="https://www.roberthalf.com/ca/en/jobs" target="_blank" rel="noopener">Robert Half</a></h4><div class="meta">Canada · finance &amp; accounting</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">11</div></div><div class="body"><h4><a href="https://falcon-pe.com/" target="_blank" rel="noopener">Falcon</a></h4><div class="meta">US · PE talent partner - no public listings, introduce yourself</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">12</div></div><div class="body"><h4><a href="https://visionsearchpartners.com/" target="_blank" rel="noopener">Vision Search Partners</a></h4><div class="meta">New England · financial search - no public listings, introduce yourself</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article><article class="job"><div class="rail"><div class="no">13</div></div><div class="body"><h4><a href="https://www.linkedin.com/company/bohan-&amp;-bradstreet" target="_blank" rel="noopener">Bohan &amp; Bradstreet</a></h4><div class="meta">Connecticut · openings post to their LinkedIn</div><p class="summary">Finance postings from this firm appear in the job sections automatically when they match.</p></div></article></div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div class="rule"><i></i><b></b><i></i></div>
+    <div class="mark">The Next Chapter</div>
+    <div class="tag">Grown nightly by Vern, your scout in the canopy</div>
+    <div class="links">
+      <a href="./index.html">Today</a>
+      <a href="./archive.html">The Archive</a>
+      <a href="./grove.html">The Grove</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// Section tabs
+document.getElementById('tabs').addEventListener('click', function (e) {
+  var b = e.target.closest('.tab'); if (!b) return;
+  document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('active', t === b); });
+  document.querySelectorAll('.panel').forEach(function (p) { p.classList.toggle('active', p.id === b.dataset.tab); });
+  window.scrollTo({ top: document.querySelector('.tabbar').offsetTop - 1, behavior: 'smooth' });
+});
+// Copy prompt buttons
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.copy'); if (!b) return;
+  var pre = b.closest('.inner').querySelector('pre');
+  var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy prompt'; }, 1600); };
+  if (navigator.clipboard) navigator.clipboard.writeText(pre.textContent).then(done, done); else done();
+});
+</script>
+
+</body>
+</html>

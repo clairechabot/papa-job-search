@@ -463,6 +463,630 @@
    "watch_out": "Title below your level and likely a functional consolidation seat reporting to a VP Finance - confirm whether it owns a P&L or is purely reporting before spending time on it.",
    "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controleur comptabilite financiere et consolidation at Sofina Foods Canada, Levis, Quebec, https://ca.linkedin.com/jobs/view/contr%C3%B4leur-comptabilit%C3%A9-financi%C3%A8re-et-consolidation-at-sofina-foods-canada-4434345636. Tell me honestly if this is worth an evening given it may be a technical consolidation seat rather than a P&L owner, and whether my Business Line CFO background reads as overqualified here. If you say yes, list the three questions I should ask a recruiter to confirm the real scope. I'm pasting the posting text below.",
    "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer",
+   "company": "Placemaking 4G",
+   "location": "Millbrook, Nova Scotia, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 5,
+   "summary": "Chief Financial Officer at Placemaking 4G in Millbrook, Nova Scotia. Core title, tier 1 location, and a development/placemaking organisation where a hands-on builder of finance systems is exactly what is needed.",
+   "why": "CFO seat in Nova Scotia, which is your stated family priority. This is the location tier where your top scores live, and a smaller organisation means you get close to the numbers again.",
+   "watch_out": "Placemaking 4G is a smaller and less known organisation - dig into funding structure, ownership and whether the comp can reach your Canadian floor.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer at Placemaking 4G, Millbrook, Nova Scotia, https://ca.linkedin.com/jobs/view/chief-financial-officer-at-placemaking-4g-4449134230. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste anything you can find on Placemaking 4G's company page or website - ownership, size, funding"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Head of Finance &amp; Operations (Path to CFO)",
+   "company": "Inspekt AI",
+   "location": "Boston, MA",
+   "url": "https://www.linkedin.com/jobs/view/head-of-finance-amp-operations-path-to-cfo-at-inspekt-ai-4449433560",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "Head of Finance and Operations with a stated path to CFO at Inspekt AI, an early-stage company in Boston. Core title in tier 4, with the operations scope you like.",
+   "why": "Head of Finance is a core target title and the operations half fits your hands-on intent. Boston is workable as a dual citizen, and a path-to-CFO framing means real upside.",
+   "watch_out": "Early-stage AI startup means cash comp may sit below your $250,000 USD northeast floor with equity making up the gap; also an in-person Boston relocation away from Nova Scotia.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Head of Finance & Operations (Path to CFO) at Inspekt AI, Boston MA, https://www.linkedin.com/jobs/view/head-of-finance-amp-operations-path-to-cfo-at-inspekt-ai-4449433560. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Be honest about how a 20-year Michelin industrial record reads to an early-stage AI company. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste Inspekt AI's company page or funding details if you can find them"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Director of Finance",
+   "company": "Mevion Medical Systems",
+   "location": "Littleton Common, MA",
+   "url": "https://www.linkedin.com/jobs/view/director-of-finance-at-mevion-medical-systems-4449315143",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "Director of Finance at Mevion Medical Systems, a proton therapy equipment manufacturer in Littleton, MA. Highly engineered manufacturing, exactly his industrial territory, at a notch-down title.",
+   "why": "Complex engineered manufacturing is your home ground and a Director of Finance at a company like this typically owns the whole finance function. Northeast US works as a dual citizen.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L. In-person Littleton MA means relocating away from Nova Scotia.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Director of Finance at Mevion Medical Systems, Littleton Common MA, https://www.linkedin.com/jobs/view/director-of-finance-at-mevion-medical-systems-4449315143. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Tell me how to frame a Business Line CFO record against a Director title without looking overqualified. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "CFO – Industrial Manufacturing/Distribution – Private Equity, 79037",
+   "company": "via TrueNorth Executive Search",
+   "location": "United States",
+   "url": "https://careers.truenorthsearch.com/opportunities/view/258",
+   "source": "TrueNorth Executive Search (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "CFO of a PE-backed industrial manufacturing and distribution business via TrueNorth Executive Search. Core title, PE sponsor, manufacturing sector - the archetype shape, held back only by an undisclosed location.",
+   "why": "PE-backed industrial manufacturing CFO is your exact playbook: integration, carve-outs, plant-level KPI discipline. This is the shape of role you should be pushing hard on.",
+   "watch_out": "Location is only listed as United States - confirm it falls in the northeast or is remote-friendly before investing much.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: CFO, Industrial Manufacturing/Distribution, Private Equity (ref 79037) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/258. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Lead with my $1B acquisition integration and the $250M carve-out. Also list the three questions I should put to the recruiter about location and sponsor. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer- Highly Engineered Design/Manufacturing, Private Equity, 79031",
+   "company": "via TrueNorth Executive Search",
+   "location": "United States",
+   "url": "https://careers.truenorthsearch.com/opportunities/view/255",
+   "source": "TrueNorth Executive Search (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "CFO of a PE-backed highly engineered design and manufacturing business via TrueNorth Executive Search. Core title, PE sponsor, engineered manufacturing - very close to his archetype.",
+   "why": "Highly engineered manufacturing under PE ownership is where your Michelin plant and business line record reads strongest. Sponsor-backed seats usually carry equity, worth confirming.",
+   "watch_out": "Location listed only as United States - confirm it is northeast or remote before going deep.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Highly Engineered Design/Manufacturing, Private Equity (ref 79031) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/255. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Emphasize my engineered-manufacturing P&L scope and the integration work. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Interim CFO – SaaS Company – Remote",
+   "company": "via CFO Search Inc",
+   "location": "United States",
+   "url": "https://www.cfo-search.com/cfo-jobs/interim-cfo-saas-company-remote/",
+   "source": "CFO Search Inc (recruiter)",
+   "salary": "",
+   "tier": "Remote",
+   "score": 4,
+   "summary": "Interim CFO for a SaaS company, fully remote in the US. Interim/fractional CFO is explicitly a boosted shape for him, and remote removes the relocation problem entirely.",
+   "why": "Interim CFO is exactly the engagement shape PE buys your M&A and turnaround record for, and remote means you can run it from Nova Scotia as a dual citizen.",
+   "watch_out": "SaaS is outside your industrial sector and interim work is fixed-term, so treat it as a bridge rather than a landing spot.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Interim CFO, SaaS Company, Remote, via CFO Search Inc, https://www.cfo-search.com/cfo-jobs/interim-cfo-saas-company-remote/. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Frame my 90-day priority cycles and integration work as interim-CFO deliverables, and be honest about the SaaS gap. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": true
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer - Manufacturing - Seacoast Region, NH",
+   "company": "via Page Executive",
+   "location": "",
+   "url": "https://www.pageexecutive.com/job-detail/chief-financial-officer-manufacturing-seacoast-region-nh/ref/jn-052026-7017329",
+   "source": "Page Executive (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "CFO of a manufacturer in the Seacoast region of New Hampshire via Page Executive. Core title, core sector, tier 4 location - a strong shape held back only by geography.",
+   "why": "Manufacturing CFO in New England is a clean match for your business line P&L record, and as a dual citizen you can take it without visa friction.",
+   "watch_out": "In-person Seacoast NH means relocating away from your Nova Scotia family priority - weigh that before investing heavily.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Manufacturing, Seacoast Region NH, via Page Executive, https://www.pageexecutive.com/job-detail/chief-financial-officer-manufacturing-seacoast-region-nh/ref/jn-052026-7017329. Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Lead with business line P&L scale, integration work and plant-level KPI systems. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "🚀 VP of Finance | eCommerce [100% Remote]",
+   "company": "UpCounting",
+   "location": "Canada (Remote)",
+   "url": "https://www.linkedin.com/jobs/view/4446064718/",
+   "source": "LinkedIn (authenticated)",
+   "salary": "",
+   "tier": "Remote",
+   "score": 3,
+   "summary": "VP of Finance for an eCommerce-focused outsourced accounting firm, fully remote in Canada. Remote tier 3 and a core title, but the sector is eCommerce/services rather than his industrial sweet spot, and UpCounting is a small shop.",
+   "why": "Fully remote across Canada means no relocation friction and the VP Finance title is dead centre of your target list. Sector and company scale are the open questions.",
+   "watch_out": "Likely a small agency-style employer serving eCommerce clients, so confirm this is a real operating P&L seat and not a client-services delivery role.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: VP of Finance (eCommerce, 100% Remote) at UpCounting, Canada, https://www.linkedin.com/jobs/view/4446064718/. Tell me straight if this is worth an evening of my time given my industrial and PE background, or if the company scale and eCommerce sector make it a pass. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste UpCounting's LinkedIn company page blurb so we can gauge size"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Controller",
+   "company": "",
+   "location": "Nova Scotia",
+   "url": "https://www.careerbeacon.com/en/job/2218321/meridia-recruitment-solutions/controller/saint-john-nb?utm_source=careerbeacon",
+   "source": "CareerBeacon",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 3,
+   "summary": "Controller role listed through Meridia Recruitment Solutions, tagged Nova Scotia but the link points to Saint John, NB. A notch-down title in tier 1-2 territory with a credible regional recruiter.",
+   "why": "Meridia is the Atlantic Canada recruiter worth being on the radar of, and either NS or NB works for your relocation plan. Worth an evening even if the seat itself is a notch down.",
+   "watch_out": "Title below your level and the location is ambiguous (Saint John, NB in the URL) - confirm the seat owns the full P&L and where it actually sits.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller via Meridia Recruitment Solutions, Nova Scotia/Saint John NB, https://www.careerbeacon.com/en/job/2218321/meridia-recruitment-solutions/controller/saint-john-nb. Weight your answer toward whether this is worth an evening of my time given it is a notch below my level - does it own a full P&L, and is the relationship with Meridia worth building regardless? I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Controller",
+   "company": "603 Manufacturing, Connected by Trexon",
+   "location": "Hudson, NH",
+   "url": "https://www.linkedin.com/jobs/view/controller-at-603-manufacturing-connected-by-trexon-4449113737",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "Controller at 603 Manufacturing, part of the Trexon group, in Hudson NH. Site or business unit controller inside a PE-style industrial platform - close to the numbers, but a clear notch down.",
+   "why": "Trexon is an acquisitive industrial platform, and post-acquisition integration is your literal playbook. The seat is smaller than your level but the group could grow into more.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L, and this is a Hudson NH relocation.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller at 603 Manufacturing, Connected by Trexon, Hudson NH, https://www.linkedin.com/jobs/view/controller-at-603-manufacturing-connected-by-trexon-4449113737. Weight your answer toward whether this is worth an evening of my time given the title is a notch or two below my Business Line CFO scope, and whether Trexon's acquisitive platform makes it a strategic entry point. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer (Relocation Available)",
+   "company": "Pressed Cafe",
+   "location": "Nashua, NH",
+   "url": "https://www.linkedin.com/jobs/view/chief-financial-officer-relocation-available-at-pressed-cafe-4431442390",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "Chief Financial Officer at Pressed Cafe, a growing multi-unit restaurant chain in Nashua NH, with relocation support offered. Founder-led growth company and a core title, but hospitality rather than industrial.",
+   "why": "CFO title, founder-led multi-unit growth story, and relocation is on the table. Multi-site unit economics is a discipline you already run through KPI cascades.",
+   "watch_out": "Restaurant/hospitality is a sector stretch from manufacturing, and it is an in-person NH relocation away from Nova Scotia.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer (Relocation Available) at Pressed Cafe, Nashua NH, https://www.linkedin.com/jobs/view/chief-financial-officer-relocation-available-at-pressed-cafe-4431442390. Weight your answer toward whether this is worth an evening given the hospitality sector stretch, then if the verdict is yes, sketch how I'd translate industrial KPI cascades into multi-unit restaurant economics. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Controller",
+   "company": "Trexon",
+   "location": "Hudson, NH",
+   "url": "https://www.linkedin.com/jobs/view/controller-at-trexon-4449911530",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "Controller at Trexon in Hudson NH, the group-level version of the 603 Manufacturing posting. Industrial platform with acquisition activity, but a notch-down title.",
+   "why": "A group controller seat at an acquisitive industrial platform is close to your integration record. Worth a look mainly because Trexon's deal flow suits what you do.",
+   "watch_out": "Title below your level - confirm whether this is group or site scope and whether it owns the full P&L. Overlaps heavily with the 603 Manufacturing posting; may be the same hiring team.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controller at Trexon, Hudson NH, https://www.linkedin.com/jobs/view/controller-at-trexon-4449911530. Weight your answer toward whether this is worth an evening given the title sits below my level, and tell me whether it is distinct from the 603 Manufacturing controller posting or the same seat. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer, Multi-Unit Healthcare Services, Private Equity, 79039",
+   "company": "via TrueNorth Executive Search",
+   "location": "United States",
+   "url": "https://careers.truenorthsearch.com/opportunities/view/259",
+   "source": "TrueNorth Executive Search (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "PE-backed multi-unit healthcare services CFO via TrueNorth Executive Search, location listed only as United States. Core title with the PE sponsor structure he wants, but the sector and geography are unknown.",
+   "why": "PE portfolio company CFO is precisely what your M&A and integration record sells. Getting on TrueNorth's radar is worth the evening on its own.",
+   "watch_out": "Location is undisclosed and could sit well outside your tiers; healthcare services is a sector stretch from manufacturing.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Multi-Unit Healthcare Services, Private Equity (ref 79039) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/259. Weight your answer toward whether this is worth an evening given the location is undisclosed and the sector is healthcare, not industrial. Tell me what to ask the recruiter first. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer – Multi-Location Healthcare Services, 79035",
+   "company": "via TrueNorth Executive Search",
+   "location": "United States",
+   "url": "https://careers.truenorthsearch.com/opportunities/view/257",
+   "source": "TrueNorth Executive Search (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "CFO of a multi-location healthcare services business via TrueNorth Executive Search, location undisclosed. Core title and multi-site complexity, but healthcare and geography are both question marks.",
+   "why": "Multi-site financial control and KPI cascades are transferable, and a search firm relationship here is worth cultivating.",
+   "watch_out": "Sector stretch plus an undisclosed US location that may fall outside your acceptable tiers.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Multi-Location Healthcare Services (ref 79035) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/257. Weight your answer toward whether this is worth an evening given healthcare is off my core sector and the location is undisclosed. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer - Pharmaceutical Services – Equity opportunity, 79025",
+   "company": "via TrueNorth Executive Search",
+   "location": "United States",
+   "url": "https://careers.truenorthsearch.com/opportunities/view/251",
+   "source": "TrueNorth Executive Search (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "CFO of a pharmaceutical services business with a stated equity opportunity, via TrueNorth Executive Search. Core title with equity upside, but pharma services and an undisclosed location.",
+   "why": "The posting explicitly names an equity opportunity, which is the kind of upside worth chasing at this stage. PE-shaped CFO seats suit your deal record.",
+   "watch_out": "Pharmaceutical services is outside your industrial track record and the location is not disclosed.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Pharmaceutical Services with equity opportunity (ref 79025) via TrueNorth Executive Search, https://careers.truenorthsearch.com/opportunities/view/251. Weight your answer toward whether this is worth an evening given pharma services is off my sector and the location is undisclosed - and tell me how much the stated equity changes that calculus. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chief Financial Officer - Construction - Boston, MA",
+   "company": "via Page Executive",
+   "location": "",
+   "url": "https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-boston-ma/ref/jn-062026-7049770",
+   "source": "Page Executive (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 3,
+   "summary": "CFO of a construction business in Boston via Page Executive. Core title in tier 4, with the project-based cost discipline that overlaps his operating background.",
+   "why": "A Boston CFO seat is reachable as a dual citizen and construction runs on job-cost and margin discipline you already know. Page Executive is a useful search relationship.",
+   "watch_out": "Construction is a sector stretch from manufacturing and this is an in-person Boston relocation away from Nova Scotia.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Construction, Boston MA, via Page Executive, https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-boston-ma/ref/jn-062026-7049770. Weight your answer toward whether this is worth an evening given I have no construction background and it means relocating to Boston rather than Nova Scotia. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Head of Treasury",
+   "company": "Revolut",
+   "location": "Canada (Remote)",
+   "url": "https://www.linkedin.com/jobs/view/4437077834/",
+   "source": "LinkedIn (authenticated)",
+   "salary": "",
+   "tier": "Remote",
+   "score": 2,
+   "summary": "Head of Treasury at Revolut, remote Canada. Functional treasury leadership inside a very large fintech, not an operating finance seat with P&L ownership.",
+   "why": "Remote Canada is fine and Treasurer sits in your extended title universe, but this is a specialist corporate function at a huge fintech, far from the hands-on mid-size operating role you want.",
+   "watch_out": "Deep treasury/fintech specialism is not your track record, and there is no business P&L attached to this seat.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Plant Controller",
+   "company": "The SJB Group",
+   "location": "Taunton, MA",
+   "url": "https://www.linkedin.com/jobs/view/plant-controller-at-the-sjb-group-4449636144",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "Plant Controller in Taunton MA via a recruiting firm. Single-site controller work, which he did early in his career, well below Business Line CFO scope.",
+   "why": "You have already been an Industrial Controller at a single plant. This is a step backwards rather than the hands-on operating leadership you want.",
+   "watch_out": "Single-plant scope with no business P&L ownership, plus a Massachusetts relocation.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Plant Controller - Manufacturing - Hampton, NH",
+   "company": "Page Executive",
+   "location": "Hampton, NH",
+   "url": "https://www.linkedin.com/jobs/view/plant-controller-manufacturing-hampton-nh-at-page-executive-4449934192",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "Plant Controller for a manufacturer in Hampton NH via Page Executive. Site-level finance role, below his target level.",
+   "why": "Right industry, wrong altitude - plant controller is the job you held in the 2000s, not a step forward.",
+   "watch_out": "Single-site scope and a NH relocation; Page Executive is however a recruiter worth knowing for the NH CFO seats they also list.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "CFO – Real Estate Investment Firm – New York City",
+   "company": "via CFO Search Inc",
+   "location": "United States",
+   "url": "https://www.cfo-search.com/cfo-jobs/cfo-real-estate-investment-firm-new-york-city/",
+   "source": "CFO Search Inc (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "CFO of a real estate investment firm in New York City. Core title, but NYC in-person and a financial-services sector with no manufacturing or operating P&L content.",
+   "why": "Real estate investment finance is a different discipline from operating industrial finance, and NYC sits outside your preferred geography.",
+   "watch_out": "In-person New York City and a sector where your integration and plant record carries little weight.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Healthcare CFO – Private Equity Backed – Chicago, IL",
+   "company": "via CFO Search Inc",
+   "location": "United States",
+   "url": "https://www.cfo-search.com/cfo-jobs/healthcare-cfo-private-equity-chicago/",
+   "source": "CFO Search Inc (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "PE-backed healthcare CFO based in Chicago. Right ownership structure and title, wrong geography for an in-person seat.",
+   "why": "The PE-backed CFO shape suits you, but Chicago in-person falls outside every one of your location tiers.",
+   "watch_out": "In-person Chicago, plus healthcare is a sector stretch - only worth a conversation if the firm will discuss remote or other mandates.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Manufacturing CFO – Dallas / Fort Worth, Texas",
+   "company": "via CFO Search Inc",
+   "location": "United States",
+   "url": "https://www.cfo-search.com/cfo-jobs/manufacturing-cfo-dallas-fort-worth/",
+   "source": "CFO Search Inc (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "Manufacturing CFO in Dallas / Fort Worth, Texas. Perfect sector and title, but a Texas in-person relocation is outside his tiers.",
+   "why": "Manufacturing CFO is your ideal shape, which makes the Texas location the only thing killing it.",
+   "watch_out": "In-person DFW is outside your acceptable geography - worth contacting the recruiter about their northeast mandates instead.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Plant Controller - Manufacturing - Hampton, NH",
+   "company": "via Page Executive",
+   "location": "",
+   "url": "https://www.pageexecutive.com/job-detail/plant-controller-manufacturing-hampton-nh/ref/jn-072026-7072491",
+   "source": "Page Executive (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 2,
+   "summary": "Duplicate of the Page Executive plant controller role in Hampton NH, listed on the firm's own site. Site-level scope, below his level.",
+   "why": "Same single-plant seat as the LinkedIn version - not the altitude you are targeting, though Page Executive itself is worth a relationship.",
+   "watch_out": "Duplicate posting and single-site scope with no business P&L.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "financial controller",
+   "company": "Val-d'Or Native Friendship Centre",
+   "location": " Val-d'Or (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50011005",
+   "source": "Job Bank (Canada)",
+   "salary": "$38.32 to $49.57 hourly",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Financial controller at a non-profit friendship centre in Val-d'Or, Quebec, posted at an hourly rate. Small community organisation, well below his level.",
+   "why": "Eastern Canada location is acceptable, but the scope and stated pay put this far outside anything you would leave Michelin for.",
+   "watch_out": "Stated pay of $38.32 to $49.57 hourly is roughly $80K to $103K annualized, far below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Pre-IPO CFO – Bitcoin Mining Company – Orange County, CA",
+   "company": "via CFO Search Inc",
+   "location": "United States",
+   "url": "https://www.cfo-search.com/cfo-jobs/pre-ipo-cfo-bitcoin-mining-orange-county/",
+   "source": "CFO Search Inc (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 1,
+   "summary": "Pre-IPO CFO of a bitcoin mining company in Orange County, California. In-person far outside his tiers and a sector with no overlap.",
+   "why": "Southern California in-person is a dealbreaker per your geography rules, and crypto pre-IPO is a long way from operating industrial finance.",
+   "watch_out": "",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Vice President, Finance & Planning",
+   "company": "Jobbe",
+   "location": "Fredericton, New Brunswick, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/vice-president-finance-planning-at-jobbe-4449975833",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Eastern Canada",
+   "score": 4,
+   "summary": "Vice President, Finance & Planning in Fredericton, New Brunswick - a core-title seat in tier 2 Eastern Canada, within relocation distance of your Nova Scotia plan.",
+   "why": "VP Finance with a planning mandate is your exact title universe, and Fredericton keeps you in Atlantic Canada. Bilingual French/English is a real asset in New Brunswick.",
+   "watch_out": "Posting is through a recruiter, so confirm the actual company, revenue scale and whether the seat owns the full P&L or just FP&A.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Vice President, Finance & Planning at Jobbe in Fredericton, New Brunswick (https://ca.linkedin.com/jobs/view/vice-president-finance-planning-at-jobbe-4449975833). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Flag how I should position the Atlantic Canada relocation and my bilingual profile. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the hiring company or recruiter profile page if the posting names the end client"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Chief Financial Officer",
+   "company": "Roessel Joy",
+   "location": "Lawrence, MA",
+   "url": "https://www.linkedin.com/jobs/view/chief-financial-officer-at-roessel-joy-4448318620",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "Chief Financial Officer search run by Roessel Joy for a client in Lawrence, Massachusetts - core title, Northeast US, in your acceptable in-person tier.",
+   "why": "CFO is dead centre of your title universe and your US citizenship removes any work authorization friction. Greater Boston area employers often have the mid-size industrial profile you want.",
+   "watch_out": "Recruiter posting with the client unnamed, and it means relocating to Massachusetts rather than Nova Scotia - confirm sector, revenue and comp before investing.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer via Roessel Joy in Lawrence, MA (https://www.linkedin.com/jobs/view/chief-financial-officer-at-roessel-joy-4448318620). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Note that I am a dual Canada/US citizen so there is no visa issue, and tell me how to handle the relocation question. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the recruiter's LinkedIn profile if a named contact appears on the posting"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Chief Financial Officer - Construction - Boston's South Shore",
+   "company": "via Page Executive",
+   "location": "",
+   "url": "https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-bostons-south-shore/ref/jn-062026-7049770",
+   "source": "Page Executive (recruiter)",
+   "salary": "",
+   "tier": "Northeast US",
+   "score": 4,
+   "summary": "Chief Financial Officer for a construction business on Boston's South Shore, retained through Page Executive - a genuine top-seat mandate in your Northeast US tier.",
+   "why": "Executive search firms run these for owner-led or sponsor-backed mid-size companies, which is your sweet spot, and your integration and carve-out record is exactly what that buyer profile wants.",
+   "watch_out": "Construction is a sector stretch from tire and industrial manufacturing, and it is an in-person Massachusetts move away from your Nova Scotia priority - name both head-on in the letter.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Chief Financial Officer, Construction, Boston's South Shore via Page Executive (https://www.pageexecutive.com/job-detail/chief-financial-officer-construction-bostons-south-shore/ref/jn-062026-7049770). Then tailor my CV emphasis for this seat, draft a cover letter in my First-100-Days style, and suggest one human route in. Address the construction sector gap directly and lead with the scale of the P&L I have run. I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything",
+    "Paste the Page Executive consultant details if the posting names one"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Contrôleur financier/Contrôleuse financière",
+   "company": "CameleonHR",
+   "location": "Québec, Quebec, Canada",
+   "url": "https://ca.linkedin.com/jobs/view/contr%C3%B4leur-financier-contr%C3%B4leuse-financi%C3%A8re-at-cameleonhr-4448436385",
+   "source": "LinkedIn",
+   "salary": "",
+   "tier": "Eastern Canada",
+   "score": 3,
+   "summary": "Financial controller role in Quebec City through CameleonHR, a notch below your title universe but in tier 2 Eastern Canada with no stated pay.",
+   "why": "French-language controllership in Quebec keeps you in Eastern Canada, and controller at a substantial company can still be a hands-on P&L seat - but only if the company scale justifies it.",
+   "watch_out": "Title below your level - confirm the seat owns the full P&L and find out the company size before spending real time on it.",
+   "kickoff_prompt": "Run a blunt fit check on this posting first - pros and cons against my resume, verdict included: Controleur financier at CameleonHR in Quebec City (https://ca.linkedin.com/jobs/view/contr%C3%B4leur-financier-contr%C3%B4leuse-financi%C3%A8re-at-cameleonhr-4448436385). Weight your answer toward telling me straight whether this is worth an evening: is the company big enough that the controller seat carries real P&L ownership, or is this a step down from a business line CFO role? I'm pasting the posting text below.",
+   "attachments": [
+    "Paste the full posting text - open the job link and copy everything"
+   ],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "accountant-controller",
+   "company": "PUR RH inc.",
+   "location": " Saint-Constant (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50017156",
+   "source": "Job Bank (Canada)",
+   "salary": "$100,000.00 to $125,000.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Accountant-controller seat at a small Quebec employer via a recruitment agency, well below the operating-leadership scope you are targeting.",
+   "why": "Stated pay is far under your floor and the mandate is bookkeeping-adjacent controllership, not business-line finance leadership.",
+   "watch_out": "States $100,000 to $125,000 CAD, below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Contractor Field Officer (CFO) Lead",
+   "company": "",
+   "location": "Nova Scotia",
+   "url": "https://www.careerbeacon.com/en/job/2229915/pal-aerospace/contractor-field-officer-cfo-lead/quinte-west-on?utm_source=careerbeacon",
+   "source": "CareerBeacon",
+   "salary": "",
+   "tier": "Nova Scotia",
+   "score": 1,
+   "summary": "Despite the CFO acronym, this is a Contractor Field Officer aviation operations role with PAL Aerospace, listed against Quinte West, Ontario.",
+   "why": "Not a finance role at all - the acronym is a coincidence, and the work location is outside your tiers.",
+   "watch_out": "",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "controller - financial services",
+   "company": "Fed Finance",
+   "location": " Sherbrooke (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50024911",
+   "source": "Job Bank (Canada)",
+   "salary": "$90,000.00 to $100,000.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Agency-posted controller role in Sherbrooke, Quebec at a compensation level far below your target.",
+   "why": "Scope and pay both sit well under an operating finance leadership seat.",
+   "watch_out": "States $90,000 to $100,000 CAD, below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "financial controller",
+   "company": "Onyx RH & Recrutement inc.",
+   "location": " Québec (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50023696",
+   "source": "Job Bank (Canada)",
+   "salary": "$90,000.00 to $100,000.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Financial controller position in Quebec City via a recruitment firm, priced as a mid-level controllership.",
+   "why": "The stated range rules it out before scope even matters.",
+   "watch_out": "States $90,000 to $100,000 CAD, below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
+  },
+  {
+   "date": "2026-08-06",
+   "title": "accountant-controller",
+   "company": "RH CARRIERE ET ASSOCIES INC.",
+   "location": " Vaudreuil-Dorion (QC)",
+   "url": "https://www.jobbank.gc.ca/jobsearch/jobposting/50021762",
+   "source": "Job Bank (Canada)",
+   "salary": "$70,000.00 annually",
+   "tier": "Eastern Canada",
+   "score": 1,
+   "summary": "Accountant-controller opening in Vaudreuil-Dorion, Quebec at a small-business pay grade.",
+   "why": "Far below your level and your floor.",
+   "watch_out": "States $70,000 CAD annually, below your $200,000 CAD floor.",
+   "kickoff_prompt": "",
+   "attachments": [],
+   "wildcard": false
   }
  ],
  "articles": [
@@ -898,6 +1522,314 @@
    "title": "Lessons from Hamilton, Ontario: Here’s how to stop an AI data centre proposed for your community",
    "feed": "Halifax Examiner",
    "url": "https://www.halifaxexaminer.ca/morning-file/lessons-from-hamilton-ontario-heres-how-to-stop-an-ai-data-centre-proposed-for-your-community/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Stop Prompting AI. Start Directing It",
+   "feed": "MIT Sloan Management Review",
+   "url": "https://sloanreview.mit.edu/article/stop-prompting-ai-start-directing-it/",
+   "note": "The distinction between prompting and directing is exactly the governance question a PE-backed board will put to a finance chief: who sets the objective, who checks the work, and who owns the number that results."
+  },
+  {
+   "date": "2026-08-05",
+   "title": "McDonald picks insider finance veteran as new US boss",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/mcdonalds-finance-insider-takes-us-president-reins-skye-anderson/827156/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Flex sues former CFO candidate; alleges stealing of ‘strategic crown jewels’",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/flex-sues-former-cfo-candidate-alleges-stealing-of-strategic-crown-jewels/827146/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Workers are all in fight-or-flight mode, expert says",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/workers-are-all-in-fight-or-flight-mode/827092/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Fewer companies plan ‘peanut-butter’ pay increases in 2027: Payscale",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/fewer-companies-plan-peanut-butter-pay-increases-in-2027-payscale/827012/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Chicago budget director follows acting CFO out the door",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/chicago-budget-director-follows-acting-cfo-door-Brandon-Johnson/827010/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Best Buy picks Nordstrom alum for CFO",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/best-buy-picks-nordstrom-alum-for-cfo/826979/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Report shows N.S. govt returned $5M in unspent federal funding for land protection",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/land-protection-environment-green-energy-greenhouse-gas-emissions-tom-halman-9.7297528?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "‘We need to find proper solutions’: New homeless encampments cropping up along Truro trail",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/truro-encampment-cobequid-trail-9.7296832?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Nearly 80% of N.S. residents oppose private development in protected areas: poll",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/nova-scotia-survey-private-development-provincial-parks-9.7297217?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Cape Breton man charged with stealing trust funds after years-long investigation",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/cape-breton-man-charged-with-stealing-trust-funds-following-years-long-investigation-9.7297034?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Louisbourg residents under boil-water advisory after major water main break",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/louisbourg-boil-water-advisory-9.7296816?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "N.S., company suing each other over care for children, disabled persons",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/n-s-company-suing-each-other-over-care-for-children-disabled-persons-9.7295683?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Historical organizations in N.S. weigh in on the use of AI to promote sites, events",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/n-s-historical-organizations-use-of-ai-to-promote-sites-events-9.7295815?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Glassmaker opens new studio after NovaScotian Crystal closure",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/player/play/9.7295773?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Man reported missing from New Glasgow hospital found safe",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/man-reported-missing-from-new-glasgow-hospital-found-safe-9.7295816?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Extreme heat and humidity expected for Nova Scotia this week",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/extreme-heat-humidity-nova-scotia-9.7296108?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Community-led crisis response team expands service to Halifax peninsula",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/care-service-expanded-halifax-9.7296069?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Rebuilt Tides ignite big home crowds, target playoffs",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/player/play/9.7296125?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "CVCA Data Shows Feast or Famine on the East Coast",
+   "feed": "Entrevestor (Atlantic startups)",
+   "url": "https://entrevestor.com/blog/cvca-data-shows-feast-or-famine-on-the-east-coast",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Coalition calls on Nova Scotia to investigate, make recommendations to prevent deaths from pickups and large SUVs",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/transportation/coalition-calls-on-nova-scotia-to-investigate-make-recommendations-to-prevent-deaths-from-pickups-and-large-suvs/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Majority of Nova Scotians oppose private development in legally protected parks and areas, survey says",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/environment/majority-of-nova-scotians-oppose-private-development-in-legally-protected-parks-and-areas-survey-says/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Protecting nature: How Nova Scotia left $5 million on the table",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/province-house-2/protecting-nature-how-nova-scotia-left-5-million-on-the-table/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-05",
+   "title": "Pictou County Mothers of Democracy inspire a ‘reawakening of the civic consciousness’ through series of talks in their community",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/morning-file/pictou-county-mothers-of-democracy-inspire-a-reawakening-of-the-civic-consciousness-through-series-of-talks-in-their-community/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Fractional CFOs see demand surge in AI age",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/fractional-cfos-see-demand-surge-ai-age-leadership/827264/",
+   "note": "The surge in fractional and interim CFO demand, driven partly by AI-enabled finance stacks, gives you a legitimate way into Nova Scotia and eastern Canadian companies that are not yet ready to fund a permanent seat."
+  },
+  {
+   "date": "2026-08-06",
+   "title": "SEC launches new enforcement unit aimed at accounting fraud",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/sec-launches-new-enforcement-unit-aimed-accounting-fraud/827263/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Chime’s CFO is stepping down",
+   "feed": "CFO Dive",
+   "url": "https://www.cfodive.com/news/chime-cfo-stepping-down-matt-newcomb-troughton-q2-earnings-revenue-active-members-prime/827233/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Province to investigate Brandon Klayme's wrongful conviction",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/brandon-klayme-justice-9.7298804?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "N.S. 'far behind' schedule for remedy to support people with disabilities, report says",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/nova-scotia-human-rights-remedy-people-with-disabilities-9.7298644?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Inceptio Oil and Gas gets more time to post deposit for $200M offshore exploration project",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/inceptio-oil-and-gas-offshore-exploration-premier-tim-houston-9.7298480?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "N.S. residents, workers scrambling to beat the heat",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/player/play/9.7298689?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Nova Scotians under 14 will soon be banned from e-scooters and e-bikes",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/nova-scotia-age-restriction-for-escooter-ebikes-9.7298506?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Cape Breton marina site of rare beluga sighting",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/marina-rare-beluga-sighting-9.7298620?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Eastern Passage man charged with child sexual abuse offences",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/eastern-passage-man-charged-child-sexual-abuse-offences-9.7298440?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Rare sighting of beluga whale in Cape Breton waters",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/player/play/9.7298261?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Suspended RCMP officer William McNutt acquitted of 2 sexual assault charges",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/suspended-rcmp-officer-william-mcnutt-acquitted-2-sexual-assault-charges-9.7298044?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "CBRM to hire 8 new staff to combat growing garbage complaints",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/cbrm-council-garbage-truck-9.7297555?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "'People just avoid it like the plague': Construction disrupting Windsor restaurant",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/windsor-business-losing-revenue-customers-construction-project-9.7267432?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Halifax needs more shipbuilding tradespeople, but some college programs are at capacity",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/halifax-tradespeople-college-programs-capacity-9.7297428?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Done the Wordle yet? Even brief moments of leisure offer benefits, new study says",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/brief-moments-leisure-offer-benefits-dalhousie-study-9.7292269?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Internal DFO memo warns Trump-backed bill threatens right whale survival",
+   "feed": "CBC Nova Scotia",
+   "url": "https://www.cbc.ca/news/canada/nova-scotia/internal-dfo-memo-warns-trump-backed-bill-threatens-right-whale-survival-9.7297956?cmp=rss",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "One of two German potential takers for EverWind Fuels’ green hydrogen and ammonia says the deal is off",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/green-hydrogen/one-of-two-german-potential-takers-for-everwind-fuels-green-hydrogen-and-ammonia-says-the-deal-is-off/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "A different kind of Greek odyssey",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/morning-file/a-different-kind-of-greek-odyssey/",
+   "note": ""
+  },
+  {
+   "date": "2026-08-06",
+   "title": "Inceptio Oil and Gas misses one deadline, receives another",
+   "feed": "Halifax Examiner",
+   "url": "https://www.halifaxexaminer.ca/economy/energy/inceptio-oil-and-gas-misses-one-deadline-receives-another/",
    "note": ""
   }
  ]
