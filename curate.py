@@ -135,9 +135,21 @@ Scoring scale:
 
 HARD RULE - salary floors: he will not leave his current job for less than
 the profile's floors. If a posting STATES compensation below the floor for
-its region, score it 1 regardless of everything else, and quote the number
-in watch_out. Never rank a below-floor posting as worth his evening. If no
+its region - in the salary field OR anywhere in the description snippet -
+score it 1 regardless of everything else, and quote the number in
+watch_out. Never rank a below-floor posting as worth his evening. If no
 compensation is stated, score normally and say nothing about salary.
+(Learned the hard way: a $150K CAD CFO posting reached his inbox because
+the figure sat in the description, not the salary field.)
+
+HARD RULE - restricted hiring: if the posting states the role is reserved
+for, or gives strong preference to, members of a specific community or
+group he does not belong to - e.g. a First Nations organization hiring
+band members or Indigenous candidates preferentially, internal-only
+postings, or citizenship he does not hold - score it 1 and name the
+restriction plainly in watch_out. These are legitimate hiring practices;
+they simply mean the seat is not winnable for him and must not cost him
+an evening.
 
 Per job, write:
 - "summary": 1-2 sentences - what this job actually is (from title, company,
@@ -291,6 +303,32 @@ def pick_ai_articles(client, articles: list[dict],
     return picks, result.get("encouragement", ""), result.get("one_action", "")
 
 
+def fetch_dad_joke(hist: dict) -> str:
+    """One fresh joke per edition from icanhazdadjoke.com (Marcel's request,
+    2026-08-06). Joke ids are remembered in history.json so a joke never
+    repeats; the API is random, so retry a few times for an unseen one.
+    Failure returns "" - the edition renders fine without a joke."""
+    import requests
+    seen = set(hist.get("joke_ids", []))
+    try:
+        for _ in range(6):
+            resp = requests.get(
+                "https://icanhazdadjoke.com/",
+                headers={"Accept": "application/json",
+                         "User-Agent": ("The Next Chapter newsletter "
+                                        "(github.com/clairechabot/papa-job-search)")},
+                timeout=10)
+            resp.raise_for_status()
+            d = resp.json()
+            if d.get("id") and d["id"] not in seen:
+                hist["joke_ids"] = (hist.get("joke_ids", []) + [d["id"]])[-500:]
+                return d.get("joke", "")
+    except Exception as e:  # noqa: BLE001 - boundary: external API
+        print(f"[curate] dad joke unavailable: {type(e).__name__}",
+              file=sys.stderr)
+    return ""
+
+
 def build_digest(gated: list[dict], total_read: int, one_action: str) -> list[dict]:
     """The 'Tonight in one minute' rows, shared by the email and the full
     edition so the two always agree."""
@@ -332,6 +370,10 @@ def main() -> None:
     gated = [j for j in data["jobs"] if gate(j)]
     print(f"[curate] gate: {len(gated)} passed, {len(data['jobs']) - len(gated)} rejected")
 
+    history_file = HERE / "history.json"
+    hist = (json.loads(history_file.read_text(encoding="utf-8-sig"))
+            if history_file.exists() else {})
+
     encouragement = ""
     one_action = ""
     ai_picks: list[dict] = []
@@ -345,9 +387,6 @@ def main() -> None:
         # Nightly variety: Vern sees his last week of notes (stored in
         # history.json, Curated Canopy recent_greetings pattern) plus
         # tonight's best leads, and must not repeat himself.
-        history_file = HERE / "history.json"
-        hist = (json.loads(history_file.read_text(encoding="utf-8-sig"))
-                if history_file.exists() else {})
         top_jobs = [f"{j['title']} at {j.get('company', '?')}"
                     for j in gated if (j.get("score") or 0) >= 4]
         ai_picks, encouragement, one_action = pick_ai_articles(
@@ -355,11 +394,13 @@ def main() -> None:
         if encouragement:
             hist["recent_notes"] = (hist.get("recent_notes", [])
                                     + [encouragement])[-7:]
-            history_file.write_text(
-                json.dumps(hist, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"[curate] Vern scored {len(gated)} jobs, picked {len(ai_picks)} articles")
     else:
         print("[curate] CLAUDE_API_KEY not set: gate-only mode (no scores)")
+
+    dad_joke = fetch_dad_joke(hist)
+    history_file.write_text(
+        json.dumps(hist, indent=2, ensure_ascii=False), encoding="utf-8")
 
     OUT_FILE.write_text(json.dumps({
         "curated_at": now.isoformat(),
@@ -370,6 +411,7 @@ def main() -> None:
         "ai_articles": data.get("ai_articles", []),
         "ns_articles": data.get("ns_articles", []),
         "encouragement": encouragement,
+        "dad_joke": dad_joke,
         "digest": build_digest(gated, len(data["jobs"]), one_action),
         "stats": {
             "postings_read": len(data["jobs"]),
